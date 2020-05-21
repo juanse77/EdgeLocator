@@ -5,5 +5,4 @@ Este proyecto es una implantación en C++ del método desarrollado en el artícu
 <h3>Autores</h3>
 
 Agustín Rafael Trujillo Pino - <agustin.trujillo@ulpgc.es>
-
 Juan Sebastián Ramírez Artiles - <juan.ramirez107@alu.ulpgc.es>
