@@ -9,4 +9,4 @@ Este proyecto es una implantación en C++ del método desarrollado en el artícu
 
 <h3>Instalación del proyecto en Visual Studio</h3>
 
-Para la implementación del método hemos hecho uso de la librería OpenCV en la versión 4.3.0 x64 vc15, y de el software Microsoft Visual C++ 2019 en su versión Community. Para aclarar los detalles de la instalación puede consultar el documento [Instalación VS.pdf](Instalación VS.pdf).
+Para la implementación del método hemos hecho uso de la librería OpenCV en la versión 4.3.0 x64 vc15, y de el software Microsoft Visual C++ 2019 en su versión Community. Para aclarar los detalles de la instalación puede consultar el documento [Instalación VS.pdf](https://github.com/juanse77/EdgeLocator/blob/master/Instalaci%C3%B3n%20VS.pdf).
