@@ -38,3 +38,9 @@ Gracias a esta sencilla fórmula podemos construir el método con ventanas está
 <div align="center">
 	<img src="./Method_Images/Ventana_3x5.JPG" alt="Ventana 3x5" />
 </div>
+
+Siguiendo el esquema de la primera fórmula, podemos establecer las fórmulas de las tonalidades medias de cada franja vertical en realción a los dos tonos del borde y al área que abarca la tonalidad A:
+
+\displaystyle S_L = \sum_{n = {j-2}}^{j+2} F_{i-1,n} = 5B + {{A-B} \over {h^2}} L   
+\displaystyle S_M = \sum_{n = {j-2}}^{j+2} F_{i,n} = 5B + {{A-B} \over {h^2}} M     
+\displaystyle S_R = \sum_{n = {j-2}}^{j+2} F_{i+1,n} = 5B + {{A-B} \over {h^2}} R
