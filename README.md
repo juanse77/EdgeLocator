@@ -93,4 +93,8 @@ Resolviendo el sistema de ecuaciones llegamos al resultado:
 
 ![\displaystyle a = {{2S_M-5(A+B)} \over {2(A-B)}} - {1 \over 12} c](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20a%20%3D%20%7B%7B2S_M-5(A%2BB)%7D%20%5Cover%20%7B2(A-B)%7D%7D%20-%20%7B1%20%5Cover%2012%7D%20c)
 
+De lo cual podemos estimar la curvatura en x = 0 como:
+
+![\displaystyle K = {{2c} \over {(a+b^2)^{3/2}}}](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20K%20%3D%20%7B%7B2c%7D%20%5Cover%20%7B(a%2Bb%5E2)%5E%7B3%2F2%7D%7D%7D)
+
 
