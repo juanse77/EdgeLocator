@@ -74,3 +74,7 @@ Con los datos de A, B y de la recta podemos expresar la normal y establecer su s
 ![\displaystyle N = {{A-B} \over \sqrt{1+b^2}} \[b, -1\]](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20N%20%3D%20%7B%7BA-B%7D%20%5Cover%20%5Csqrt%7B1%2Bb%5E2%7D%7D%20%5Bb%2C%20-1%5D)
 
 <h3>Aproximación cuadrática:</h3>
+
+<div align="center">
+	<img src="./Method_Images/Ventana_3x5_Cuadrática.JPG" alt="Ventana 3x5 Cuadrática" />
+</div>
