@@ -75,4 +75,4 @@ Con los datos de A, B y de la recta podemos expresar la normal y establecer su s
 
 <h3>Aproximación cuadrática:</h3>
 
-<img src="./Method_Images/Ventana_3x5_Cuadrática.JPG" alt="Ventana 3x5 Cuadrática" align="right" width="200" height="200" />
+<img src="./Method_Images/Ventana_3x5_Cuadrática.JPG" alt="Ventana 3x5 Cuadrática" align="right" width="400" height="400" />
