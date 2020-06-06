@@ -29,4 +29,8 @@ En esta primera paroximación se utilizarán ventanas de tamaño 3x5. Antes de d
 
 Si suponemos que un pixel resulta atravesado por un borde, podemos estimar la tonalidad final de los lados a partir de la tonalidad del pixel. Si llamamos F al tono de cada pixel, y A y B a los valores de los lados opuestos por el borde, podemos establecer matemáticamente la relación que existe entre ellos:
 
+<div style="text-align:center">
+
 ![\displaystyle F(i,j) = B + {{A-B} \over {h^2}} P(i,j)](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20F(i%2Cj)%20%3D%20B%20%2B%20%7B%7BA-B%7D%20%5Cover%20%7Bh%5E2%7D%7D%20P(i%2Cj)) 
+
+</div>
