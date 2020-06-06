@@ -25,13 +25,16 @@ Para la implementación del método hemos hecho uso de la librería OpenCV en la
 
 <h3>Primera aproximación</h3>
 
-En esta primera paroximación se utilizarán ventanas de tamaño 3x5. Antes de describir cómo funcionaría el método con este tipo de ventana podríamos establecer la fórmula principal de la que derivará por completo el método.
+En esta primera paroximación se utilizarán ventanas de tamaño 5x3. Antes de describir cómo funcionaría el método con este tipo de ventana podríamos establecer la fórmula principal de la que derivará por completo el método.
 
 Si suponemos que un pixel resulta atravesado por un borde, podemos estimar la tonalidad final de los lados a partir de la tonalidad del pixel. Si llamamos F al tono de cada pixel, y A y B a los valores de los lados opuestos por el borde, podemos establecer matemáticamente la relación que existe entre ellos:
 
-<p style="text-align: center;">
-
 ![\displaystyle F(i,j) = B + {{A-B} \over {h^2}} P(i,j)](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20F(i%2Cj)%20%3D%20B%20%2B%20%7B%7BA-B%7D%20%5Cover%20%7Bh%5E2%7D%7D%20P(i%2Cj)) 
 
-</p>
+Donde la h representa el tamaño del lado del pixel y P el área que cubre el tono A dentro del pixel. Podemos comprobar fácilmente que cuando P es igual a 1 el tono del pixel tendrá el valor de A, mientras que cuando el valor del área P es igual 0 el tono será B.
 
+Gracias a esta sencilla fórmula podemos construir el método con ventanas estáticas. Como dijimos anteriormente en esta primera aproximación utilizaremos un tamaño de ventana de 5x3. Para ilustrar esta aproximación vamos a suponer que el borde atraviesa la ventana de izquierda a derecha y que su pendiente se encuentra entre 0 y 1. Con esta suposición nos aseguramos de que el borde atraviesa por completo la ventana de lado a lado. Si suponemos, además, que el borde es recto podemos calcular los parámetros de esta recta, planteando un sistema de ecuaciones utilizando la variación de las áreas verticales colindantes de la ventana.
+
+<div align="center">
+	<img src="./Method_Images/Ventana_5x3.JPG" alt="Ventana 5x3" />
+</div>
