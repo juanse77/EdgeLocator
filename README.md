@@ -1,23 +1,22 @@
 <h1>Método de detección de bordes a nivel subpíxel:</h1>
-<hr />
 
 Este proyecto es una implantación en C++ del método desarrollado en el artículo ["Accurate subpixel edge location based on partial area effect"](https://www.sciencedirect.com/science/article/abs/pii/S0262885612001850) escrito por Agustín Trujillo et al. Su implementación en Matlab se puede descargar de [MathWroks](https://es.mathworks.com/matlabcentral/fileexchange/48908-accurate-subpixel-edge-location). Las diapositivas que muestran el funcionamiento de este método se pueden descargar de MathWorks o de este mismo repositorio.
 
 Este proyecto forma parte del mi trabajo de fin de grado (TFG) que hemos desarrollado desde la Universidad de Las Palmas de Gran Canaria en el curso 2019/20 para la obtención del título de Ingeniería Informática en la especialidad de Computación.
 
-<h3>Autores:</h3>
 <hr />
+<h3>Autores:</h3>
 
 - Agustín Rafael Trujillo Pino - <agustin.trujillo@ulpgc.es> - Tutor
 - Juan Sebastián Ramírez Artiles - <juan.ramirez107@alu.ulpgc.es>
 
-<h3>Instalación del proyecto en Visual Studio:</h3>
 <hr />
+<h3>Instalación del proyecto en Visual Studio:</h3>
 
 Para la implementación del método hemos hecho uso de la librería OpenCV en la versión 4.3.0 x64 vc15, y del software Microsoft Visual C++ 2019 en su versión Community. Para aclarar los detalles de la instalación puede consultar el documento [Instalación VS.pdf](https://github.com/juanse77/EdgeLocator/blob/master/Instalaci%C3%B3n%20VS.pdf).
 
-<h2>Descripción del método:</h2>
 <hr />
+<h2>Descripción del método:</h2>
 
 <p>En este documento vamos a explicar brevemente en qué consiste el método y cómo se ha implantado en C++.</p>
 
@@ -29,8 +28,8 @@ Para la implementación del método hemos hecho uso de la librería OpenCV en la
 
 <p>Podemos dividir la explicación del método en tres niveles de complejidad: una primera aproximación básica en la que se fundamenta la técnica que posteriormente se irá perfeccionando, en la cual se hace uso de ventanas de tamaño fijo; una segunda aproximación en la cual se sigue haciendo uso de ventanas de tamaño fijo pero esta vez se le ha aplicado primero un filtro gaussiano a la imagen; y una tercera aproximación en la que se utilizan ventanas flotantes de tamaño variable para la detección de bordes muy próximos entre sí.</p>
 
-<h3>Primera aproximación:</h3>
 <hr />
+<h3>Primera aproximación:</h3>
 
 En esta primera paroximación se utilizarán ventanas de tamaño 3x5. Antes de describir cómo funcionaría el método con este tipo de ventana podríamos establecer la fórmula principal de la que derivará por completo el método.
 
@@ -80,8 +79,8 @@ Con los datos de A, B y de la recta podemos expresar la normal y establecer su s
 
 ![\displaystyle N = {{A-B} \over \sqrt{1+b^2}} \[b, -1\]](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20N%20%3D%20%7B%7BA-B%7D%20%5Cover%20%5Csqrt%7B1%2Bb%5E2%7D%7D%20%5Bb%2C%20-1%5D)
 
-<h3>Aproximación cuadrática:</h3>
 <hr />
+<h3>Aproximación cuadrática:</h3>
 
 <img src="./Method_Images/Ventana_3x5_Cuadrática.JPG" alt="Ventana 3x5 Cuadrática" align="right" width="400" height="400" />
 
@@ -105,8 +104,8 @@ De lo cual podemos estimar la curvatura en x = 0 como:
 
 ![\displaystyle K = {{2c} \over {(1+b^2)^{3/2}}}](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20K%20%3D%20%7B%7B2c%7D%20%5Cover%20%7B(1%2Bb%5E2)%5E%7B3%2F2%7D%7D%7D)
 
-<h3>Generalización a cualquier valor de pendiente</h3>
 <hr />
+<h3>Generalización a cualquier valor de pendiente:</h3>
 
 El método tal y como lo hemos explicado hasta ahora se basa en la suposición de que la pendiente de la curva se encuantre entre 0 y 1. Por lo que debemos generalizar el método para que funcione en todas las condiciones posibles. Para generalizar el método podemos distinguir dos situaciones límite. Primero podemos suponer los casos en los que las pendientes del borde estén entre -1 y 1, por lo que la curva resultante se puede detectar usando una ventana vertical de 3x5. El segundo caso, en el que las pendientes de los bordes sean superiores a 1 en valor absoluto, podemos utilizar el mismo método pero usando esta vez ventanas horizontales de 5x3.
 
