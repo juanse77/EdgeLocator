@@ -155,5 +155,11 @@ La matriz gaussiana que utilizaremos será de 3x3 y estará conformada del sigui
 
 ![K = \left( \begin{array}{lcr} 	a_11 & a_01 & a_11 \\ 	a_01 & a_00 & a_01 \\ 	a_11 & a_01 & a_11      \end{array} \right)](https://render.githubusercontent.com/render/math?math=K%20%3D%20%5Cleft(%20%5Cbegin%7Barray%7D%7Blcr%7D%20%09a_11%20%26%20a_01%20%26%20a_11%20%5C%5C%20%09a_01%20%26%20a_00%20%26%20a_01%20%5C%5C%20%09a_11%20%26%20a_01%20%26%20a_11%20%20%20%20%20%20%5Cend%7Barray%7D%20%5Cright))
 
-La matriz debe así mismo cumplir que ![a_00 \gt a_01 \gt a_11](https://render.githubusercontent.com/render/math?math=a_00%20%5Cgt%20a_01%20%5Cgt%20a_11) y además ![a_00 + 4a_01 + 4a_11 = 1](https://render.githubusercontent.com/render/math?math=a_00%20%2B%204a_01%20%2B%204a_11%20%3D%201)
+La matriz debe así mismo debe cumplir que ![a_00 \gt a_01 \gt a_11](https://render.githubusercontent.com/render/math?math=a_00%20%5Cgt%20a_01%20%5Cgt%20a_11) y además ![a_00 + 4a_01 + 4a_11 = 1](https://render.githubusercontent.com/render/math?math=a_00%20%2B%204a_01%20%2B%204a_11%20%3D%201)
+
+Si llamamos G a la imagen resultante del proceso de suavizado, se puede observar que el área de los píxeles con valores intermedios entre A y B es ahora mayor, tal como se puede observar en la siguiente imagen:
  
+<div align="center">
+	<img src="./Method_Images/Img_Suavizada.JPG" alt="Imagen suavizada" />
+</div>
+
