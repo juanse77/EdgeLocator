@@ -103,7 +103,7 @@ Resolviendo el sistema de ecuaciones llegamos al resultado:
 
 De lo cual podemos estimar la curvatura en x = 0 como:
 
-![\displaystyle K = {{2c} \over {(1+b^2)^{3/2}}}](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20K%20%3D%20%7B%7B2c%7D%20%5Cover%20%7B(a%2Bb%5E2)%5E%7B3%2F2%7D%7D%7D)
+![\displaystyle K = {{2c} \over {(1+b^2)^{3/2}}}](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20K%20%3D%20%7B%7B2c%7D%20%5Cover%20%7B(1%2Bb%5E2)%5E%7B3%2F2%7D%7D%7D)
 
 El método tal y como lo hemos explicado hasta ahora se basa en la suposición de que la pendiente de la curva se encuantre entre 0 y 1. Por lo que debemos generalizar el método para que funcione en todas las condiciones posibles. Para generalizar el método podemos distinguir dos situaciones límite. Primero podemos suponer los casos en los que las pendientes del borde estén entre -1 y 1, por lo que la curva resultante se puede detectar usando una ventana vertical de 3x5. El segundo caso, en el que las pendientes de los bordes sean superiores a 1 en valor absoluto, podemos utilizar el mismo método pero usando esta vez ventanas horizontales de 5x3.
 
