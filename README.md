@@ -119,7 +119,7 @@ Por lo que ahora los cálculos de los tonos límite serán:
 
 ![\displaystyle B = {1 \over 3} (F_{i+m,j-1} + F_{i+m,j-2} + F_{i,j-2})](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20B%20%3D%20%7B1%20%5Cover%203%7D%20(F_%7Bi%2Bm%2Cj-1%7D%20%2B%20F_%7Bi%2Bm%2Cj-2%7D%20%2B%20F_%7Bi%2Cj-2%7D))
 
-También podemos distinguir las situaciones en las que la curva se doble hacia valores de tonos más altos o más bajos. Por ejemplo, supongamos el caso de una circunferencia en la que el tono interior es mayor al tono inferior, en este caso la curvatura deberá ser siempre negativa, por lo que se hace necesaria una generalización como la anterior pero esta vez para la curvatura:
+También podemos distinguir las situaciones en las que la curva se doble hacia valores de tonos más altos o más bajos. Por ejemplo, supongamos el caso de una circunferencia en la que el tono interior es mayor al tono exterior, en este caso la curvatura deberá ser siempre negativa, por lo que se hace necesaria una generalización como la anterior pero esta vez para la curvatura:
 
 ![\displaystyle K = {{2cn} \over {(1+b^2)^{3/2}}}](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20K%20%3D%20%7B%7B2cn%7D%20%5Cover%20%7B(1%2Bb%5E2)%5E%7B3%2F2%7D%7D%7D)
 
