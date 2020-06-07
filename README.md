@@ -133,6 +133,9 @@ En el caso de que los bordes sean netamente verticales, es decir, en aquellos ca
 
 ![\displaystyle B = {1 \over 3} (F_{i-1,j+m} + F_{i-2,j+m} + F_{i-2,j})](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20B%20%3D%20%7B1%20%5Cover%203%7D%20(F_%7Bi-1%2Cj%2Bm%7D%20%2B%20F_%7Bi-2%2Cj%2Bm%7D%20%2B%20F_%7Bi-2%2Cj%7D))
 
+<hr />
+<h3>Determinación de los píxeles borde:</h3>
+
 Para que este método funcione es necesario determinar qué píxeles se marcarán como píxeles bordes. Como explicamos en la introducción, tomamos como píxeles candidatos a todos los que el módulo de su gradiente supere un cierto umbral. Además, la anterior condición no es suficiente ya que para que el píxel sea considerado como borde debe ser también un pixel con un valor máximo entre los de su vecindad. Para determinar si un píxel tiene un valor máximo en su vencindad, debemos considerar, una vez más, si el píxel es de un borde vertical u horizontal. Si el píxel es vertical su derivada parcial ![f_x](https://render.githubusercontent.com/render/math?math=f_x) será mayor a ![f_y](https://render.githubusercontent.com/render/math?math=f_y), en el caso horizontal será al contrario. Por lo tanto será condición suficiente que se cumplan las siguientes desigualdades:
 
 En el caso vertical:
