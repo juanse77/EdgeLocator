@@ -167,7 +167,7 @@ Si suponemos de nuevo el caso ideal en el que la pendiente del borde se encuentr
 
 ![\displaystyle S_L = \sum_{k = {-3-m}}^{3-m} G_{i-1,j+k}](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20S_L%20%3D%20%5Csum_%7Bk%20%3D%20%7B-3-m%7D%7D%5E%7B3-m%7D%20G_%7Bi-1%2Cj%2Bk%7D)
 
-![\displaystyle S_M = \sum_{k = {-3}}^{3} G_{i-1,j+k}](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20S_M%20%3D%20%5Csum_%7Bk%20%3D%20%7B-3%7D%7D%5E%7B3%7D%20G_%7Bi-1%2Cj%2Bk%7D)
+![\displaystyle S_M = \sum_{k = {-3}}^{3} G_{i,j+k}](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20S_M%20%3D%20%5Csum_%7Bk%20%3D%20%7B-3%7D%7D%5E%7B3%7D%20G_%7Bi%2Cj%2Bk%7D)
 
 ![\displaystyle S_R = \sum_{k = {-3+m}}^{3+m} G_{i+1,j+k}](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20S_R%20%3D%20%5Csum_%7Bk%20%3D%20%7B-3%2Bm%7D%7D%5E%7B3%2Bm%7D%20G_%7Bi%2B1%2Cj%2Bk%7D)
 
