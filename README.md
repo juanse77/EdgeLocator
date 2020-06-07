@@ -179,4 +179,12 @@ Como se puede observar, ahora el tamaño de las franjas verticales es de 7 y se 
 
 ![\displaystyle a = {{2S_M-7(A+B)} \over {2(A-B)}} - {{1+24a_01+48a_11}  \over 12} c](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20a%20%3D%20%7B%7B2S_M-7(A%2BB)%7D%20%5Cover%20%7B2(A-B)%7D%7D%20-%20%7B%7B1%2B24a_01%2B48a_11%7D%20%20%5Cover%2012%7D%20c)
 
-Hemos omitido los detalles de las operaciones que llevan a esta solución. Si desea profundizar en los cálculos consulte el artículo original.
+*Hemos omitido los detalles de las operaciones que llevan a esta solución. Si desea profundizar en los cálculos consulte el artículo original.
+
+Al ser las ventanas distintas también se verá afectada la estimación de los tono A y B. Los tonos para el caso vertical son ahora:
+
+![\displaystyle A = {1 \over 3} (F_{i,j+4} + F_{i-m,j+4} + F_{i-m,j+3})](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20A%20%3D%20%7B1%20%5Cover%203%7D%20(F_%7Bi%2Cj%2B4%7D%20%2B%20F_%7Bi-m%2Cj%2B4%7D%20%2B%20F_%7Bi-m%2Cj%2B3%7D))
+
+![\displaystyle B = {1 \over 3} (F_{i+m,j-3} + F_{i+m,j-4} + F_{i,j-4})](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20B%20%3D%20%7B1%20%5Cover%203%7D%20(F_%7Bi%2Bm%2Cj-3%7D%20%2B%20F_%7Bi%2Bm%2Cj-4%7D%20%2B%20F_%7Bi%2Cj-4%7D))
+
+
