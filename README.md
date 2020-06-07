@@ -146,4 +146,15 @@ Y en el caso horizontal:
 
 ![\displaystyle \left\{ \begin{array}{rcl} 	|f_y(i,j)| \gt |f_x(i,j)| \\ 	& \\ 	|f_y(i,j-1)| \leq |f_y(i,j)| \geq |f_y(i,j+1)| \\ \end{array} \right.](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20%5Cleft%5C%7B%20%5Cbegin%7Barray%7D%7Brcl%7D%20%09%7Cf_y(i%2Cj)%7C%20%5Cgt%20%7Cf_x(i%2Cj)%7C%20%5C%5C%20%09%26%20%5C%5C%20%09%7Cf_y(i%2Cj-1)%7C%20%5Cleq%20%7Cf_y(i%2Cj)%7C%20%5Cgeq%20%7Cf_y(i%2Cj%2B1)%7C%20%5C%5C%20%5Cend%7Barray%7D%20%5Cright.)
 
+<hr />
+<h3>Segunda aproximación (Imágenes con ruido):</h3>
+
+En los casos en que la imagen que se quiera procesar presente ruido - generalmente toda imagen real lo presenta - tenemos la posibilidad de suavizar los bordes tratando la imagen primero aplicándole un filtro gaussiano. El método en este caso no necesita ninguna modificación conceptual, no obstante sí que produce una alteración en la formulación del sistema de ecuaciones y por lo tanto también en el resultado del mismo.
+
+La matriz gaussiana que utilizaremos será de 3x3 y estará conformada del siguiente modo:
+
+![K = \left( \begin{array}{lcr} 	a_11 & a_01 & a_11 \\ 	a_01 & a_00 & a_01 \\ 	a_11 & a_01 & a_11      \end{array} \right)](https://render.githubusercontent.com/render/math?math=K%20%3D%20%5Cleft(%20%5Cbegin%7Barray%7D%7Blcr%7D%20%09a_11%20%26%20a_01%20%26%20a_11%20%5C%5C%20%09a_01%20%26%20a_00%20%26%20a_01%20%5C%5C%20%09a_11%20%26%20a_01%20%26%20a_11%20%20%20%20%20%20%5Cend%7Barray%7D%20%5Cright))
+
+La matriz debe así mismo cumplir que ![a_00 \gt a_01 \gt a_11](https://render.githubusercontent.com/render/math?math=a_00%20%5Cgt%20a_01%20%5Cgt%20a_11) y además ![a_00 + 4a_01 + a_11 = 1](https://render.githubusercontent.com/render/math?math=a_00%20%2B%204a_01%20%2B%20a_11%20%3D%201)
+
  
