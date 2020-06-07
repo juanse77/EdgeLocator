@@ -163,3 +163,20 @@ Si llamamos G a la imagen resultante del proceso de suavizado, se puede observar
 	<img src="./Method_Images/Img_Suavizada.JPG" alt="Imagen suavizada" />
 </div>
 
+Si suponemos de nuevo el caso ideal en el que la pendiente del borde se encuentra entre -1 y 1, y considerando de nuevo la variable (m) del mismo modo que en caso anterior pero en este caso evaluado sobre las derivadas parciales de G; podemos expresar las sumas de las columnas de la ventana como:
+
+![\displaystyle S_L = \sum_{k = {-3-m}}^{3-m} G_{i-1,j+k}](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20S_L%20%3D%20%5Csum_%7Bk%20%3D%20%7B-3-m%7D%7D%5E%7B3-m%7D%20G_%7Bi-1%2Cj%2Bk%7D)
+
+![\displaystyle S_M = \sum_{k = {-3}}^{3} F_{i-1,j+k}](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20S_M%20%3D%20%5Csum_%7Bk%20%3D%20%7B-3%7D%7D%5E%7B3%7D%20F_%7Bi-1%2Cj%2Bk%7D)
+
+![\displaystyle S_R = \sum_{n = {-3+m}}^{3+m} F_{i+1,j+k}](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20S_R%20%3D%20%5Csum_%7Bn%20%3D%20%7B-3%2Bm%7D%7D%5E%7B3%2Bm%7D%20F_%7Bi%2B1%2Cj%2Bk%7D)
+
+Como se puede observar, ahora el tamaño de las franjas verticales es de 7 y se encuentra desplazado de modo que se ajuste de un modo óptimo al trazo estimado del borde. Esta nueva configuración de las franjas de las ventanas y los valores modificados de los píxeles de G, da lugar a la solución siguiente del sistema:
+
+![\displaystyle c = {{S_L + S_R - 2S_M} \over {2(A-B)}}](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20c%20%3D%20%7B%7BS_L%20%2B%20S_R%20-%202S_M%7D%20%5Cover%20%7B2(A-B)%7D%7D)
+
+![\displaystyle b = m + {{S_R - S_L} \over {2(A-B)}}](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20b%20%3D%20m%20%2B%20%7B%7BS_R%20-%20S_L%7D%20%5Cover%20%7B2(A-B)%7D%7D)
+
+![\displaystyle a = {{2S_M-7(A+B)} \over {2(A-B)}} - {{1+24a_01+48a_11}  \over 12} c](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20a%20%3D%20%7B%7B2S_M-7(A%2BB)%7D%20%5Cover%20%7B2(A-B)%7D%7D%20-%20%7B%7B1%2B24a_01%2B48a_11%7D%20%20%5Cover%2012%7D%20c)
+
+Hemos omitido los detalles de las operaciones que llevan a esta solución. Si desea profundizar en los cálculos consulte el artículo original.
