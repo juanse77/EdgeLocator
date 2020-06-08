@@ -244,7 +244,7 @@ El proceso de detección de los bordes sigue en todos los casos un mismo esquema
 
 En el proceso de traducción del código Matlab a código C++ hay que tener en cuenta que los arrays y las matrices en Matlab se almacenan en base 1, mientras que en C++ se almacenan en base 0. Otra consideración importante a tener en cuenta es que las matrices en Matlab se organizan en Column-Major, mientras que en C++ se organizan internamente en Row-Major. Estas diferencias notables entre Matlab y C++ obligan a un esfuerzo minucioso en el manejo de los índices de las matrices.
 
-Esta implantación en C++ del método se ha concebido con la intención de hacer de este método una herramienta que facilite la implantación en cualquier otro lenguaje, ya sea Java, Python, o alguna tecnología .Net. Esperamos que les haya gustado el método y les animamos a que se descarguen el código fuente y experimenten con él.
+Esta implantación en C++ del método se ha concebido con la intención de que sea una herramienta que facilite la implantación en cualquier otro lenguaje, ya sea Java, Python, o alguna tecnología .Net. Esperamos que les haya gustado el método y les animamos a que se descarguen el código fuente y experimenten con él.
 
 Gracias por leer el guión y estamos a su disposición a través de nuestras direcciones de email.
 
