@@ -129,7 +129,7 @@ Siendo n:
 
 En el caso de que los bordes sean netamente verticales, es decir, en aquellos casos en los que la pendiente sea mayor en valor absoluto a 1, no hará falta ningún cambio en el algoritmo, solo que ahora se ajustará a la expresión ![x = a + by + cy^2](https://render.githubusercontent.com/render/math?math=x%20%3D%20a%20%2B%20by%20%2B%20cy%5E2), y la distancia horizontal al centro será esta vez en y = 0 igual a (a). El vector normal no variará, y la expresión para los cálculos de las esquinas será:
 
-![\displaystyle A = {1 \over 3} (F_{i+2,j} + F_{i+2,j-m} + F_{i+j,j-m})](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20A%20%3D%20%7B1%20%5Cover%203%7D%20(F_%7Bi%2B2%2Cj%7D%20%2B%20F_%7Bi%2B2%2Cj-m%7D%20%2B%20F_%7Bi%2Bj%2Cj-m%7D))
+![\displaystyle A = {1 \over 3} (F_{i+2,j} + F_{i+2,j-m} + F_{i+1,j-m})](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20A%20%3D%20%7B1%20%5Cover%203%7D%20(F_%7Bi%2B2%2Cj%7D%20%2B%20F_%7Bi%2B2%2Cj-m%7D%20%2B%20F_%7Bi%2B1%2Cj-m%7D))
 
 ![\displaystyle B = {1 \over 3} (F_{i-1,j+m} + F_{i-2,j+m} + F_{i-2,j})](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20B%20%3D%20%7B1%20%5Cover%203%7D%20(F_%7Bi-1%2Cj%2Bm%7D%20%2B%20F_%7Bi-2%2Cj%2Bm%7D%20%2B%20F_%7Bi-2%2Cj%7D))
 
@@ -188,3 +188,19 @@ Al ser las ventanas distintas también se verá afectada la estimación de los t
 ![\displaystyle B = {1 \over 3} (F_{i+m,j-3} + F_{i+m,j-4} + F_{i,j-4})](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20B%20%3D%20%7B1%20%5Cover%203%7D%20(F_%7Bi%2Bm%2Cj-3%7D%20%2B%20F_%7Bi%2Bm%2Cj-4%7D%20%2B%20F_%7Bi%2Cj-4%7D))
 
 Para el caso de bordes verticales se puede deducir fácilmente de lo explicado hasta ahora, por lo que lo dejamos como ejercicio para el lector.
+
+<hr />
+<h3>Detección de bordes próximos mediante ventanas flotantes</h3>
+
+En los casos en los que la imagen contenga bordes muy cercanos entre sí, de modo que más de un borde atraviese alguna ventana, se hace necesario adaptar el método, para lo cual se ideó que las ventanas pudieran modificar su tamaño dinámicamente.
+Para implementar esta solución se hace uso de tres pares de nuevas variables: (l1, l2), (m1, m2), y (r1, r2). Cada par de variables establecerá los límites de su franja, por lo que las sumas de las franjas se verán alteradas, quedando del siguiente modo:
+
+![\displaystyle S_L = \sum_{k = {l_1}}^{l_2} G_{i-1,j+k}](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20S_L%20%3D%20%5Csum_%7Bk%20%3D%20%7Bl_1%7D%7D%5E%7Bl_2%7D%20G_%7Bi-1%2Cj%2Bk%7D)
+
+![\displaystyle S_M = \sum_{k = {m_1}}^{m_2} G_{i,j+k}](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20S_M%20%3D%20%5Csum_%7Bk%20%3D%20%7Bm_1%7D%7D%5E%7Bm_2%7D%20G_%7Bi%2Cj%2Bk%7D)
+
+![\displaystyle S_R = \sum_{k = {r_1}}^{r_2} G_{i+1,j+k}](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20S_R%20%3D%20%5Csum_%7Bk%20%3D%20%7Br_1%7D%7D%5E%7Br_2%7D%20G_%7Bi%2B1%2Cj%2Bk%7D)
+
+Al alterar el cálculo de las sumas acumuladas de los tonos de las franjas, se ve alterado, una vez más el sistema de ecuaciones, por lo tanto 
+
+ 
