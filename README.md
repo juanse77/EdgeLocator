@@ -187,4 +187,4 @@ Al ser las ventanas distintas también se verá afectada la estimación de los t
 
 ![\displaystyle B = {1 \over 3} (F_{i+m,j-3} + F_{i+m,j-4} + F_{i,j-4})](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20B%20%3D%20%7B1%20%5Cover%203%7D%20(F_%7Bi%2Bm%2Cj-3%7D%20%2B%20F_%7Bi%2Bm%2Cj-4%7D%20%2B%20F_%7Bi%2Cj-4%7D))
 
-
+Para el caso de bordes verticales se puede deducir fácilmente de lo explicado hasta ahora, por lo que lo dejamos como ejercicio para el lector.
