@@ -201,6 +201,32 @@ Para implementar esta solución se hace uso de tres pares de nuevas variables: (
 
 ![\displaystyle S_R = \sum_{k = {r_1}}^{r_2} G_{i+1,j+k}](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20S_R%20%3D%20%5Csum_%7Bk%20%3D%20%7Br_1%7D%7D%5E%7Br_2%7D%20G_%7Bi%2B1%2Cj%2Bk%7D)
 
-Al alterar el cálculo de las sumas acumuladas de los tonos de las franjas, se ve alterado, una vez más el sistema de ecuaciones, por lo tanto 
+Al alterar el cálculo de las sumas acumuladas de los tonos de las franjas, se ve alterado, una vez más, el sistema de ecuaciones, por lo tanto operando se llega a la nueva solución:
+
+![\displaystyle c = {{S_L + S_R - 2S_M} \over {2(A - B)}} + {{A(2m_2 - l_2 - r_2)-B(2m_1 - l_1 - r_1)} \over {2(A - B)}}](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20c%20%3D%20%7B%7BS_L%20%2B%20S_R%20-%202S_M%7D%20%5Cover%20%7B2(A%20-%20B)%7D%7D%20%2B%20%7B%7BA(2m_2%20-%20l_2%20-%20r_2)-B(2m_1%20-%20l_1%20-%20r_1)%7D%20%5Cover%20%7B2(A%20-%20B)%7D%7D)
+
+![\displaystyle b = {{S_R - S_L} \over {2(A-B)}} + {{A(l_2 - r_2) - B(l_1 - r_1)} \over {2(A - B)}}            ](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20b%20%3D%20%7B%7BS_R%20-%20S_L%7D%20%5Cover%20%7B2(A-B)%7D%7D%20%2B%20%7B%7BA(l_2%20-%20r_2)%20-%20B(l_1%20-%20r_1)%7D%20%5Cover%20%7B2(A%20-%20B)%7D%7D%20%20%20%20%20%20%20%20%20%20%20%20)
+
+![\displaystyle a = {{2S_M - A(1 + 2m_2) - B(1 - 2m_1)} \over {2(A - B)}} - {{1 + 24a_01 + 48a_11}  \over 12} c](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20a%20%3D%20%7B%7B2S_M%20-%20A(1%20%2B%202m_2)%20-%20B(1%20-%202m_1)%7D%20%5Cover%20%7B2(A%20-%20B)%7D%7D%20-%20%7B%7B1%20%2B%2024a_01%20%2B%2048a_11%7D%20%20%5Cover%2012%7D%20c)
+
+*Una vez más hemos omitido los calculos intermedios que nos llevan a la solución. Si desea profundizar en los cálculos consulte el artículo.*
+
+Las estimaciones de los tonos A y B se realizan de un modo ligeramente diferente. Esta vez no nos sirve la generalización usando la variable (m) por lo que tenemos que distinguir los casos en los que la pendiente del borde el positiva o negativa. 
+Para el caso de bordes horizontales y de pendiente positiva se calcularían como:
+
+![\displaystyle A = {1 \over 2} (G_{i,j+m_2} + G_{i+1,j+r_2})](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20A%20%3D%20%7B1%20%5Cover%202%7D%20(G_%7Bi%2Cj%2Bm_2%7D%20%2B%20G_%7Bi%2B1%2Cj%2Br_2%7D))
+
+![\displaystyle B = {1 \over 2} (G_{i-1,j+l_1} + G_{i,j+m_1})](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20B%20%3D%20%7B1%20%5Cover%202%7D%20(G_%7Bi-1%2Cj%2Bl_1%7D%20%2B%20G_%7Bi%2Cj%2Bm_1%7D))
+
+Para bordes horizontales con pendiente es negativa:
+
+![\displaystyle A = {1 \over 2} (G_{i-1,j+l_2} + G_{i,j+m_2})](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20A%20%3D%20%7B1%20%5Cover%202%7D%20(G_%7Bi-1%2Cj%2Bl_2%7D%20%2B%20G_%7Bi%2Cj%2Bm_2%7D))
+
+![\displaystyle B = {1 \over 2} (G_{i,j+m_1} + G_{i+1,j+r_1})](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20B%20%3D%20%7B1%20%5Cover%202%7D%20(G_%7Bi%2Cj%2Bm_1%7D%20%2B%20G_%7Bi%2B1%2Cj%2Br_1%7D))
+
+Los casos de bordes verticales los dejamos de nuevo como ejercicio para el lector. Esperamos que les haya gustado el método y les animamos a que se descarguen el código fuente y experimenten con él.
+
+Gracias por leer el guión y estamos a su disposición a través de nuestras direcciones de email.
+
 
  
