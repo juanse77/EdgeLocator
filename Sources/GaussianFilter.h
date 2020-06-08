@@ -8,9 +8,10 @@
 
 namespace EdgeLocator {
 
-	class GaussianFilter {
+	class GaussianFilter {		
 
 	public:
+		
 		static float A11;
 		static float A01;
 		static float A00;
@@ -45,6 +46,22 @@ namespace EdgeLocator {
 			}
 
 			return cv::Mat(rows, cols, CV_32FC1, copy);
+		}
+
+		static bool setParameters(float a00, float a01, float a11) {
+
+			if (a00 > a01&& a01 > a11) {
+				if (a00 + 4 * a01 + 4 * a11) {
+
+					A00 = a00;
+					A01 = a01;
+					A11 = a11;
+
+					return true;
+				}
+			}
+
+			return false;
 		}
 
 	};
