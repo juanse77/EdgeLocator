@@ -13,10 +13,10 @@
 
 namespace EdgeLocator{
 	
-	class EdgeLocator: public AbstractEdgeLocator {
+	class EdgeLocatorFloatingWindows: public AbstractEdgeLocator {
 
 	public:
-		EdgeLocator(cv::Mat& image) {
+		EdgeLocatorFloatingWindows(cv::Mat& image) {
 			IMAGE = process_image(image);
 			EDGES_LIST = detectEdges(IMAGE);
 		}

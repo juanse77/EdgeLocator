@@ -4,9 +4,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <iostream>
-#include "EdgeLocator.h"
+#include "EdgeLocatorFloatingWindows.h"
 #include "BasicEdgeLocator.h"
-#include "BasicEdgeLocatorIter1.h"
+#include "BasicEdgeLocatorSmoothed.h"
+#include "EdgeLocatorFloatingWindowsSmoothed.h"
 #include "ImageTest.h"
 
 #define UP 2490368
@@ -45,9 +46,10 @@ int main(int argc, char** argv)
     }
 
     // Probar el funcionamiento de cada uno
-    EdgeLocator::EdgeLocator tmp(src);
+    //EdgeLocator::EdgeLocatorFloatingWindows tmp(src);
     //EdgeLocator::BasicEdgeLocator tmp(src);
-    //EdgeLocator::BasicEdgeLocatorIter1 tmp(src);
+    //EdgeLocator::BasicEdgeLocatorSmoothed tmp(src);
+    EdgeLocator::EdgeLocatorFloatingWindowsSmoothed tmp(src);
 
     int IMAGE_WIDTH = src.cols;
     int IMAGE_HEIGHT = src.rows;
@@ -95,8 +97,8 @@ int main(int argc, char** argv)
 
         case 116: // t
         {            
-            float radius_in =50.f;
-            float radius_out = 60.f;
+            float radius_in = 32.f;
+            float radius_out = 40.f;
 
             float aux_tam = radius_out * 3;
             cv::Size tam(aux_tam, aux_tam);
@@ -109,13 +111,15 @@ int main(int argc, char** argv)
             IMAGE_WIDTH = src.cols;
             IMAGE_HEIGHT = src.rows;
 
-            tmp = EdgeLocator::EdgeLocator(src);
+            //tmp = EdgeLocator::EdgeLocatorFloatingWindows(src);
             //tmp = EdgeLocator::BasicEdgeLocator(src);
-            //tmp = EdgeLocator::BasicEdgeLocatorIter1(src);
+            //tmp = EdgeLocator::BasicEdgeLocatorSmoothed(src);
+            tmp = EdgeLocator::EdgeLocatorFloatingWindowsSmoothed(src);
 
-            tmp.generateAccuracyResults(tam, radius_in, radius_out, center, "AccuracyResults-50_60-FloatingWindows.txt");
-            //tmp.generateAccuracyResults(tam, radius_in, radius_out, center, "AccuracyResults-50_60-BasicWindows.txt");
-            //tmp.generateAccuracyResults(tam, radius_in, radius_out, center, "AccuracyResults-50_60-BasicSmothedWindowsIter1.txt");
+            //tmp.generateAccuracyResults(tam, radius_in, radius_out, center, "AccuracyResults-7_10-FloatingWindows.txt");
+            //tmp.generateAccuracyResults(tam, radius_in, radius_out, center, "AccuracyResults-20_25-BasicWindows.txt");
+            //tmp.generateAccuracyResults(tam, radius_in, radius_out, center, "AccuracyResults-20_25-BasicWindowsSmothed.txt");
+            tmp.generateAccuracyResults(tam, radius_in, radius_out, center, "AccuracyResults-32_40-FloatingWindowsSmoothed.txt");
 
             zoom = 2;
             view_norm = true;

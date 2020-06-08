@@ -12,56 +12,21 @@
 #include <iostream>
 #include "Edge.h"
 #include "AbstractEdgeLocator.h"
+#include "GaussianFilter.h"
 
 namespace EdgeLocator {
 
-	class BasicEdgeLocatorIter1 : public AbstractEdgeLocator {
+	class BasicEdgeLocatorSmoothed : public AbstractEdgeLocator {
 
 	public:
 
-		BasicEdgeLocatorIter1(cv::Mat& image) {
+		BasicEdgeLocatorSmoothed(cv::Mat& image) {
 			IMAGE = process_image(image);
-			cv::Mat imageFiltered = applyGaussianFilter(IMAGE);
+			cv::Mat imageFiltered = GaussianFilter::applyGaussianFilter(IMAGE);
 			EDGES_LIST = detectEdges(imageFiltered);
 		}
 
 	private:
-
-		float a11 = 1.f / 20.f;
-		float a01 = 3.f / 40.f;
-		float a00 = 1.f / 2.f;
-
-		cv::Mat applyGaussianFilter(cv::Mat& image) {
-
-			float gaussianFilter[9] = {
-				a11, a01, a11,
-				a01, a00, a01,
-				a11, a01, a11
-			};
-
-			int rows = image.rows;
-			int cols = image.cols;
-
-			float* copy = new float[rows*cols];
-			float* imageData = (float*)image.data;
-
-			for (int i = 1; i < rows - 1; i++) {
-				for (int j = 1; j < cols - 1; j++) {
-					
-					float new_val = 0;
-				
-					for (int l = 0; l < 3; l++) {
-						for (int m = 0; m < 3; m++) {
-							new_val += gaussianFilter[l * 3 + m] * imageData[(i - 1 + l) * cols + (j - 1 + m)];
-						}
-					}
-
-					copy[i * cols + j] = new_val;
-				}
-			}
-
-			return cv::Mat(rows, cols, CV_32FC1, copy);
-		}
 
 		std::vector<Edge> detectHorizontalEdges(cv::Mat& image, float threshold, int order) {
 			
@@ -162,7 +127,7 @@ namespace EdgeLocator {
 				}
 
 				b[k] = m + (SR - SL) / den;
-				a[k] = (2 * SM - 7 * (AA + BB)) / den - (1+ 24*a01 + 48*a11) * c[k] / 12;
+				a[k] = (2 * SM - 7 * (AA + BB)) / den - (1+ 24 * GaussianFilter::A01 + 48 * GaussianFilter::A11) * c[k] / 12;
 
 				A[k] = AA;
 				B[k] = BB;
@@ -318,7 +283,7 @@ namespace EdgeLocator {
 				}
 
 				b[k] = -m + (SR - SL) / den;
-				a[k] = (2 * SM - 7 * (AA + BB)) / den - (1 + 24 * a01 + 48 * a11) * c[k] / 12;
+				a[k] = (2 * SM - 7 * (AA + BB)) / den - (1 + 24 * GaussianFilter::A01 + 48 * GaussianFilter::A11) * c[k] / 12;
 
 				A[k] = AA;
 				B[k] = BB;
