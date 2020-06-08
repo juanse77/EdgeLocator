@@ -163,7 +163,7 @@ Si llamamos G a la imagen resultante del proceso de suavizado, se puede observar
 	<img src="./Method_Images/Img_Suavizada.JPG" alt="Imagen suavizada" />
 </div>
 
-Si suponemos de nuevo el caso ideal en el que la pendiente del borde se encuentra entre -1 y 1, y considerando de nuevo la variable (m) del mismo modo que en caso anterior pero en este caso evaluado sobre las derivadas parciales de G; podemos expresar las sumas de las columnas de la ventana como:
+Si suponemos de nuevo el caso ideal en el que la pendiente del borde se encuentra entre -1 y 1, y considerando de nuevo la variable (m) del mismo modo que en caso anterior pero esta vez evaluado sobre las derivadas parciales de G; podemos expresar las sumas de las columnas de la ventana como:
 
 ![\displaystyle S_L = \sum_{k = {-3-m}}^{3-m} G_{i-1,j+k}](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20S_L%20%3D%20%5Csum_%7Bk%20%3D%20%7B-3-m%7D%7D%5E%7B3-m%7D%20G_%7Bi-1%2Cj%2Bk%7D)
 
