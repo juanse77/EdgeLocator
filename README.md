@@ -171,7 +171,7 @@ Si suponemos de nuevo el caso ideal en el que la pendiente del borde se encuentr
 
 ![\displaystyle S_R = \sum_{k = {-3+m}}^{3+m} G_{i+1,j+k}](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20S_R%20%3D%20%5Csum_%7Bk%20%3D%20%7B-3%2Bm%7D%7D%5E%7B3%2Bm%7D%20G_%7Bi%2B1%2Cj%2Bk%7D)
 
-Como se puede observar, ahora el tamaño de las franjas verticales es de 7 y se encuentra desplazado de modo que se ajuste de un modo óptimo al trazo estimado del borde. Esta nueva configuración de las franjas de las ventanas y los valores modificados de los píxeles de G, da lugar a la solución siguiente del sistema:
+Como se puede observar, ahora el tamaño de las franjas verticales es de 7 y se encuentran desplazadas de modo que se ajuste de un modo óptimo al trazo estimado del borde. Esta nueva configuración de las franjas de las ventanas y los valores modificados de los píxeles de G, da lugar a la solución siguiente del sistema:
 
 ![\displaystyle c = {{S_L + S_R - 2S_M} \over {2(A-B)}}](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20c%20%3D%20%7B%7BS_L%20%2B%20S_R%20-%202S_M%7D%20%5Cover%20%7B2(A-B)%7D%7D)
 
