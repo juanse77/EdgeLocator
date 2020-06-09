@@ -209,7 +209,7 @@ Al alterar el cálculo de las sumas acumuladas de los tonos de las franjas, se v
 
 ![\displaystyle a = {{2S_M - A(1 + 2m_2) - B(1 - 2m_1)} \over {2(A - B)}} - {{1 + 24a_01 + 48a_11}  \over 12} c](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20a%20%3D%20%7B%7B2S_M%20-%20A(1%20%2B%202m_2)%20-%20B(1%20-%202m_1)%7D%20%5Cover%20%7B2(A%20-%20B)%7D%7D%20-%20%7B%7B1%20%2B%2024a_01%20%2B%2048a_11%7D%20%20%5Cover%2012%7D%20c)
 
-*Una vez más hemos omitido los calculos intermedios que nos llevan a la solución. Si desea profundizar en los cálculos consulte el artículo.*
+*Una vez más hemos omitido los calculos intermedios que nos llevan a la solución. El detalle de estos cálculos se puede consultar en el artículo original.*
 
 Las estimaciones de los tonos A y B se realizan de un modo ligeramente diferente. Esta vez no nos sirve la generalización usando la variable (m) por lo que tenemos que distinguir los casos en los que la pendiente del borde es positiva o negativa. 
 Para el caso de bordes horizontales y de pendiente positiva se calcularían como:
