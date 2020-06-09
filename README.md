@@ -22,7 +22,7 @@ Para la implementación del método hemos hecho uso de la librería OpenCV en la
 
 <p>Este método es una mejora importante de los métodos clásicos de detección de bordes utilizados tradicionalmente, como son los filtros Sobel o los Canny. En este método se consigue detectar no solo los bordes a nivel de píxel sino que se logra hacer una estimación bastante precisa del trazado de los bordes a nivel subpíxel. Este método permite calcular los datos de posición del trazo dentro del píxel, así como su curvatura y su normal.</p>
 
-<p>En el primer paso del algoritmo se transforma la imagen a blanco y negro. Con la imagen en blanco y negro se pasa a detectar los bordes a nivel píxel, para lo cual se utilizan los filtros Sobel. Con los filtros Sobel obtenemos las derivadas parciales en los ejes X e Y, y con ello una matriz de los vectores gradientes de todos los pixeles de la imagen. Por último en este primer paso, se utiliza la matriz de vectores gradientes para detectar los píxeles que posean un valor mayor a un cierto umbral y que su módulo sea máximo entre los píxeles de su vecindad.</p>
+<p>En el primer paso del algoritmo se transforma la imagen a blanco y negro. Con la imagen en blanco y negro se pasa a detectar los bordes a nivel píxel, para lo cual se utilizan los filtros Sobel. Con los filtros Sobel obtenemos las derivadas parciales en los ejes X e Y, y con ello una matriz de los vectores gradientes de todos los píxeles de la imagen. Por último en este primer paso, se utiliza la matriz de vectores gradientes para detectar los píxeles que posean un valor mayor a un cierto umbral y que su módulo sea máximo entre los píxeles de su vecindad.</p>
 
 <p>Para detectar los trazos a nivel subpíxel se hace uso de un sistema de ventanas que abarcan las zonas próximas de cada píxel borde, de modo que, tomando los valores de intensidad de color de los píxeles de los extremos más alejados de los bordes, se procede a realizar los cálculos que finalmente permitirán trazar las líneas continuas a través de cada píxel borde.</p>  
 
@@ -37,7 +37,7 @@ Si suponemos que un píxel resulta atravesado por un borde, podemos estimar la t
 
 ![\displaystyle F(i,j) = B + {{A-B} \over {h^2}} P(i,j)](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20F(i%2Cj)%20%3D%20B%20%2B%20%7B%7BA-B%7D%20%5Cover%20%7Bh%5E2%7D%7D%20P(i%2Cj)) 
 
-Donde la h representa el tamaño del lado del píxel, que en adelante tomará el valor de 1, y P el área que cubre el tono A dentro del pixel. Podemos comprobar fácilmente que cuando P es igual a 1 el tono del pixel tendrá el valor de A, mientras que cuando el valor del área P es igual 0 el tono será B.
+Donde la h representa el tamaño del lado del píxel, que en adelante tomará el valor de 1, y P el área que cubre el tono A dentro del píxel. Podemos comprobar fácilmente que cuando P es igual a 1 el tono del píxel tendrá el valor de A, mientras que cuando el valor del área P es igual 0 el tono será B.
 
 Gracias a esta sencilla fórmula podemos construir el método con ventanas estáticas. Como dijimos anteriormente en esta primera aproximación utilizaremos un tamaño de ventana de 3x5. Para ilustrar esta aproximación vamos a suponer que el borde atraviesa la ventana de izquierda a derecha y que su pendiente se encuentra entre 0 y 1. Con esta suposición nos aseguramos de que el borde atraviesa por completo la ventana de lado a lado. Si suponemos, además, que el borde es recto podemos calcular los parámetros de esta recta, planteando un sistema de ecuaciones utilizando la variación de las áreas verticales colindantes de la ventana.
 
@@ -136,7 +136,7 @@ En el caso de que los bordes sean netamente verticales, es decir, en aquellos ca
 <hr />
 <h3>Determinación de los píxeles borde:</h3>
 
-Para que este método funcione es necesario determinar qué píxeles se marcarán como píxeles borde. Como explicamos en la introducción, tomamos como píxeles candidatos a todos los que el módulo de su gradiente supere un cierto umbral. Además, la anterior condición no es suficiente ya que para que el píxel sea considerado como borde debe ser también un pixel con un valor máximo entre los de su vecindad. Para determinar si un píxel tiene un valor máximo en su vencindad, debemos considerar, una vez más, si el píxel es de un borde vertical u horizontal. Si el píxel es vertical su derivada parcial ![f_x](https://render.githubusercontent.com/render/math?math=f_x) será mayor a ![f_y](https://render.githubusercontent.com/render/math?math=f_y), en el caso horizontal será al contrario. Por lo tanto será condición suficiente que se cumplan las siguientes desigualdades:
+Para que este método funcione es necesario determinar qué píxeles se marcarán como píxeles borde. Como explicamos en la introducción, tomamos como píxeles candidatos a todos los que el módulo de su gradiente supere un cierto umbral. Además, la anterior condición no es suficiente ya que para que el píxel sea considerado como borde debe ser también un píxel con un valor máximo entre los de su vecindad. Para determinar si un píxel tiene un valor máximo en su vencindad, debemos considerar, una vez más, si el píxel es de un borde vertical u horizontal. Si el píxel es vertical su derivada parcial ![f_x](https://render.githubusercontent.com/render/math?math=f_x) será mayor a ![f_y](https://render.githubusercontent.com/render/math?math=f_y), en el caso horizontal será al contrario. Por lo tanto será condición suficiente que se cumplan las siguientes desigualdades:
 
 En el caso vertical:
 
@@ -211,14 +211,14 @@ Al alterar el cálculo de las sumas acumuladas de los tonos de las franjas, se v
 
 *Una vez más hemos omitido los calculos intermedios que nos llevan a la solución. Si desea profundizar en los cálculos consulte el artículo.*
 
-Las estimaciones de los tonos A y B se realizan de un modo ligeramente diferente. Esta vez no nos sirve la generalización usando la variable (m) por lo que tenemos que distinguir los casos en los que la pendiente del borde el positiva o negativa. 
+Las estimaciones de los tonos A y B se realizan de un modo ligeramente diferente. Esta vez no nos sirve la generalización usando la variable (m) por lo que tenemos que distinguir los casos en los que la pendiente del borde es positiva o negativa. 
 Para el caso de bordes horizontales y de pendiente positiva se calcularían como:
 
 ![\displaystyle A = {1 \over 2} (G_{i,j+m_2} + G_{i+1,j+r_2})](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20A%20%3D%20%7B1%20%5Cover%202%7D%20(G_%7Bi%2Cj%2Bm_2%7D%20%2B%20G_%7Bi%2B1%2Cj%2Br_2%7D))
 
 ![\displaystyle B = {1 \over 2} (G_{i-1,j+l_1} + G_{i,j+m_1})](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20B%20%3D%20%7B1%20%5Cover%202%7D%20(G_%7Bi-1%2Cj%2Bl_1%7D%20%2B%20G_%7Bi%2Cj%2Bm_1%7D))
 
-Para bordes horizontales con pendiente es negativa:
+Para bordes horizontales con pendiente negativa:
 
 ![\displaystyle A = {1 \over 2} (G_{i-1,j+l_2} + G_{i,j+m_2})](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20A%20%3D%20%7B1%20%5Cover%202%7D%20(G_%7Bi-1%2Cj%2Bl_2%7D%20%2B%20G_%7Bi%2Cj%2Bm_2%7D))
 
@@ -237,7 +237,7 @@ Las distintas aproximaciones al método se han codificado en clases separadas. T
 
 La interfaz de la aplicación es la consola y la ventana nativa de OpenCV. Los controles son mediante teclado. Las teclas de dirección sirven para moverse por la imagen, mientras que la tecla (u) aumenta el zoom, la tecla (d) reduce el zoom, la tecla (t) genera y calcula los bordes de la imagen de test, y la tecla (q) aborta el programa.
 
-El proceso de detección de los bordes sigue en todos los casos un mismo esquema, esto es: primero se pasa la imagen a blanco y negro, segundo se calculan las derivadas parciales y con ellas el gradiente, posteriormente se llama al método de detección de bordes horizontales, seguidamente al método de detección de bordes verticales, y por último se llama al método para visualizar los bordes cálculados en el proceso. En los pasos de detección de bordes se irán guardando los resultados en una estructura dinámica *Vector* que almacena objetos *Edge*. Los objetos *Edge* almacenan toda la información necesaria para la reconstrucción de la imagen con sus bordes.
+El proceso de detección de los bordes sigue en todos los casos un mismo esquema, esto es: primero se pasa la imagen a blanco y negro, el segundo paso sería el suavizado de la imagen, si la opción elegida no lo usa se pasaría al siguiente paso. Con la imaggen ya en blanco y negro se pasaría a calcular las derivadas parciales y con ellas el gradiente, posteriormente se llama al método de detección de bordes horizontales, seguidamente al método de detección de bordes verticales, y por último se llama al método para visualizar los bordes cálculados en el proceso. En los pasos de detección de bordes se irá guardando los resultados en una estructura dinámica *Vector* que almacena objetos *Edge*. Los objetos *Edge* almacenan toda la información necesaria para la reconstrucción de la imagen con sus bordes.
 
 <hr />
 <h3>Consideraciones sobre la conversión de código Matlab a C++:</h3>
