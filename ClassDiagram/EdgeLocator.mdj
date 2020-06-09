@@ -3040,7 +3040,7 @@
 											"top": 79,
 											"width": 475.1220703125,
 											"height": 13,
-											"text": "-generateImageTest(tam, radius_in, radius_out, center, color_in, bg_color, in): Mat",
+											"text": "-generateImageTest(tam, radius_in, radius_out, center, color_in, bg_color, n): Mat",
 											"horizontalAlignment": 0
 										},
 										{
@@ -5377,8 +5377,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFylWUCyNtUuUE="
 									},
-									"name": "tam",
-									"type": ""
+									"name": "tam"
 								},
 								{
 									"_type": "UMLParameter",
@@ -5386,8 +5385,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFylWUCyNtUuUE="
 									},
-									"name": "radius_in",
-									"type": ""
+									"name": "radius_in"
 								},
 								{
 									"_type": "UMLParameter",
@@ -5395,8 +5393,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFylWUCyNtUuUE="
 									},
-									"name": "radius_out",
-									"type": ""
+									"name": "radius_out"
 								},
 								{
 									"_type": "UMLParameter",
@@ -5404,8 +5401,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFylWUCyNtUuUE="
 									},
-									"name": "center",
-									"type": ""
+									"name": "center"
 								},
 								{
 									"_type": "UMLParameter",
@@ -5413,8 +5409,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFylWUCyNtUuUE="
 									},
-									"name": "color_in",
-									"type": ""
+									"name": "color_in"
 								},
 								{
 									"_type": "UMLParameter",
@@ -5422,8 +5417,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFylWUCyNtUuUE="
 									},
-									"name": "bg_color",
-									"type": ""
+									"name": "bg_color"
 								},
 								{
 									"_type": "UMLParameter",
@@ -5431,8 +5425,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFylWUCyNtUuUE="
 									},
-									"name": "in",
-									"type": ""
+									"name": "n"
 								},
 								{
 									"_type": "UMLParameter",
