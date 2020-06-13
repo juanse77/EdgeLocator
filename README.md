@@ -182,7 +182,7 @@ As can be seen, the size of the vertical stripes is now 7 and they are offset so
 
 *We have omitted the details of the operations leading to this solution. For more detailed calculations, see the original article.*
 
-As the windows are different, the estimation of hues A and B will also be affected. The hues for the vertical case are now:
+As the windows are different, the estimation of hues A and B will also be affected. The hues for the horizontal case are now:
 
 ![\displaystyle A = {1 \over 3} (F_{i,j+4} + F_{i-m,j+4} + F_{i-m,j+3})](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20A%20%3D%20%7B1%20%5Cover%203%7D%20(F_%7Bi%2Cj%2B4%7D%20%2B%20F_%7Bi-m%2Cj%2B4%7D%20%2B%20F_%7Bi-m%2Cj%2B3%7D))
 
