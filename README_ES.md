@@ -181,7 +181,7 @@ Como se puede observar, ahora el tamaño de las franjas verticales es de 7 y se 
 
 *Hemos omitido los detalles de las operaciones que llevan a esta solución. Si desea profundizar en los cálculos consulte el artículo original.*
 
-Al ser las ventanas distintas también se verá afectada la estimación de los tono A y B. Los tonos para el caso vertical son ahora:
+Al ser las ventanas distintas también se verá afectada la estimación de los tono A y B. Los tonos para el caso horizontal son ahora:
 
 ![\displaystyle A = {1 \over 3} (F_{i,j+4} + F_{i-m,j+4} + F_{i-m,j+3})](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20A%20%3D%20%7B1%20%5Cover%203%7D%20(F_%7Bi%2Cj%2B4%7D%20%2B%20F_%7Bi-m%2Cj%2B4%7D%20%2B%20F_%7Bi-m%2Cj%2B3%7D))
 
