@@ -158,7 +158,7 @@ The Gaussian matrix that we will use will be 3x3 and will be made up as follows:
 
 The matrix must also fulfill that ![a_00 \gt a_01 \gt a_11](https://render.githubusercontent.com/render/math?math=a_00%20%5Cgt%20a_01%20%5Cgt%20a_11) and also ![a_00 + 4a_01 + 4a_11 = 1](https://render.githubusercontent.com/render/math?math=a_00%20%2B%204a_01%20%2B%204a_11%20%3D%201)
 
-As a result of the smoothing process, an alteration occurs in the area that encompasses pixels with intermediate values ​​between A and B. This area is now larger, as you can see in the following image:
+As a result of the smoothing process, an alteration occurs in the area that encompasses pixels with intermediate values ​​between A and B. This area is now larger, as can be seen in the following image:
 
 <div align="center">
 	<img src="./Method_Images/Img_Suavizada.JPG" alt="Smoothed Image" />
