@@ -137,11 +137,112 @@ In the case that the edges are purely vertical, that is, in those cases in which
 <hr />
 <h3>Determination of edge pixels:</h3>
 
+For this method to work it is necessary to determine which pixels will be marked as edge pixels. As we explained in the introduction, we take as candidate pixels all those whose gradient modulus exceeds a certain threshold. Furthermore, the above condition is not sufficient since for the pixel to be considered as an edge, it must also be a pixel with a maximum gradient modulus between those connected to it. To determine if a pixel has a maximum value in its neighborhood, we must consider whether the pixel constitutes a vertical or horizontal border. If the pixel is vertical its partial derivative ![f_x](https://render.githubusercontent.com/render/math?math=f_x) will be greater than ![f_y](https://render.githubusercontent.com/render/math?math=f_y), in the horizontal case it will be the opposite. Therefore, it will be a sufficient condition that the following inequalities are met:
 
+In the vertical case:
 
+![\displaystyle \left\{ \begin{array}{rcl} 	|f_x(i,j)| \gt |f_y(i,j)| \\ 	& \\ 	|f_x(i-1,j)| \leq |f_x(i,j)| \geq |f_x(i+1,j)| \\ \end{array} \right.](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20%5Cleft%5C%7B%20%5Cbegin%7Barray%7D%7Brcl%7D%20%09%7Cf_x(i%2Cj)%7C%20%5Cgt%20%7Cf_y(i%2Cj)%7C%20%5C%5C%20%09%26%20%5C%5C%20%09%7Cf_x(i-1%2Cj)%7C%20%5Cleq%20%7Cf_x(i%2Cj)%7C%20%5Cgeq%20%7Cf_x(i%2B1%2Cj)%7C%20%5C%5C%20%5Cend%7Barray%7D%20%5Cright.)
 
+And in the horizontal case:
 
+![\displaystyle \left\{ \begin{array}{rcl} 	|f_y(i,j)| \gt |f_x(i,j)| \\ 	& \\ 	|f_y(i,j-1)| \leq |f_y(i,j)| \geq |f_y(i,j+1)| \\ \end{array} \right.](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20%5Cleft%5C%7B%20%5Cbegin%7Barray%7D%7Brcl%7D%20%09%7Cf_y(i%2Cj)%7C%20%5Cgt%20%7Cf_x(i%2Cj)%7C%20%5C%5C%20%09%26%20%5C%5C%20%09%7Cf_y(i%2Cj-1)%7C%20%5Cleq%20%7Cf_y(i%2Cj)%7C%20%5Cgeq%20%7Cf_y(i%2Cj%2B1)%7C%20%5C%5C%20%5Cend%7Barray%7D%20%5Cright.)
 
+<hr />
+<h3>Second approach (Images with noise):</h3>
+
+In cases where the image that you want to process presents noise - generally every real image presents it - we have the possibility of smoothing the edges by first applying a Gaussian filter. The method in this case does not need any conceptual modification, however it does produce an alteration in the formulation of the system of equations and therefore also in the result thereof.
+
+The Gaussian matrix that we will use will be 3x3 and will be made up as follows:
+
+![K = \left( \begin{array}{lcr} 	a_11 & a_01 & a_11 \\ 	a_01 & a_00 & a_01 \\ 	a_11 & a_01 & a_11      \end{array} \right)](https://render.githubusercontent.com/render/math?math=K%20%3D%20%5Cleft(%20%5Cbegin%7Barray%7D%7Blcr%7D%20%09a_11%20%26%20a_01%20%26%20a_11%20%5C%5C%20%09a_01%20%26%20a_00%20%26%20a_01%20%5C%5C%20%09a_11%20%26%20a_01%20%26%20a_11%20%20%20%20%20%20%5Cend%7Barray%7D%20%5Cright))
+
+The matrix must also fulfill that ![a_00 \gt a_01 \gt a_11](https://render.githubusercontent.com/render/math?math=a_00%20%5Cgt%20a_01%20%5Cgt%20a_11) and also ![a_00 + 4a_01 + 4a_11 = 1](https://render.githubusercontent.com/render/math?math=a_00%20%2B%204a_01%20%2B%204a_11%20%3D%201)
+
+As a result of the smoothing process, an alteration occurs in the area that encompasses pixels with intermediate values ​​between A and B. This area is now larger, as you can see in the following image:
+
+<div align="center">
+	<img src="./Method_Images/Img_Suavizada.JPG" alt="Smoothed Image" />
+</div>
+
+Let us set G as the smoothed image, and again assume the ideal case where the edge slope is between -1 and 1, and considering again the variable (m) in the same way as in the previous case but this time evaluated on the partial derivatives of G; we can express the sums of the columns of the window as:
+
+![\displaystyle S_L = \sum_{k = {-3-m}}^{3-m} G_{i-1,j+k}](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20S_L%20%3D%20%5Csum_%7Bk%20%3D%20%7B-3-m%7D%7D%5E%7B3-m%7D%20G_%7Bi-1%2Cj%2Bk%7D)
+
+![\displaystyle S_M = \sum_{k = {-3}}^{3} G_{i,j+k}](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20S_M%20%3D%20%5Csum_%7Bk%20%3D%20%7B-3%7D%7D%5E%7B3%7D%20G_%7Bi%2Cj%2Bk%7D)
+
+![\displaystyle S_R = \sum_{k = {-3+m}}^{3+m} G_{i+1,j+k}](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20S_R%20%3D%20%5Csum_%7Bk%20%3D%20%7B-3%2Bm%7D%7D%5E%7B3%2Bm%7D%20G_%7Bi%2B1%2Cj%2Bk%7D)
+
+As can be seen, the size of the vertical stripes is now 7 and they are offset so that they fit optimally to the estimated outline of the edge. This new setting of window stripes and the modified pixel values of G​​results in the following system solution:
+
+![\displaystyle c = {{S_L + S_R - 2S_M} \over {2(A-B)}}](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20c%20%3D%20%7B%7BS_L%20%2B%20S_R%20-%202S_M%7D%20%5Cover%20%7B2(A-B)%7D%7D)
+
+![\displaystyle b = m + {{S_R - S_L} \over {2(A-B)}}](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20b%20%3D%20m%20%2B%20%7B%7BS_R%20-%20S_L%7D%20%5Cover%20%7B2(A-B)%7D%7D)
+
+![\displaystyle a = {{2S_M-7(A+B)} \over {2(A-B)}} - {{1+24a_01+48a_11}  \over 12} c](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20a%20%3D%20%7B%7B2S_M-7(A%2BB)%7D%20%5Cover%20%7B2(A-B)%7D%7D%20-%20%7B%7B1%2B24a_01%2B48a_11%7D%20%20%5Cover%2012%7D%20c)
+
+*We have omitted the details of the operations leading to this solution. For more detailed calculations, see the original article.*
+
+As the windows are different, the estimation of hues A and B will also be affected. The hues for the vertical case are now:
+
+![\displaystyle A = {1 \over 3} (F_{i,j+4} + F_{i-m,j+4} + F_{i-m,j+3})](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20A%20%3D%20%7B1%20%5Cover%203%7D%20(F_%7Bi%2Cj%2B4%7D%20%2B%20F_%7Bi-m%2Cj%2B4%7D%20%2B%20F_%7Bi-m%2Cj%2B3%7D))
+
+![\displaystyle B = {1 \over 3} (F_{i+m,j-3} + F_{i+m,j-4} + F_{i,j-4})](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20B%20%3D%20%7B1%20%5Cover%203%7D%20(F_%7Bi%2Bm%2Cj-3%7D%20%2B%20F_%7Bi%2Bm%2Cj-4%7D%20%2B%20F_%7Bi%2Cj-4%7D))
+
+In the case of vertical edges, it can be easily deduced from what has been explained so far, so we leave it as an exercise for the reader.
+
+<hr />
+<h3>Detection of nearby edges by means of floating windows:</h3>
+
+In cases where the image contains edges that are very close to each other, so that more than one edge passes through a window, it is necessary to adapt the method, for which it was devised that the windows could dynamically change their size.
+
+To implement this solution, three pairs of new variables are used: (l1, l2), (m1, m2), and (r1, r2). Each pair of variables will establish the limits of its stripe, so that the sums of the stripes will be altered, resulting as follows:
+
+![\displaystyle S_L = \sum_{k = {l_1}}^{l_2} G_{i-1,j+k}](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20S_L%20%3D%20%5Csum_%7Bk%20%3D%20%7Bl_1%7D%7D%5E%7Bl_2%7D%20G_%7Bi-1%2Cj%2Bk%7D)
+
+![\displaystyle S_M = \sum_{k = {m_1}}^{m_2} G_{i,j+k}](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20S_M%20%3D%20%5Csum_%7Bk%20%3D%20%7Bm_1%7D%7D%5E%7Bm_2%7D%20G_%7Bi%2Cj%2Bk%7D)
+
+![\displaystyle S_R = \sum_{k = {r_1}}^{r_2} G_{i+1,j+k}](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20S_R%20%3D%20%5Csum_%7Bk%20%3D%20%7Br_1%7D%7D%5E%7Br_2%7D%20G_%7Bi%2B1%2Cj%2Bk%7D)
+
+By altering the calculation of the accumulated sums of the hues of the stripes, the system of equations is altered, operating once again the new solution is reached:
+
+![\displaystyle c = {{S_L + S_R - 2S_M} \over {2(A - B)}} + {{A(2m_2 - l_2 - r_2)-B(2m_1 - l_1 - r_1)} \over {2(A - B)}}](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20c%20%3D%20%7B%7BS_L%20%2B%20S_R%20-%202S_M%7D%20%5Cover%20%7B2(A%20-%20B)%7D%7D%20%2B%20%7B%7BA(2m_2%20-%20l_2%20-%20r_2)-B(2m_1%20-%20l_1%20-%20r_1)%7D%20%5Cover%20%7B2(A%20-%20B)%7D%7D)
+
+![\displaystyle b = {{S_R - S_L} \over {2(A-B)}} + {{A(l_2 - r_2) - B(l_1 - r_1)} \over {2(A - B)}}            ](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20b%20%3D%20%7B%7BS_R%20-%20S_L%7D%20%5Cover%20%7B2(A-B)%7D%7D%20%2B%20%7B%7BA(l_2%20-%20r_2)%20-%20B(l_1%20-%20r_1)%7D%20%5Cover%20%7B2(A%20-%20B)%7D%7D%20%20%20%20%20%20%20%20%20%20%20%20)
+
+![\displaystyle a = {{2S_M - A(1 + 2m_2) - B(1 - 2m_1)} \over {2(A - B)}} - {{1 + 24a_01 + 48a_11}  \over 12} c](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20a%20%3D%20%7B%7B2S_M%20-%20A(1%20%2B%202m_2)%20-%20B(1%20-%202m_1)%7D%20%5Cover%20%7B2(A%20-%20B)%7D%7D%20-%20%7B%7B1%20%2B%2024a_01%20%2B%2048a_11%7D%20%20%5Cover%2012%7D%20c)
+
+*We have again omitted the intermediate calculations that lead us to the solution. Details of these calculations can be found in the original article.*
+
+The estimates of hues A and B are made in a slightly different way. This time the generalization using the variable (m) does not help us, so we have to distinguish the cases in which the edge slope is positive or negative.
+
+In the case of horizontal edges and positive slopes, they would be calculated as:
+
+Para el caso de bordes horizontales y de pendiente positiva se calcularían como:
+
+![\displaystyle A = {1 \over 2} (G_{i,j+m_2} + G_{i+1,j+r_2})](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20A%20%3D%20%7B1%20%5Cover%202%7D%20(G_%7Bi%2Cj%2Bm_2%7D%20%2B%20G_%7Bi%2B1%2Cj%2Br_2%7D))
+
+![\displaystyle B = {1 \over 2} (G_{i-1,j+l_1} + G_{i,j+m_1})](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20B%20%3D%20%7B1%20%5Cover%202%7D%20(G_%7Bi-1%2Cj%2Bl_1%7D%20%2B%20G_%7Bi%2Cj%2Bm_1%7D))
+
+For horizontal slopes with negative slope:
+
+![\displaystyle A = {1 \over 2} (G_{i-1,j+l_2} + G_{i,j+m_2})](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20A%20%3D%20%7B1%20%5Cover%202%7D%20(G_%7Bi-1%2Cj%2Bl_2%7D%20%2B%20G_%7Bi%2Cj%2Bm_2%7D))
+
+![\displaystyle B = {1 \over 2} (G_{i,j+m_1} + G_{i+1,j+r_1})](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20B%20%3D%20%7B1%20%5Cover%202%7D%20(G_%7Bi%2Cj%2Bm_1%7D%20%2B%20G_%7Bi%2B1%2Cj%2Br_1%7D))
+
+We leave the vertical border cases again as an exercise for the reader.
+
+<hr />
+<h2>Implementation details:</h2>
+
+The different approaches to the method have been coded into separate classes. They all inherit their common behavior from the abstract class *AbstractEdgeLocator*. The class that includes the first approximation is *BasicEdgeLocator*. This first implementation is a transcription of the method using static 3x5 and 5x3 windows and does not make use of edge smoothing. The second approach is implemented in the class *BasicEdgeLocatorSmoothed*, as its name suggests, in this class the edges are smoothed before calculating the rest of the parameters. In the same way as in the previous method, it uses static windows but 3x9 or 9x3 in size, due to the edge expansion effect described above in the explanation of the method. The third approach is developed in the class La tercera aproximación se desarrolla en la clase *EdgeLocatorFloatingWindowsSmoothed*. Image smoothing and floating windows are already used in this class. In addition to these three classes, class *EdgeLocatorFloatingWindows* has been developed, that it works with floating windows but does not use any kind of smoothing prior to calculations.
+
+<div align="center">
+	<img src="./ClassDiagram/EdgeLocator.png" alt="Class diagram" />
+</div>
+
+The application interface is the console and the native OpenCV window. Controls are by keyboard. The arrow keys are used to move around the image, while the (u) key increases zoom, the (d) key reduces zoom, the (t) key generates and calculates the edges of the test image, and the (q) key aborts the program.
+
+The edge detection process follows the same scheme in all cases, that is: first the image is converted to black and white, the second step would be the smoothing of the image, if the chosen option does not use it, it would go to the next step. With the image already in black and white, the partial derivatives would be calculated and with them the gradient, later the horizontal edge detection method was called, followed by the vertical edge detection method, and finally the method to visualize the calculated edges in the process is called. In the edge detection steps, the results will be saved in a dynamic structure *Vector* which stores objects *Edge*.
 
 
 

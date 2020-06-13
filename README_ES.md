@@ -136,7 +136,7 @@ En el caso de que los bordes sean netamente verticales, es decir, en aquellos ca
 <hr />
 <h3>Determinación de los píxeles borde:</h3>
 
-Para que este método funcione es necesario determinar qué píxeles se marcarán como píxeles borde. Como explicamos en la introducción, tomamos como píxeles candidatos a todos los que el módulo de su gradiente supere un cierto umbral. Además, la anterior condición no es suficiente ya que para que el píxel sea considerado como borde debe ser también un píxel con un valor máximo entre los de su vecindad. Para determinar si un píxel tiene un valor máximo en su vencindad, debemos considerar, una vez más, si el píxel es de un borde vertical u horizontal. Si el píxel es vertical su derivada parcial ![f_x](https://render.githubusercontent.com/render/math?math=f_x) será mayor a ![f_y](https://render.githubusercontent.com/render/math?math=f_y), en el caso horizontal será al contrario. Por lo tanto será condición suficiente que se cumplan las siguientes desigualdades:
+Para que este método funcione es necesario determinar qué píxeles se marcarán como píxeles borde. Como explicamos en la introducción, tomamos como píxeles candidatos a todos los que el módulo de su gradiente supere un cierto umbral. Además, la anterior condición no es suficiente ya que para que el píxel sea considerado como borde debe ser también un píxel con un valor máximo entre los de su vecindad. Para determinar si un píxel tiene un valor máximo en su vencindad, debemos considerar si el píxel constituye un borde vertical u horizontal. Si el píxel es vertical su derivada parcial ![f_x](https://render.githubusercontent.com/render/math?math=f_x) será mayor a ![f_y](https://render.githubusercontent.com/render/math?math=f_y), en el caso horizontal será al contrario. Por lo tanto será condición suficiente que se cumplan las siguientes desigualdades:
 
 En el caso vertical:
 
@@ -149,7 +149,7 @@ Y en el caso horizontal:
 <hr />
 <h3>Segunda aproximación (Imágenes con ruido):</h3>
 
-En los casos en que la imagen que se quiera procesar presente ruido - generalmente toda imagen real lo presenta - tenemos la posibilidad de suavizar los bordes tratando la imagen primero aplicándole un filtro gaussiano. El método en este caso no necesita ninguna modificación conceptual, no obstante sí que produce una alteración en la formulación del sistema de ecuaciones y por lo tanto también en el resultado del mismo.
+En los casos en que la imagen que se quiera procesar presente ruido - generalmente toda imagen real lo presenta - tenemos la posibilidad de suavizar los bordes aplicándole primero un filtro gaussiano. El método en este caso no necesita ninguna modificación conceptual, no obstante sí que produce una alteración en la formulación del sistema de ecuaciones y por lo tanto también en el resultado del mismo.
 
 La matriz gaussiana que utilizaremos será de 3x3 y estará conformada del siguiente modo:
 
@@ -157,13 +157,13 @@ La matriz gaussiana que utilizaremos será de 3x3 y estará conformada del sigui
 
 La matriz así mismo debe cumplir que ![a_00 \gt a_01 \gt a_11](https://render.githubusercontent.com/render/math?math=a_00%20%5Cgt%20a_01%20%5Cgt%20a_11) y además ![a_00 + 4a_01 + 4a_11 = 1](https://render.githubusercontent.com/render/math?math=a_00%20%2B%204a_01%20%2B%204a_11%20%3D%201)
 
-Si llamamos G a la imagen resultante del proceso de suavizado, se puede observar que el área de los píxeles con valores intermedios entre A y B es ahora mayor, tal como se puede observar en la siguiente imagen:
+Como resultado del proceso de suavizado se produce una alteración el área que abarca los píxeles con valores intermedios entre A y B. Este área es ahora mayor, tal como se puede observar en la siguiente imagen:
  
 <div align="center">
 	<img src="./Method_Images/Img_Suavizada.JPG" alt="Imagen suavizada" />
 </div>
 
-Si suponemos de nuevo el caso ideal en el que la pendiente del borde se encuentra entre -1 y 1, y considerando de nuevo la variable (m) del mismo modo que en caso anterior pero esta vez evaluado sobre las derivadas parciales de G; podemos expresar las sumas de las columnas de la ventana como:
+Si llamamos G a la imagen suavizada, y si suponemos de nuevo el caso ideal en el que la pendiente del borde se encuentra entre -1 y 1, y considerando de nuevo la variable (m) del mismo modo que en caso anterior pero esta vez evaluado sobre las derivadas parciales de G; podemos expresar las sumas de las columnas de la ventana como:
 
 ![\displaystyle S_L = \sum_{k = {-3-m}}^{3-m} G_{i-1,j+k}](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20S_L%20%3D%20%5Csum_%7Bk%20%3D%20%7B-3-m%7D%7D%5E%7B3-m%7D%20G_%7Bi-1%2Cj%2Bk%7D)
 
@@ -193,6 +193,7 @@ Para el caso de bordes verticales se puede deducir fácilmente de lo explicado h
 <h3>Detección de bordes próximos mediante ventanas flotantes</h3>
 
 En los casos en los que la imagen contenga bordes muy cercanos entre sí, de modo que más de un borde atraviese alguna ventana, se hace necesario adaptar el método, para lo cual se ideó que las ventanas pudieran modificar su tamaño dinámicamente.
+
 Para implementar esta solución se hace uso de tres pares de nuevas variables: (l1, l2), (m1, m2), y (r1, r2). Cada par de variables establecerá los límites de su franja, por lo que las sumas de las franjas se verán alteradas, quedando del siguiente modo:
 
 ![\displaystyle S_L = \sum_{k = {l_1}}^{l_2} G_{i-1,j+k}](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20S_L%20%3D%20%5Csum_%7Bk%20%3D%20%7Bl_1%7D%7D%5E%7Bl_2%7D%20G_%7Bi-1%2Cj%2Bk%7D)
@@ -201,7 +202,7 @@ Para implementar esta solución se hace uso de tres pares de nuevas variables: (
 
 ![\displaystyle S_R = \sum_{k = {r_1}}^{r_2} G_{i+1,j+k}](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20S_R%20%3D%20%5Csum_%7Bk%20%3D%20%7Br_1%7D%7D%5E%7Br_2%7D%20G_%7Bi%2B1%2Cj%2Bk%7D)
 
-Al alterar el cálculo de las sumas acumuladas de los tonos de las franjas, se ve alterado, una vez más, el sistema de ecuaciones, por lo tanto operando se llega a la nueva solución:
+Al alterar el cálculo de las sumas acumuladas de los tonos de las franjas, se ve alterado el sistema de ecuaciones, operando una vez más se llega a la nueva solución:
 
 ![\displaystyle c = {{S_L + S_R - 2S_M} \over {2(A - B)}} + {{A(2m_2 - l_2 - r_2)-B(2m_1 - l_1 - r_1)} \over {2(A - B)}}](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20c%20%3D%20%7B%7BS_L%20%2B%20S_R%20-%202S_M%7D%20%5Cover%20%7B2(A%20-%20B)%7D%7D%20%2B%20%7B%7BA(2m_2%20-%20l_2%20-%20r_2)-B(2m_1%20-%20l_1%20-%20r_1)%7D%20%5Cover%20%7B2(A%20-%20B)%7D%7D)
 
@@ -209,9 +210,10 @@ Al alterar el cálculo de las sumas acumuladas de los tonos de las franjas, se v
 
 ![\displaystyle a = {{2S_M - A(1 + 2m_2) - B(1 - 2m_1)} \over {2(A - B)}} - {{1 + 24a_01 + 48a_11}  \over 12} c](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20a%20%3D%20%7B%7B2S_M%20-%20A(1%20%2B%202m_2)%20-%20B(1%20-%202m_1)%7D%20%5Cover%20%7B2(A%20-%20B)%7D%7D%20-%20%7B%7B1%20%2B%2024a_01%20%2B%2048a_11%7D%20%20%5Cover%2012%7D%20c)
 
-*Una vez más hemos omitido los calculos intermedios que nos llevan a la solución. El detalle de estos cálculos se puede consultar en el artículo original.*
+*Hemos vuelto a omitir los calculos intermedios que nos llevan a la solución. El detalle de estos cálculos se puede consultar en el artículo original.*
 
-Las estimaciones de los tonos A y B se realizan de un modo ligeramente diferente. Esta vez no nos sirve la generalización usando la variable (m) por lo que tenemos que distinguir los casos en los que la pendiente del borde es positiva o negativa. 
+Las estimaciones de los tonos A y B se realizan de un modo ligeramente diferente. Esta vez no nos sirve la generalización usando la variable (m) por lo que tenemos que distinguir los casos en los que la pendiente del borde es positiva o negativa.
+ 
 Para el caso de bordes horizontales y de pendiente positiva se calcularían como:
 
 ![\displaystyle A = {1 \over 2} (G_{i,j+m_2} + G_{i+1,j+r_2})](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20A%20%3D%20%7B1%20%5Cover%202%7D%20(G_%7Bi%2Cj%2Bm_2%7D%20%2B%20G_%7Bi%2B1%2Cj%2Br_2%7D))
