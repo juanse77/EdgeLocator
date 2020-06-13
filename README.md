@@ -172,7 +172,7 @@ Let us set G as the smoothed image, and again assume the ideal case where the ed
 
 ![\displaystyle S_R = \sum_{k = {-3+m}}^{3+m} G_{i+1,j+k}](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20S_R%20%3D%20%5Csum_%7Bk%20%3D%20%7B-3%2Bm%7D%7D%5E%7B3%2Bm%7D%20G_%7Bi%2B1%2Cj%2Bk%7D)
 
-As can be seen, the size of the vertical stripes is now 7 and they are offset so that they fit optimally to the estimated outline of the edge. This new setting of window stripes and the modified pixel values of G​​results in the following system solution:
+As can be seen, the size of the vertical stripes is now 7 and they are offset so that they fit optimally to the estimated outline of the edge. This new setting of window stripes and the modified pixel values of G​​ result in the following system solution:
 
 ![\displaystyle c = {{S_L + S_R - 2S_M} \over {2(A-B)}}](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20c%20%3D%20%7B%7BS_L%20%2B%20S_R%20-%202S_M%7D%20%5Cover%20%7B2(A-B)%7D%7D)
 
