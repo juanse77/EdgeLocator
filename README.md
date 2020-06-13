@@ -150,7 +150,7 @@ And in the horizontal case:
 <hr />
 <h3>Second approach (Images with noise):</h3>
 
-In cases where the image that you want to process presents noise - generally every real image presents it - we have the possibility of smoothing the edges by first applying a Gaussian filter. The method in this case does not need any conceptual modification, however it does produce an alteration in the formulation of the system of equations and therefore also in the result thereof.
+In cases where the image that you want to process presents noise - generally every real image presents it - we have the possibility of smoothing the edges by first applying a Gaussian filter. The method in this case does not need any conceptual modification, however it produces an alteration in the formulation of the system of equations and therefore also in the result thereof.
 
 The Gaussian matrix that we will use will be 3x3 and will be made up as follows:
 
