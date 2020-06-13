@@ -217,8 +217,6 @@ The estimates of hues A and B are made in a slightly different way. This time th
 
 In the case of horizontal edges and positive slopes, they would be calculated as:
 
-Para el caso de bordes horizontales y de pendiente positiva se calcularían como:
-
 ![\displaystyle A = {1 \over 2} (G_{i,j+m_2} + G_{i+1,j+r_2})](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20A%20%3D%20%7B1%20%5Cover%202%7D%20(G_%7Bi%2Cj%2Bm_2%7D%20%2B%20G_%7Bi%2B1%2Cj%2Br_2%7D))
 
 ![\displaystyle B = {1 \over 2} (G_{i-1,j+l_1} + G_{i,j+m_1})](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20B%20%3D%20%7B1%20%5Cover%202%7D%20(G_%7Bi-1%2Cj%2Bl_1%7D%20%2B%20G_%7Bi%2Cj%2Bm_1%7D))
