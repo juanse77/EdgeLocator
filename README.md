@@ -235,7 +235,7 @@ We leave the vertical border cases again as an exercise for the reader.
 The different approaches to the method have been coded into separate classes. They all inherit their common behavior from the abstract class *AbstractEdgeLocator*. The class that includes the first approximation is *BasicEdgeLocator*. This first implementation is a transcription of the method using static 3x5 and 5x3 windows and does not make use of edge smoothing. The second approach is implemented in the class *BasicEdgeLocatorSmoothed*, as its name suggests, in this class the edges are smoothed before calculating the rest of the parameters. In the same way as in the previous method, it uses static windows but 3x9 or 9x3 in size, due to the edge expansion effect described above in the explanation of the method. The third approach is developed in the classs *EdgeLocatorFloatingWindowsSmoothed*. Image smoothing and floating windows are already used in this class. In addition to these three classes, class *EdgeLocatorFloatingWindows* has been developed, that it works with floating windows but does not use any kind of smoothing prior to calculations.
 
 <div align="center">
-	<img src="./ClassDiagram/EdgeLocator.png" alt="Class diagram" />
+	<img src="./ClassDiagram/EdgeLocator.svg" alt="Class diagram" />
 </div>
 
 The application interface is the console and the native OpenCV window. Controls are by keyboard. The arrow keys are used to move around the image, while the (u) key increases zoom, the (d) key reduces zoom, the (t) key generates and calculates the edges of the test image, and the (q) key aborts the program.

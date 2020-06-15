@@ -234,7 +234,7 @@ Los casos de bordes verticales los dejamos de nuevo como ejercicio para el lecto
 Las distintas aproximaciones al método se han codificado en clases separadas. Todas ellas heredan su comportamiento común de la clase abstracta *AbstractEdgeLocator*. La clase que recoge la primera aproximación es *BasicEdgeLocator*. Esta primera implementación es una trascripción del método usando ventanas estáticas de 3x5 y de 5x3 y no hace uso del suavizado de bordes. La segunda aproximación se encuentra implementada en la clase *BasicEdgeLocatorSmoothed*, como sugiere su nombre en esta clase se realiza un suavizado de los bordes antes del cálculo del resto de parámetros. Del mismo modo que en el método anterior utiliza ventanas estáticas pero de 3x9 o 9x3, debido al efecto de expansión de los bordes descrito anteriormente en la explicación del método. La tercera aproximación se desarrolla en la clase *EdgeLocatorFloatingWindowsSmoothed*. En esta clase ya se hace uso del suavizado de imagen y de las ventanas flotantes. Adicionalmente a estas tres clases se ha desarrollado la clase *EdgeLocatorFloatingWindows* que funciona con ventanas flotantes pero que no utiliza ningún tipo de suavizado previo a los cálculos.
 
 <div align="center">
-	<img src="./ClassDiagram/EdgeLocator.png" alt="Diagrama de clases" />
+	<img src="./ClassDiagram/EdgeLocator.svg" alt="Diagrama de clases" />
 </div>
 
 La interfaz de la aplicación es la consola y la ventana nativa de OpenCV. Los controles son mediante teclado. Las teclas de dirección sirven para moverse por la imagen, mientras que la tecla (u) aumenta el zoom, la tecla (d) reduce el zoom, la tecla (t) genera y calcula los bordes de la imagen de test, y la tecla (q) aborta el programa.
