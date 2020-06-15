@@ -11,6 +11,11 @@
 #include <iostream>
 #include <fstream>
 #include "Edge.h"
+#include "json.hpp"
+#include <math.h>
+#include <map>
+
+using json = nlohmann::json;
 
 namespace EdgeLocator {
 
@@ -32,6 +37,34 @@ namespace EdgeLocator {
 			}
 			image_with_edges.convertTo(image_with_edges, CV_8UC3);
 			return image_with_edges;
+		}
+
+		std::vector<Edge> getEdgesList() {
+			return EDGES_LIST;
+		}
+
+		void saveEdges(std::string fileName) {
+			json edges_list;
+
+			for (EdgeLocator::Edge e : EDGES_LIST) {
+				std::map<std::string, float> param_edge;
+				std::map<std::string, float>::iterator it;
+				
+				param_edge.insert(std::pair<std::string, float>("position", (float)e.getPosition()));
+				param_edge.insert(std::pair<std::string, float>("x", (float)e.getX()));
+				param_edge.insert(std::pair<std::string, float>("y", (float)e.getY()));
+				param_edge.insert(std::pair<std::string, float>("nx", (float)e.getNx()));
+				param_edge.insert(std::pair<std::string, float>("ny", (float)e.getNy()));
+				param_edge.insert(std::pair<std::string, float>("curv", (float)e.getCurv()));
+				param_edge.insert(std::pair<std::string, float>("i0", (float)e.getI0()));
+				param_edge.insert(std::pair<std::string, float>("i1", (float)e.getI1()));
+					
+				json edge_object(param_edge);
+				edges_list.push_back(edge_object);
+			}
+			
+			std::ofstream oStr(fileName);
+			oStr << edges_list << std::endl;
 		}
 
 		void generateAccuracyResults(cv::Size tam, float radius_in, float radius_out, cv::Point2f center, std::string fileName) {
@@ -170,9 +203,7 @@ namespace EdgeLocator {
 			return image;
 		}
 
-		std::vector<Edge> detectEdges(cv::Mat& image) {
-			float threshold = 20;
-			int order = 2;
+		std::vector<Edge> detectEdges(cv::Mat& image, float threshold = 20, int order = 2) {
 			std::vector<Edge> edges = detectHorizontalEdges(image, threshold, order);
 			std::vector<Edge> v_edges = detectVerticalEdges(image, threshold, order);
 			edges.insert(std::end(edges), std::begin(v_edges), std::end(v_edges));
@@ -187,8 +218,8 @@ namespace EdgeLocator {
 
 			cv::Mat imageColor(IMAGE.size(), CV_32FC3);
 
-			int pos_X = x / zoom;
-			int pos_Y = y / zoom;
+			int pos_X = round((float)x / (float)zoom);
+			int pos_Y = round((float)y / (float)zoom);
 
 			int aux_width = width / zoom;
 			int aux_height = height / zoom;
@@ -203,8 +234,8 @@ namespace EdgeLocator {
 
 			for (Edge ep : EDGES_LIST) {
 
-				cv::Point e_pt1((int)((ep.getX() - seg / 2 * ep.getNy()) * zoom * zoom), (int)((ep.getY() + seg / 2 * ep.getNx()) * zoom * zoom));
-				cv::Point e_pt2((int)(seg * ep.getNy() * zoom * zoom) + e_pt1.x, (int)(-seg * ep.getNx() * zoom * zoom) + e_pt1.y);
+				cv::Point e_pt1(round((ep.getX() - seg / 2 * ep.getNy()) * zoom * zoom), round((ep.getY() + seg / 2 * ep.getNx()) * zoom * zoom));
+				cv::Point e_pt2(round(seg * ep.getNy() * zoom * zoom) + e_pt1.x, round(-seg * ep.getNx() * zoom * zoom) + e_pt1.y);
 
 				e_pt1.x -= x * zoom;
 				e_pt1.y -= y * zoom;
@@ -212,11 +243,11 @@ namespace EdgeLocator {
 				e_pt2.x -= x * zoom;
 				e_pt2.y -= y * zoom;
 
-				if (e_pt1.x < 0 || e_pt1.x > width* zoom || e_pt2.x < 0 || e_pt2.x > width * zoom) {
+				if (e_pt1.x < 0 || e_pt1.x > width * zoom || e_pt2.x < 0 || e_pt2.x > width * zoom) {
 					continue;
 				}
 
-				if (e_pt1.y < 0 || e_pt1.y > height* zoom || e_pt2.y < 0 || e_pt2.y > height * zoom) {
+				if (e_pt1.y < 0 || e_pt1.y > height * zoom || e_pt2.y < 0 || e_pt2.y > height * zoom) {
 					continue;
 				}
 
@@ -230,10 +261,10 @@ namespace EdgeLocator {
 
 			cv::Mat imageColor(IMAGE.size(), CV_32FC3);
 
-			int pos_X = x / zoom;
-			int pos_Y = y / zoom;
+			int pos_X = round((float)x / (float)zoom);
+			int pos_Y = round((float)y / (float)zoom);
 
-			int aux_width = width / zoom;	
+			int aux_width = width / zoom;
 			int aux_height = height / zoom;
 		
 			cv::Rect roi(pos_X, pos_Y, aux_width, aux_height);
@@ -246,8 +277,8 @@ namespace EdgeLocator {
 
 			for (Edge ep : EDGES_LIST) {
 
-				cv::Point e_pt1((int)((ep.getX() - seg / 2 * ep.getNy()) * zoom * zoom), (int)((ep.getY() + seg / 2 * ep.getNx()) * zoom * zoom));
-				cv::Point e_pt2((int)(seg * ep.getNy() * zoom * zoom) + e_pt1.x, (int)(-seg * ep.getNx() * zoom * zoom) + e_pt1.y);
+				cv::Point e_pt1(round((ep.getX() - seg / 2 * ep.getNy()) * zoom * zoom), round((ep.getY() + seg / 2 * ep.getNx()) * zoom * zoom));
+				cv::Point e_pt2(round(seg * ep.getNy() * zoom * zoom) + e_pt1.x, round(-seg * ep.getNx() * zoom * zoom) + e_pt1.y);
 
 				e_pt1.x -= x * zoom;
 				e_pt1.y -= y * zoom;
@@ -255,16 +286,16 @@ namespace EdgeLocator {
 				e_pt2.x -= x * zoom;
 				e_pt2.y -= y * zoom;
 
-				if (e_pt1.x < 0 || e_pt1.x > width* zoom || e_pt2.x < 0 || e_pt2.x > width * zoom) {
+				if (e_pt1.x < 0 || e_pt1.x > width * zoom || e_pt2.x < 0 || e_pt2.x > width * zoom) {
 					continue;
 				}
 
-				if (e_pt1.y < 0 || e_pt1.y > height* zoom || e_pt2.y < 0 || e_pt2.y > height * zoom) {
+				if (e_pt1.y < 0 || e_pt1.y > height * zoom || e_pt2.y < 0 || e_pt2.y > height * zoom) {
 					continue;
 				}
 
-				cv::Point n_pt1((int)(ep.getX() * zoom * zoom), (int)(ep.getY() * zoom * zoom));
-				cv::Point n_pt2((int)((ep.getX() + ep.getNx()) * zoom * zoom), (int)((ep.getY() + ep.getNy()) * zoom * zoom));
+				cv::Point n_pt1(round(ep.getX() * zoom * zoom), round(ep.getY() * zoom * zoom));
+				cv::Point n_pt2(round((ep.getX() + ep.getNx()) * zoom * zoom), round((ep.getY() + ep.getNy()) * zoom * zoom));
 
 				n_pt1.x -= x * zoom;
 				n_pt1.y -= y * zoom;
@@ -272,11 +303,11 @@ namespace EdgeLocator {
 				n_pt2.x -= x * zoom;
 				n_pt2.y -= y * zoom;
 
-				if (n_pt1.x < 0 || n_pt1.x > width* zoom || n_pt2.x < 0 || n_pt2.x > width * zoom) {
+				if (n_pt1.x < 0 || n_pt1.x > width * zoom || n_pt2.x < 0 || n_pt2.x > width * zoom) {
 					continue;
 				}
 
-				if (n_pt1.y < 0 || n_pt1.y > height* zoom || n_pt2.y < 0 || n_pt2.y > height * zoom) {
+				if (n_pt1.y < 0 || n_pt1.y > height * zoom || n_pt2.y < 0 || n_pt2.y > height * zoom) {
 					continue;
 				}
 

@@ -16,9 +16,9 @@ namespace EdgeLocator{
 	class EdgeLocatorFloatingWindows: public AbstractEdgeLocator {
 
 	public:
-		EdgeLocatorFloatingWindows(cv::Mat& image) {
+		EdgeLocatorFloatingWindows(cv::Mat& image, float threshold = 20, int order = 2) {
 			IMAGE = process_image(image);
-			EDGES_LIST = detectEdges(IMAGE);
+			EDGES_LIST = detectEdges(IMAGE, threshold, order);
 		}
 
 	private:
@@ -59,8 +59,8 @@ namespace EdgeLocator{
 				for (int j = 2; j < cols - 2; j++) {
 					if (modGradData[i * cols + j] > threshold
 						&& absFyData[i * cols + j] >= absFxData[i * cols + j]
-						&& absFyData[i * cols + j] >= absFyData[(i - 1) * cols + j]
-						&& absFyData[i * cols + j] > absFyData[(i + 1) * cols + j]) {
+						&& absFyData[i * cols + j] > absFyData[(i - 1) * cols + j]
+						&& absFyData[i * cols + j] >= absFyData[(i + 1) * cols + j]) {
 						edges.push_back(i * cols + j);
 					}
 				}
@@ -138,14 +138,8 @@ namespace EdgeLocator{
 				// compute intensities
 				float AA, BB;
 
-				if (m > 0) {
-					AA = (imageData[edge + m2 * cols] + imageData[edge + 1 + r2 * cols]) / 2;
-					BB = (imageData[edge - 1 + l1 * cols] + imageData[edge + m1 * cols]) / 2;
-				}
-				else {
-					AA = (imageData[edge - 1 + l2 * cols] + imageData[edge + m2 * cols]) / 2;
-					BB = (imageData[edge + m1 * cols] + imageData[edge + 1 + r1 * cols]) / 2;
-				}
+				AA = imageData[edge + m2 * cols];
+				BB = imageData[edge + m1 * cols];
 
 				// sum columns
 				float SL = 0, SM = 0, SR = 0;
@@ -344,14 +338,10 @@ namespace EdgeLocator{
 				// compute intensities
 				float AA, BB;
 
-				if (m > 0) {
-					AA = (imageData[edge + m2] + imageData[edge + cols + r2]) / 2;
-					BB = (imageData[edge - cols + l1] + imageData[edge + m1]) / 2;
-				}
-				else {
-					AA = (imageData[edge - cols + l2] + imageData[edge + m2]) / 2;
-					BB = (imageData[edge + m1] + imageData[edge + cols + r1]) / 2;
-				}
+				
+				AA = imageData[edge + m2];
+				BB = imageData[edge + m1];
+				
 
 				// sum columns
 				float SL = 0, SM = 0, SR = 0;

@@ -1,7 +1,7 @@
 #pragma once
 
-#if !defined(_BASIC_EDGE_LOCATOR_ITER1_H_)
-#define _BASIC_EDGE_LOCATOR_ITER_H_
+#if !defined(_BASIC_EDGE_LOCATOR_SMOOTHED_H_)
+#define _BASIC_EDGE_LOCATOR_SMOOTHED_H_
 
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
@@ -20,10 +20,10 @@ namespace EdgeLocator {
 
 	public:
 
-		BasicEdgeLocatorSmoothed(cv::Mat& image) {
+		BasicEdgeLocatorSmoothed(cv::Mat& image, float threshold = 20, int order = 2) {
 			IMAGE = process_image(image);
 			cv::Mat imageFiltered = GaussianFilter::applyGaussianFilter(IMAGE);
-			EDGES_LIST = detectEdges(imageFiltered);
+			EDGES_LIST = detectEdges(imageFiltered, threshold, order);
 		}
 
 	private:
@@ -345,4 +345,4 @@ namespace EdgeLocator {
 
 }
 
-#endif // _BASIC_EDGE_LOCATOR_ITER1_H_
+#endif // _BASIC_EDGE_LOCATOR_SMOOTHED_H_

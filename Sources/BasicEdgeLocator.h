@@ -19,9 +19,9 @@ namespace EdgeLocator{
 
 	public:
 
-		BasicEdgeLocator(cv::Mat& image) {
+		BasicEdgeLocator(cv::Mat& image, float threshold = 20, int order = 2) {
 			IMAGE = process_image(image);
-			EDGES_LIST = detectEdges(IMAGE);
+			EDGES_LIST = detectEdges(IMAGE, threshold, order);
 		}
 
 	private:
@@ -159,8 +159,8 @@ namespace EdgeLocator{
 
 			for (int i = 0; i < edges.size(); i++) {
 				int pos = edges.at(i);
-				float sub_x = x[pos] + 0.5;
-				float sub_y = y[pos] - a[i] + 0.5;
+				float sub_x = x[pos] + 0.5f;
+				float sub_y = y[pos] - a[i] + 0.5f;
 				float nx = (std::signbit(A[i] - B[i]) ? -1 : 1) / (float)std::sqrt(1 + b[i] * b[i]) * b[i];
 				float ny = (std::signbit(A[i] - B[i]) ? -1 : 1) / (float)std::sqrt(1 + b[i] * b[i]);
 				float curv = 2 * c[i] * n[i] / (float)std::pow((1 + b[i] * b[i]), 1.5);
@@ -315,8 +315,8 @@ namespace EdgeLocator{
 
 			for (int i = 0; i < edges.size(); i++) {
 				int pos = edges.at(i);
-				float sub_x = x[pos] - a[i] + 0.5;
-				float sub_y = y[pos] + 0.5;
+				float sub_x = x[pos] - a[i] + 0.5f;
+				float sub_y = y[pos] + 0.5f;
 				float nx = (std::signbit(A[i] - B[i]) ? -1 : 1) / (float)std::sqrt(1 + b[i] * b[i]);
 				float ny = (std::signbit(A[i] - B[i]) ? -1 : 1) / (float)std::sqrt(1 + b[i] * b[i]) * b[i];
 				float curv = 2 * c[i] * n[i] / (float)std::pow((1 + b[i] * b[i]), 1.5);

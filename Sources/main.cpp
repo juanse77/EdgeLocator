@@ -9,6 +9,11 @@
 #include "BasicEdgeLocatorSmoothed.h"
 #include "EdgeLocatorFloatingWindowsSmoothed.h"
 #include "ImageTest.h"
+#include "Edge.h"
+#include "getopt.h"
+#include "EdgeLocatorFactory.h"
+#include <string>
+#include<sstream>
 
 #define UP 2490368
 #define DOWN 2621440
@@ -22,6 +27,67 @@ int adjustMargin(int x, int bound, int max_bound, int zoom);
 
 int main(int argc, char** argv)
 {
+    int order = 2;
+    string fileName = "";
+    float threshold = 20.f;
+    bool save = false;
+    int method = 0;
+
+    string command = "Command error:\n\tCorrect format: " + string(argv[0]) + " -f fileName [-o (1-2)] [-t (0-255)] [-m (0-3)] [-s]";
+    int c;
+    while ((c = getopt(argc, argv, "o:t:f:m:s")) != -1) {
+        
+        switch (c) {
+            case '?':
+                cout << command << endl;
+                return -1;
+        
+            case 'o':
+                order = atoi(optarg);
+                
+                if (order != 1 && order != 2) {
+                    cout << command << endl;
+                    return -1;
+                }
+                
+                break;
+
+            case 't':
+                threshold = atof(optarg);
+
+                if (threshold < 0 || threshold > 255) {
+                    cout << command << endl;
+                    return -1;
+                }
+
+                break;
+
+            case 'f':
+                fileName = string(_strdup(optarg));                
+                break;
+            
+            case 'm':
+                method = atoi(optarg);
+                
+                if (method < 0 || method > 3) {
+                    cout << command << endl;
+                    return -1;
+                }
+
+                break;
+            
+            case 's':
+                save = true;
+                break;
+        }
+
+    }
+
+    if (fileName.compare("") == 0) {
+        cout << "Command error:\n\tCorrect format: " + string(argv[0]) + " -f fileName [-o (1-2)] [-t (0-255)] [-s]" << endl;
+        return -2;
+    }
+
     /// General instructions
     cout << "Edge Locator:" << endl;
     cout << " ------------------" << endl;
@@ -36,8 +102,8 @@ int main(int argc, char** argv)
 
     cv::Mat src;
     const char* window_name = "Edge Locator";
-    
-    src = cv::imread("images/clock.jpg");
+
+    src = cv::imread("images/" + fileName);
 
     if (!src.data)
     {
@@ -45,11 +111,15 @@ int main(int argc, char** argv)
         return -1;
     }
 
-    // Probar el funcionamiento de cada uno
-    //EdgeLocator::EdgeLocatorFloatingWindows tmp(src);
-    //EdgeLocator::BasicEdgeLocator tmp(src);
-    //EdgeLocator::BasicEdgeLocatorSmoothed tmp(src);
-    EdgeLocator::EdgeLocatorFloatingWindowsSmoothed tmp(src);
+    EdgeLocator::AbstractEdgeLocator * tmp;
+    EdgeLocator::EdgeLocatorFactory elf;
+
+    tmp = elf.getEdgeLocator(method, src, threshold, order);
+    std::size_t found = fileName.find(".");
+    
+    if(save){
+        tmp->saveEdges("jsonData/" + fileName.substr(0, found) + ".json");
+    }    
 
     int IMAGE_WIDTH = src.cols;
     int IMAGE_HEIGHT = src.rows;
@@ -83,7 +153,7 @@ int main(int argc, char** argv)
             heightOverSize = true;
         }
 
-        cv::Mat im_result = tmp.getImageWithEdges(zoom, x, y, width, height, view_norm);
+        cv::Mat im_result = tmp->getImageWithEdges(zoom, x, y, width, height, view_norm);
         cv::imshow(window_name, im_result);
         
         int c = cv::waitKeyEx(0);
@@ -93,33 +163,37 @@ int main(int argc, char** argv)
         case 113: // q
             
             loop = false;
+            delete(tmp);
+
             break;
 
         case 116: // t
         {            
-            float radius_in = 32.f;
-            float radius_out = 40.f;
+            int radius_in = 20;
+            int radius_out = 25;
 
             float aux_tam = radius_out * 3;
             cv::Size tam(aux_tam, aux_tam);
 
             cv::Point2f center(aux_tam/2.f, aux_tam/2.f);
 
-            EdgeLocator::ImageTest("images/imgTest.jpg", tam, radius_in, radius_out, center, cv::Vec3f(0, 50, 255), cv::Vec3f(255, 255, 255), 20);
+            EdgeLocator::ImageTest("images/imgTest.jpg", tam, (float)radius_in, (float)radius_out, center, cv::Vec3f(0, 50, 255), cv::Vec3f(255, 255, 255), 20);
             src = cv::imread("images/imgTest.jpg");
 
             IMAGE_WIDTH = src.cols;
             IMAGE_HEIGHT = src.rows;
 
-            //tmp = EdgeLocator::EdgeLocatorFloatingWindows(src);
-            //tmp = EdgeLocator::BasicEdgeLocator(src);
-            //tmp = EdgeLocator::BasicEdgeLocatorSmoothed(src);
-            tmp = EdgeLocator::EdgeLocatorFloatingWindowsSmoothed(src);
+            delete(tmp);
 
-            //tmp.generateAccuracyResults(tam, radius_in, radius_out, center, "AccuracyResults-7_10-FloatingWindows.txt");
-            //tmp.generateAccuracyResults(tam, radius_in, radius_out, center, "AccuracyResults-20_25-BasicWindows.txt");
-            //tmp.generateAccuracyResults(tam, radius_in, radius_out, center, "AccuracyResults-20_25-BasicWindowsSmothed.txt");
-            tmp.generateAccuracyResults(tam, radius_in, radius_out, center, "AccuracyResults-32_40-FloatingWindowsSmoothed.txt");
+            tmp = elf.getEdgeLocator(method, src, threshold, order);
+
+            std::stringstream ss;
+            ss << "accuracyResults/AccuracyResults-" << radius_in << "_" << radius_out << "-" << elf.method << ".txt";
+            
+            string fileResults;
+            ss >> fileResults;
+
+            tmp->generateAccuracyResults(tam, radius_in, radius_out, center, fileResults);
 
             zoom = 2;
             view_norm = true;

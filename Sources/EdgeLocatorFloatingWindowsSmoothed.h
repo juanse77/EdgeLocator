@@ -17,10 +17,10 @@ namespace EdgeLocator {
 	class EdgeLocatorFloatingWindowsSmoothed : public AbstractEdgeLocator {
 
 	public:
-		EdgeLocatorFloatingWindowsSmoothed(cv::Mat& image) {
+		EdgeLocatorFloatingWindowsSmoothed(cv::Mat& image, float threshold = 20, int order = 2) {
 			IMAGE = process_image(image);
 			cv::Mat imageFiltered = GaussianFilter::applyGaussianFilter(IMAGE);
-			EDGES_LIST = detectEdges(imageFiltered);
+			EDGES_LIST = detectEdges(imageFiltered, threshold, order);
 		}
 
 	private:
@@ -61,8 +61,8 @@ namespace EdgeLocator {
 				for (int j = 2; j < cols - 2; j++) {
 					if (modGradData[i * cols + j] > threshold
 						&& absFyData[i * cols + j] >= absFxData[i * cols + j]
-						&& absFyData[i * cols + j] >= absFyData[(i - 1) * cols + j]
-						&& absFyData[i * cols + j] > absFyData[(i + 1) * cols + j]) {
+						&& absFyData[i * cols + j] > absFyData[(i - 1) * cols + j]
+						&& absFyData[i * cols + j] >= absFyData[(i + 1) * cols + j]) {
 						edges.push_back(i * cols + j);
 					}
 				}
@@ -140,15 +140,9 @@ namespace EdgeLocator {
 				// compute intensities
 				float AA, BB;
 
-				if (m > 0) {
-					AA = (imageData[edge + m2 * cols] + imageData[edge + 1 + r2 * cols]) / 2;
-					BB = (imageData[edge - 1 + l1 * cols] + imageData[edge + m1 * cols]) / 2;
-				}
-				else {
-					AA = (imageData[edge - 1 + l2 * cols] + imageData[edge + m2 * cols]) / 2;
-					BB = (imageData[edge + m1 * cols] + imageData[edge + 1 + r1 * cols]) / 2;
-				}
-
+				AA = imageData[edge + m2 * cols];
+				BB = imageData[edge + m1 * cols];
+				
 				// sum columns
 				float SL = 0, SM = 0, SR = 0;
 				for (int n = l1; n <= l2; n++) {
@@ -206,8 +200,8 @@ namespace EdgeLocator {
 
 			for (int i = 0; i < edges.size(); i++) {
 				int pos = edges.at(i);
-				float sub_x = x[pos] + 0.5;
-				float sub_y = y[pos] - a[i] + 0.5;
+				float sub_x = x[pos] + 0.5f;
+				float sub_y = y[pos] - a[i] + 0.5f;
 				float nx = (std::signbit(A[i] - B[i]) ? -1 : 1) / (float)std::sqrt(1 + b[i] * b[i]) * b[i];
 				float ny = (std::signbit(A[i] - B[i]) ? -1 : 1) / (float)std::sqrt(1 + b[i] * b[i]);
 				float curv = 2 * c[i] * n[i] / (float)std::pow((1 + b[i] * b[i]), 1.5);
@@ -346,14 +340,8 @@ namespace EdgeLocator {
 				// compute intensities
 				float AA, BB;
 
-				if (m > 0) {
-					AA = (imageData[edge + m2] + imageData[edge + cols + r2]) / 2;
-					BB = (imageData[edge - cols + l1] + imageData[edge + m1]) / 2;
-				}
-				else {
-					AA = (imageData[edge - cols + l2] + imageData[edge + m2]) / 2;
-					BB = (imageData[edge + m1] + imageData[edge + cols + r1]) / 2;
-				}
+				AA = imageData[edge + m2];
+				BB = imageData[edge + m1];
 
 				// sum columns
 				float SL = 0, SM = 0, SR = 0;
@@ -412,8 +400,8 @@ namespace EdgeLocator {
 
 			for (int i = 0; i < edges.size(); i++) {
 				int pos = edges.at(i);
-				float sub_x = x[pos] - a[i] + 0.5;
-				float sub_y = y[pos] + 0.5;
+				float sub_x = x[pos] - a[i] + 0.5f;
+				float sub_y = y[pos] + 0.5f;
 				float nx = (std::signbit(A[i] - B[i]) ? -1 : 1) / (float)std::sqrt(1 + b[i] * b[i]);
 				float ny = (std::signbit(A[i] - B[i]) ? -1 : 1) / (float)std::sqrt(1 + b[i] * b[i]) * b[i];
 				float curv = 2 * c[i] * n[i] / (float)std::pow((1 + b[i] * b[i]), 1.5);
