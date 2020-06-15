@@ -1,0 +1,21 @@
+External Edge Position Radius (Mean Squared Error): 0.00618172
+External Real Radius: 60
+Mean Radius: 60.0753
+Radius Standard Deviation: 0.0228823
+
+Internal Edge Position Radius (Mean Squared Error): 0.00753478
+Internal Real Radius: 50
+Mean Radius: 49.9169
+Radius Standard Deviation: 0.0251133
+
+External Curvature (Mean Squared Error): 0.000311853
+Real External Radius: 60
+Mean Radius of Curvature: 60.9307
+Curvature Standard Deviation: 0.0176836
+
+Internal Curvature (Mean Squared Error): 0.00187948
+Real Internal Radius: 50
+Mean Radius of Curvature: 49.4703
+Curvature Standard Deviation: 0.0162242
+
+Normal Vector (Mean Projection Error): 5.67701e-05
