@@ -15,15 +15,15 @@ namespace EdgeLocator {
 		float i0, i1;  // intensities at both sides
 
 	public:
-		Edge(int c_position, float c_x, float c_y, float c_nx, float c_ny, float c_curv, float c_i0, float c_i1) {
-			position = c_position;
-			x = c_x;
-			y = c_y;
-			nx = c_nx;
-			ny = c_ny;
-			curv = c_curv;
-			i0 = c_i0;
-			i1 = c_i1;
+		Edge(int position, float x, float y, float nx, float ny, float curv, float i0, float i1) {
+			this->position = position;
+			this->x = x;
+			this->y = y;
+			this->nx = nx;
+			this->ny = ny;
+			this->curv = curv;
+			this->i0 = i0;
+			this->i1 = i1;
 		}
 
 		int getPosition() {
