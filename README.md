@@ -21,7 +21,11 @@ For the implementation of the method we have used the OpenCV library in the vers
 
 In this document we will briefly explain what the method consists of and how it has been implemented in C++.
 
+<img src="./Captures/Test/FloatingSmoothed_8_11.JPG" alt="Test image" align="right" width="400" height="400" />
+
 This method is a major improvement over traditionally used classic edge detection methods such as Sobel or Canny filters. In this method it is possible to detect not only the edges at the pixel level but it is also possible to make a fairly accurate estimate of the tracing of the edges at the sub-pixel level. This method allows you to calculate the position data of the trace within the pixel, as well as its curvature and its normal.
+
+<img src="./Captures/Real/angio2_2.JPG" alt="Angio capture" align="right" width="400" height="400" />
 
 The first step in the algorithm is to transform the image into black and white. With the black and white image, the edges are detected at the pixel level, for which the Sobel filters are used. With the Sobel filters we obtain the partial derivatives, and with them the matrix of the gradient vectors of all the pixels of the image. Finally, in this first step, the gradient modulus of each pixel is used to detect all pixels that have a value greater than a certain threshold and that are also maximums between their nearby pixels.
 
