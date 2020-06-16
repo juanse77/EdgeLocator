@@ -26,9 +26,9 @@ This method is a major improvement over traditionally used classic edge detectio
 
 <div align="center">
 
-	<img src="./Captures/Test/FloatingSmoothed_8_11.JPG" alt="Test image" align="right" width="400" height="400" />
+	<img src="./Captures/Test/FloatingSmoothed_8_11.JPG" alt="Test image" />
 
-	<img src="./Captures/Real/angio2_2.JPG" alt="Angio capture" align="right" width="400" height="400" />
+	<img src="./Captures/Real/angio2_2.JPG" alt="Angio capture" />
 
 </div>
 The first step in the algorithm is to transform the image into black and white. With the black and white image, the edges are detected at the pixel level, for which the Sobel filters are used. With the Sobel filters we obtain the partial derivatives, and with them the matrix of the gradient vectors of all the pixels of the image. Finally, in this first step, the gradient modulus of each pixel is used to detect all pixels that have a value greater than a certain threshold and that are also maximums between their nearby pixels.
