@@ -262,7 +262,7 @@ The application interface is the console and uses the native OpenCV window. To t
 
 The command accepts several parameters that alter its operation. The command format is:
 
-*edgeLocator.exe -f fileName [-t (0,255)] [-o (1,2)] [-m (0,3)] [-s]*
+*EdgeLocator.exe -f fileName [-t (0,255)] [-o (1,2)] [-m (0,3)] [-s]*
 
 Where the -f option corresponds to the input file that must exist in the images folder. The -t option corresponds to the gradient threshold. The -o option corresponds to the fit order: 1 to fit lines, and 2 to fit parabolas. The -m option allows you to select the version of the method to use: 0 floating windows with smoothing; 1 floating windows without smoothing; 2 static windows with smoothing; and 3 static windows without smoothing. Finally, the -s option allows you to dump all the calculated edge parameters in the method to a json file. The file will be stored in the jsonData folder and its name will be the same as that of the input image but its extension will now be .json.
 
@@ -284,26 +284,3 @@ Thank you for reading the guide notes and we are at your disposal through our em
 - [OpenCV 4.3.0](https://opencv.org/opencv-4-3-0/).
 - [JSON nlomann library](https://github.com/nlohmann/json)
 - [GetOpt for Windows](https://github.com/iotivity/iotivity/tree/master/resource/c_common/windows/src) 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

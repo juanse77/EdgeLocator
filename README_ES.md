@@ -261,7 +261,7 @@ La interfaz de la aplicación es la consola y usa la ventana nativa de OpenCV. P
 
 El comando admite una serie de parámetros que alteran su funcionamiento. La formato del comando es:
 
-*edgeLocator.exe -f fileName [-t (0,255)] [-o (1,2)] [-m (0,3)] [-s]*
+*EdgeLocator.exe -f fileName [-t (0,255)] [-o (1,2)] [-m (0,3)] [-s]*
 
 Donde la opción -f corresponde al fichero de entrada que debe existir en la carpeta images. La opción -t corresponde al umbral del gradiente. La opción -o al orden de ajuste: 1 para ajustar a rectas, y 2 para ajustar a parábolas. La opción -m permite seleccionar la versión del método a usar: 0 ventanas flotantes con suavizado; 1 ventanas flotantes sin suavizado; 2 ventanas estáticas con suavizado; y 3 ventanas estáticas sin suavizado. Por último, la opción -s permite volcar todos los parámetros de bordes calculados en el método a un fichero json. El fichero se almacenará en la carpeta jsonData y su nombre será el mismo que el de la imagen de entrada pero su extensión será ahora .json.
 
