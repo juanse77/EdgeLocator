@@ -14,13 +14,12 @@ This work is part of my Final Degree Project that we have developed from the Uni
 <hr />
 <h3>Installation of the project in Visual Studio:</h3>
 
-For the implementation of the method we have used the OpenCV library in the version 4.3.0 x64 vc15, and Microsoft Visual C ++ 2019 software in its Community version. To clarify the details of the installation you can consult the document [VS Instalation.pdf](https://github.com/juanse77/EdgeLocator/blob/master/Instalation_in_VS.pdf). However, if you want to test the operation of the program you can run the downloadable precompiled program from this same repository -[Binary.zip](Binary.zip)-. The details of its operation are described below in the point *Application interface*.
+For the implementation of the method we have used the OpenCV library in the version 4.3.0 x64 vc15, and Microsoft Visual C ++ 2019 software in its Community version. To clarify the details of the installation you can consult the document [VS Instalation.pdf](https://github.com/juanse77/EdgeLocator/blob/master/Instalation_in_VS.pdf). However, if you want to test the operation of the application, you can run the downloadable precompiled program from this same repository -[Binary.zip](Binary.zip)-. The details of its functioning are described below in the point *Application interface*.
 
 <hr />
 <h2>Description of the Method:</h2>
 
 In this document we will briefly explain what the method consists of and how it has been implemented in C++.
-
 
 This method is a major improvement over traditionally used classic edge detection methods such as Sobel or Canny filters. In this method it is possible to detect not only the edges at the pixel level but it is also possible to make a fairly accurate estimate of the tracing of the edges at the sub-pixel level. This method allows you to calculate the position data of the trace within the pixel, as well as its curvature and its normal.
 
