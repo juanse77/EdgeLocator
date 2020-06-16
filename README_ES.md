@@ -251,7 +251,7 @@ Los objetos *Edge* son la unidad mímima de información del resultado de la eje
 - i1: Almacena la intensidad de color mayor del borde.
 
 <hr />
-<h2>Interfaz de la aplicación:</h2>
+<h3>Interfaz de la aplicación:</h3>
 
 La interfaz de la aplicación es la consola y usa la ventana nativa de OpenCV. Para probar la aplicación puede descargar los fuentes y compilarlos o usar el fichero binario [Binary.zip](Binary.zip) contenido en este repositorio. Al descomprimirlo verá que existe una estructura de carpetas. En la carpeta images deberá situar los ficheros de imagen que desee procesar. Las carpetas jsonData y accuracyResults sirven para guardar resultados de la ejecución. En la carpeta jsonData se guardarán  en formato json los parámetros de los bordes calculados en la ejecución, siempre y cuando se haya activado la opción -s en el comando. La carpeta accuracyResults se usará para guardar las estadísticas de la ejecución de test.
 

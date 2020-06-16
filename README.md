@@ -252,7 +252,7 @@ Objects *Edge* are the minimum unit of information of the result of the executio
 - i1: Stores the highest color intensity of the edge.
 
 <hr />
-<h2>Application interface:</h2>
+<h3>Application interface:</h3>
 
 The application interface is the console and uses the native OpenCV window. To test the application you can download the sources and compile them or use the binary file [Binary.zip](./Binary.zip) contained in this repository. When you unzip it you will see that there is a folder structure. In the images folder you must place the image files you want to process. The jsonData and accuracyResults folders are for saving execution results. In the jsonData folder, the parameters of the edges calculated in the execution will be saved in json format, as long as the -s option has been activated in the command. The accuracyResults folder will be used to store the statistics of the test execution.
 
