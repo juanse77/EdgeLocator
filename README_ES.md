@@ -22,7 +22,7 @@ Para la implementación del método hemos hecho uso de la librería OpenCV en la
 
 <p>Este método es una mejora importante de los métodos clásicos de detección de bordes utilizados tradicionalmente, como son los filtros Sobel o los Canny. En este método se consigue detectar no solo los bordes a nivel de píxel sino que se logra hacer una estimación bastante precisa del trazado de los bordes a nivel subpíxel. Este método permite calcular los datos de posición del trazo dentro del píxel, así como su curvatura y su normal.</p>
 
-Image de test             |  Captura angio
+Imagen de test             |  Captura angio
 :-------------------------:|:-------------------------:
 ![](./Captures/Test/FloatingSmoothed_8_11.JPG)  |  ![](./Captures/Real/angio2_2.JPG)
 
