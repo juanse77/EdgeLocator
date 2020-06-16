@@ -24,7 +24,6 @@ In this document we will briefly explain what the method consists of and how it 
 
 This method is a major improvement over traditionally used classic edge detection methods such as Sobel or Canny filters. In this method it is possible to detect not only the edges at the pixel level but it is also possible to make a fairly accurate estimate of the tracing of the edges at the sub-pixel level. This method allows you to calculate the position data of the trace within the pixel, as well as its curvature and its normal.
 
-
 Test image             |  Angio capture
 :-------------------------:|:-------------------------:
 ![](./Captures/Test/FloatingSmoothed_8_11.JPG)  |  ![](./Captures/Real/angio2_2.JPG)

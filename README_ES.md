@@ -22,6 +22,10 @@ Para la implementación del método hemos hecho uso de la librería OpenCV en la
 
 <p>Este método es una mejora importante de los métodos clásicos de detección de bordes utilizados tradicionalmente, como son los filtros Sobel o los Canny. En este método se consigue detectar no solo los bordes a nivel de píxel sino que se logra hacer una estimación bastante precisa del trazado de los bordes a nivel subpíxel. Este método permite calcular los datos de posición del trazo dentro del píxel, así como su curvatura y su normal.</p>
 
+Image de test             |  Captura angio
+:-------------------------:|:-------------------------:
+![](./Captures/Test/FloatingSmoothed_8_11.JPG)  |  ![](./Captures/Real/angio2_2.JPG)
+
 <p>En el primer paso del algoritmo se transforma la imagen a blanco y negro. Con la imagen en blanco y negro se pasa a detectar los bordes a nivel píxel, para lo cual se utilizan los filtros Sobel. Con los filtros Sobel obtenemos las derivadas parciales en los ejes X e Y, y con ello una matriz de los vectores gradientes de todos los píxeles de la imagen. Por último, en este primer paso, se utilizan los módulos del gradiente de cada pixel para detectar todos los píxeles que posean un valor mayor a un cierto umbral y que además, sean máximos entre los píxeles de su vecindad.</p>
 
 <p>Para detectar los trazos a nivel subpíxel, se ha diseñado un sistema de ventanas que cubre las áreas proximas de cada píxel borde, de modo que, tomando los valores de intensidad de color de los píxeles de la ventana en los extremos más alejados de la porción de borde, podemos realizar los cálculos que finalmente nos permitirán dibujar las líneas continuas a través de cada píxel de borde.</p>  
