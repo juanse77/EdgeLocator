@@ -237,9 +237,31 @@ Las distintas aproximaciones al método se han codificado en clases separadas. T
 	<img src="./ClassDiagram/EdgeLocator.svg" alt="Diagrama de clases" />
 </div>
 
-La interfaz de la aplicación es la consola y la ventana nativa de OpenCV. Los controles son mediante teclado. Las teclas de dirección sirven para moverse por la imagen, mientras que la tecla (u) aumenta el zoom, la tecla (d) reduce el zoom, la tecla (t) genera y calcula los bordes de la imagen de test, y la tecla (q) aborta el programa.
+El proceso de detección de los bordes sigue en todos los casos un mismo esquema, esto es: primero se pasa la imagen a blanco y negro, el segundo paso sería el suavizado de la imagen, siempre que se haya elegido esa opción. Con la imagen ya en blanco y negro se pasaría a calcular las derivadas parciales y con ellas el gradiente, posteriormente se llama al método de detección de bordes horizontales, seguidamente al método de detección de bordes verticales, y por último se llama al método para visualizar los bordes cálculados en el proceso. En los pasos de detección de bordes se irá guardando los resultados en una estructura dinámica *Vector* que almacena objetos *Edge*.
 
-El proceso de detección de los bordes sigue en todos los casos un mismo esquema, esto es: primero se pasa la imagen a blanco y negro, el segundo paso sería el suavizado de la imagen, si la opción elegida no lo usa se pasaría al siguiente paso. Con la imagen ya en blanco y negro se pasaría a calcular las derivadas parciales y con ellas el gradiente, posteriormente se llama al método de detección de bordes horizontales, seguidamente al método de detección de bordes verticales, y por último se llama al método para visualizar los bordes cálculados en el proceso. En los pasos de detección de bordes se irá guardando los resultados en una estructura dinámica *Vector* que almacena objetos *Edge*. Los objetos *Edge* almacenan toda la información necesaria para la reconstrucción de la imagen con sus bordes.
+Los objetos *Edge* son la unidad mímima de información del resultado de la ejecución. La estructura del objeto *Edge* es la siguiente:
+
+- position: Almacena la posición del píxel borde dentro de la matriz de bytes de la imagen.
+- x: Representa la posición horizontal de izquierda a derecha en coordenadas cartesianas del píxel borde.
+- y: Representa la posición vertical de arriba a abajo en coordenadas cartesianas del píxel borde.
+- nx: Representa la componente x del vector normal al borde normalizado.
+- ny: Representa la componente y del vector normal al borde normalizado.
+- curv: Almacena la curvatura del píxel borde.
+- i0: Almacena la intensidad de color menor del borde.
+- i1: Almacena la intensidad de color mayor del borde.
+
+<hr />
+<h2>Interfaz de la aplicación:</h2>
+
+La interfaz de la aplicación es la consola y usa la ventana nativa de OpenCV. Para probar la aplicación puede descargar los fuentes y compilarlos o usar el fichero binario [Binary.zip](Binary.zip) contenido en este repositorio. Al descomprimirlo verá que existe una estructura de carpetas. En la carpeta images deberá situar los ficheros de imagen que desee procesar. Las carpetas jsonData y accuracyResults sirven para guardar resultados de la ejecución. En la carpeta jsonData se guardarán  en formato json los parámetros de los bordes calculados en la ejecución, siempre y cuando se haya activado la opción -s en el comando. La carpeta accuracyResults se usará para guardar las estadísticas de la ejecución de test.
+
+El comando admite una serie de parámetros que alteran su funcionamiento. La formato del comando es:
+
+*edgeLocator.exe -f fileName [-t (0,255)] [-o (1,2)] [-m (0,3)] [-s]*
+
+Donde la opción -f corresponde al fichero de entrada que debe existir en la carpeta images. La opción -t corresponde al umbral del gradiente. La opción -o al orden de ajuste: 1 para ajustar a rectas, y 2 para ajustar a parábolas. La opción -m permite seleccionar la versión del método a usar: 0 ventanas flotantes con suavizado; 1 ventanas flotantes sin suavizado; 2 ventanas estáticas con suavizado; y 3 ventanas estáticas sin suavizado. Por último, la opción -s permite volcar todos los parámetros de bordes calculados en el método a un fichero json. El fichero se almacenará en la carpeta jsonData y su nombre será el mismo que el de la imagen de entrada pero su extensión será ahora .json.
+
+El programa en ejecución permite la interación con una serie de controles de teclado. Las teclas de dirección sirven para moverse por la imagen, mientras que la tecla (u) aumenta el zoom, la tecla (d) reduce el zoom, la tecla (t) genera y calcula los bordes de la imagen de test, y la tecla (q) aborta el programa.
 
 <hr />
 <h3>Consideraciones sobre la conversión de código Matlab a C++:</h3>
@@ -250,5 +272,10 @@ Esta implantación en C++ del método se ha concebido con la intención de que s
 
 Gracias por leer el guión y estamos a su disposición a través de nuestras direcciones de email.
 
+<hr />
+<h3>Resursos utilizados:</h3>
 
- 
+- [Visual Studio 2019 Community](https://visualstudio.microsoft.com/es/vs/community/).
+- [OpenCV 4.3.0](https://opencv.org/opencv-4-3-0/).
+- [Biblioteca JSON nlomann](https://github.com/nlohmann/json)
+- [GetOpt para Windows](https://github.com/iotivity/iotivity/tree/master/resource/c_common/windows/src) 

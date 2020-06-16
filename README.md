@@ -17,7 +17,7 @@ This work is part of my Final Degree Project that we have developed from the Uni
 For the implementation of the method we have used the OpenCV library in the version 4.3.0 x64 vc15, and Microsoft Visual C ++ 2019 software in its Community version. To clarify the details of the installation you can consult the document [VS Instalation.pdf](https://github.com/juanse77/EdgeLocator/blob/master/Instalaci%C3%B3n%20VS.pdf).
 
 <hr />
-<h2>Method description:</h2>
+<h2>Description of the Method:</h2>
 
 In this document we will briefly explain what the method consists of and how it has been implemented in C++.
 
@@ -238,9 +238,58 @@ The different approaches to the method have been coded into separate classes. Th
 	<img src="./ClassDiagram/EdgeLocator.svg" alt="Class diagram" />
 </div>
 
-The application interface is the console and the native OpenCV window. Controls are by keyboard. The arrow keys are used to move around the image, while the (u) key increases zoom, the (d) key reduces zoom, the (t) key generates and calculates the edges of the test image, and the (q) key aborts the program.
+The edge detection process follows the same scheme in all cases, that is: first the image is converted to black and white, the second step would be the smoothing of the image, if the chosen option does not use it, it would go to the next step. With the image already in black and white, the partial derivatives would be calculated and with them the gradient, later the horizontal edge detection method is called, followed by the vertical edge detection method, and finally the method to visualize the calculated edges in the process is called. In the edge detection steps, the results will be saved in a dynamic structure *Vector* which stores objects *Edge*.
 
-The edge detection process follows the same scheme in all cases, that is: first the image is converted to black and white, the second step would be the smoothing of the image, if the chosen option does not use it, it would go to the next step. With the image already in black and white, the partial derivatives would be calculated and with them the gradient, later the horizontal edge detection method was called, followed by the vertical edge detection method, and finally the method to visualize the calculated edges in the process is called. In the edge detection steps, the results will be saved in a dynamic structure *Vector* which stores objects *Edge*.
+Objects *Edge* are the minimum unit of information of the result of the execution. The structure of object *Edge* is as follows:
+
+- position: Stores the position of the edge pixel within the image byte array.
+- x: Represents the horizontal position from left to right in Cartesian coordinates of the edge pixel.
+- y: Represents the vertical position from top to bottom in Cartesian coordinates of the edge pixel.
+- nx: Represents the x component of the normalized normal vector.
+- ny: Represents the y component of the normalized normal vector.
+- curv: Stores the curvature of the edge pixel.
+- i0: Stores the lowest color intensity of the edge.
+- i1: Stores the highest color intensity of the edge.
+
+<hr />
+<h2>Application interface:</h2>
+
+The application interface is the console and uses the native OpenCV window. To test the application you can download the sources and compile them or use the binary file [Binary.zip](./Binary.zip) contained in this repository. When you unzip it you will see that there is a folder structure. In the images folder you must place the image files you want to process. The jsonData and accuracyResults folders are for saving execution results. In the jsonData folder, the parameters of the edges calculated in the execution will be saved in json format, as long as the -s option has been activated in the command. The accuracyResults folder will be used to store the statistics of the test execution.
+
+The command accepts several parameters that alter its operation. The command format is:
+
+*edgeLocator.exe -f fileName [-t (0,255)] [-o (1,2)] [-m (0,3)] [-s]*
+
+Where the -f option corresponds to the input file that must exist in the images folder. The -t option corresponds to the gradient threshold. The -o option corresponds to the fit order: 1 to fit lines, and 2 to fit parabolas. The -m option allows you to select the version of the method to use: 0 floating windows with smoothing; 1 floating windows without smoothing; 2 static windows with smoothing; and 3 static windows without smoothing. Finally, the -s option allows you to dump all the calculated edge parameters in the method to a json file. The file will be stored in the jsonData folder and its name will be the same as that of the input image but its extension will now be .json.
+
+The running program allows interaction with a set of keyboard controls. The arrow keys are used to move around the image, while the (u) key increases the zoom, the (d) key reduces the zoom, the (t) key generates and calculates the edges of the test image, and the key (q) abort the program.
+
+<hr />
+<h3>Considerations for converting Matlab code to C++:</h3>
+
+In the process of translating Matlab code to C++ code, it must be taken into account that arrays in Matlab are stored in base 1, while in C ++ they are stored in base 0. Another important consideration to keep in mind is that the Matlab arrays are organized in Column-Major, while in C++ they are organized internally in Row-Major. These remarkable differences between Matlab and C++ require a meticulous effort in handling the indexes of the matrices.
+
+This implementation in C ++ of the method has been conceived with the intention of being a tool that facilitates the implementation in any other language, be it Java, Python, or some .Net technology. We hope you liked the method and we encourage you to download the source code and experiment with it.
+
+Thank you for reading the guide notes and we are at your disposal through our email addresses.
+
+<hr />
+<h3>Resources used:</h3>
+
+- [Visual Studio 2019 Community](https://visualstudio.microsoft.com/es/vs/community/).
+- [OpenCV 4.3.0](https://opencv.org/opencv-4-3-0/).
+- [JSON nlomann library](https://github.com/nlohmann/json)
+- [GetOpt for Windows](https://github.com/iotivity/iotivity/tree/master/resource/c_common/windows/src) 
+
+
+
+
+
+
+
+
+
+
 
 
 
