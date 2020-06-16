@@ -13,7 +13,7 @@ Este proyecto forma parte del mi trabajo de fin de grado (TFG) que hemos desarro
 <hr />
 <h3>Instalación del proyecto en Visual Studio:</h3>
 
-Para la implementación del método hemos hecho uso de la librería OpenCV en la versión 4.3.0 x64 vc15, y del software Microsoft Visual C++ 2019 en su versión Community. Para aclarar los detalles de la instalación puede consultar el documento [Instalación VS.pdf](https://github.com/juanse77/EdgeLocator/blob/master/Instalation_in_VS.pdf). No obstante, si lo que desea es probar el funcionamiento del programa puede ejecutar el programa precompilado descargable desde este mismo repositorio -[Binary.zip](Binary.zip)-. Los detalles de su funcionamiento se describen más abajo en el punto *Interfaz de la aplicación*. 
+Para la implementación del método hemos hecho uso de la librería OpenCV en la versión 4.3.0 x64 vc15, y del software Microsoft Visual C++ 2019 en su versión Community. Para aclarar los detalles de la instalación puede consultar el documento [Instalación VS.pdf](https://github.com/juanse77/EdgeLocator/blob/master/Instalation_in_VS.pdf). No obstante, si lo que desea es probar el funcionamiento de la aplicación puede ejecutar el programa precompilado descargable desde este mismo repositorio -[Binary.zip](Binary.zip)-. Los detalles de su funcionamiento se describen más abajo en el punto *Interfaz de la aplicación*. 
 
 <hr />
 <h2>Descripción del método:</h2>
