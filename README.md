@@ -15,7 +15,7 @@ This work is part of my Final Degree Project that we have developed from the Uni
 
 For the implementation of the method we have used the OpenCV library in the version 4.3.0 x64 vc15, and Microsoft Visual C ++ 2019 software in its Community version. To clarify the details of the installation you can consult the document [VS Instalation.pdf](https://github.com/juanse77/EdgeLocator/blob/master/Instalation_in_VS.pdf). However, if you want to test the operation of the application, you can run the downloadable precompiled program from this same repository -[Binary.zip](Binary.zip)-. The details of its functioning are described below in the point *Application interface*.
 
-*For the application to work correctly you must first install [OpenCV](https://sourceforge.net/projects/opencvlibrary/files/4.3.0/opencv-4.3.0vc14_vc15.exe/download) on your computer.*
+*For the application to work correctly you must first install [OpenCV](https://opencv.org/opencv-4-3-0/) on your computer.*
 
 <hr />
 <h2>Description of the Method:</h2>
