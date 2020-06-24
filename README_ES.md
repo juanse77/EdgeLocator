@@ -28,7 +28,7 @@ Imagen de test             |  Captura angio
 
 <p>En el primer paso del algoritmo se transforma la imagen a escala de grises. Con la imagen ya en gris se pasa a detectar los bordes a nivel píxel, para lo cual se utilizan los filtros Sobel. Con los filtros Sobel obtenemos las derivadas parciales en los ejes X e Y, y con ellas generamos una matriz que almacenará los módulos del gradiente de cada píxel de la imagen. Por último, en este primer paso, se utilizan los módulos del gradiente de cada pixel para detectar todos los píxeles que posean un valor mayor a un cierto umbral y que además sean máximos entre los píxeles de su entorno.</p>
 
-<p>Para detectar los trazos a nivel subpíxel, se ha diseñado un sistema de ventanas que cubre las áreas próximas de cada píxel borde, de modo que, tomando los valores de intensidad de color de los píxeles de la ventana en los extremos más alejados de la porción de borde, podemos realizar los cálculos que finalmente nos permitirán dibujar las líneas continuas a través de cada píxel de borde.</p>  
+<p>Para detectar los trazos a nivel subpíxel, se ha diseñado un sistema de ventanas que cubre las áreas próximas de cada píxel borde, de modo que, tomando los valores de intensidad de color de los píxeles de la ventana en los extremos más alejados de la porción de borde, podemos realizar los cálculos que finalmente nos permitirán dibujar las líneas continuas a través de cada píxel borde.</p>  
 
 Más información en:
 
