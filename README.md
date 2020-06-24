@@ -13,7 +13,7 @@ This work is part of my Final Degree Project that we have developed from the Uni
 <hr />
 <h3>Installation of the project in Visual Studio:</h3>
 
-For the implementation of the method we have used the OpenCV library in the version 4.3.0 x64 vc15, and Microsoft Visual C ++ 2019 software in its Community version. To clarify the details of the installation you can consult the document [VS Instalation.pdf](https://github.com/juanse77/EdgeLocator/blob/master/Instalation_in_VS.pdf). However, if you want to test the operation of the application, you can run the downloadable precompiled program from this same repository -[EdgeLocator_1.0](EdgeLocator_1.0.zip)-. The details of its functioning are described below in the point *Application interface*.
+For the implementation of the method we have used the OpenCV library in the version 4.3.0 x64 vc15, and Microsoft Visual C ++ 2019 software in its Community version. To clarify the details of the installation you can consult the document [VS Instalation.pdf](https://github.com/juanse77/EdgeLocator/blob/master/Instalation_in_VS.pdf). However, if you want to test the operation of the application, you can run the downloadable precompiled program from this same repository -[EdgeLocator_1.1](EdgeLocator_1.1.zip)-. The details of its functioning are described below in the point *Application interface*.
 
 <hr />
 <h2>Description of the Method:</h2>
@@ -38,7 +38,7 @@ More information in:
 <hr />
 <h3>Application interface:</h3>
 
-The application interface is the console and uses the native OpenCV window. To test the application you can download the sources and compile them or use the binary file [EdgeLocator_1.0](./EdgeLocator_1.0.zip) contained in this repository. When you unzip it you will see that there is a folder structure. In the images folder you must place the image files you want to process. The jsonData and accuracyResults folders are for saving execution results. In the jsonData folder, the parameters of the edges calculated in the execution will be saved in json format, as long as the -s option has been activated in the command. The accuracyResults folder will be used to store the statistics of the test execution.
+The application interface is the console and uses the native OpenCV window. To test the application you can download the sources and compile them or use the binary file [EdgeLocator_1.1](./EdgeLocator_1.1.zip) contained in this repository. When you unzip it you will see that there is a folder structure. In the images folder you must place the image files you want to process. The jsonData and accuracyResults folders are for saving execution results. In the jsonData folder, the parameters of the edges calculated in the execution will be saved in json format, as long as the -s option has been activated in the command. The accuracyResults folder will be used to store the statistics of the test execution.
 
 The command accepts several parameters that alter its operation. The command format is:
 

@@ -13,7 +13,7 @@ Este proyecto forma parte del mi trabajo de fin de grado (TFG) que hemos desarro
 <hr />
 <h3>Instalación del proyecto en Visual Studio:</h3>
 
-Para la implementación del método hemos hecho uso de la librería OpenCV en la versión 4.3.0 x64 vc15, y del software Microsoft Visual C++ 2019 en su versión Community. Para aclarar los detalles de la instalación puede consultar el documento [Instalación VS.pdf](https://github.com/juanse77/EdgeLocator/blob/master/Instalation_in_VS.pdf). No obstante, si lo que desea es probar el funcionamiento de la aplicación puede ejecutar el programa precompilado descargable desde este mismo repositorio -[EdgeLocator_1.0](EdgeLocator_1.0.zip)-. Los detalles de su funcionamiento se describen más abajo en el punto *Interfaz de la aplicación*.
+Para la implementación del método hemos hecho uso de la librería OpenCV en la versión 4.3.0 x64 vc15, y del software Microsoft Visual C++ 2019 en su versión Community. Para aclarar los detalles de la instalación puede consultar el documento [Instalación VS.pdf](https://github.com/juanse77/EdgeLocator/blob/master/Instalation_in_VS.pdf). No obstante, si lo que desea es probar el funcionamiento de la aplicación puede ejecutar el programa precompilado descargable desde este mismo repositorio -[EdgeLocator_1.1](EdgeLocator_1.1.zip)-. Los detalles de su funcionamiento se describen más abajo en el punto *Interfaz de la aplicación*.
 
 <hr />
 <h2>Descripción del método:</h2>
@@ -38,7 +38,7 @@ Más información en:
 <hr />
 <h3>Interfaz de la aplicación:</h3>
 
-La interfaz de la aplicación es la consola y usa la ventana nativa de OpenCV. Para probar la aplicación puede descargar los fuentes y compilarlos o usar el fichero binario [EdgeLocator_1.0](EdgeLocator_1.0.zip) contenido en este repositorio. Al descomprimirlo verá que existe una estructura de carpetas. En la carpeta images deberá situar los ficheros de imagen que desee procesar. Las carpetas jsonData y accuracyResults sirven para guardar resultados de la ejecución. En la carpeta jsonData se guardarán  en formato json los parámetros de los bordes calculados en la ejecución, siempre y cuando se haya activado la opción -s en el comando. La carpeta accuracyResults se usará para guardar las estadísticas de la ejecución de test.
+La interfaz de la aplicación es la consola y usa la ventana nativa de OpenCV. Para probar la aplicación puede descargar los fuentes y compilarlos o usar el fichero binario [EdgeLocator_1.1](EdgeLocator_1.1.zip) contenido en este repositorio. Al descomprimirlo verá que existe una estructura de carpetas. En la carpeta images deberá situar los ficheros de imagen que desee procesar. Las carpetas jsonData y accuracyResults sirven para guardar resultados de la ejecución. En la carpeta jsonData se guardarán  en formato json los parámetros de los bordes calculados en la ejecución, siempre y cuando se haya activado la opción -s en el comando. La carpeta accuracyResults se usará para guardar las estadísticas de la ejecución de test.
 
 El comando admite una serie de parámetros que alteran su funcionamiento. El formato del comando es:
 
