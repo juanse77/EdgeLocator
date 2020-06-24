@@ -56,12 +56,12 @@ Where the -f option can be the name of the input file that must exist in the ima
 
 The default values ​​for optional parameters are:
 - m: 0
-- t: 20
 - o: 2
+- t: 20
 - i: 20
 - e: 25
 
-The running program allows interaction with a set of keyboard controls. The arrow keys are used to move around the image, while the (u) key increases the zoom, the (d) key reduces the zoom, the (t) key generates and calculates the edges of the test image, and the key (q) abort the program.
+The running program allows interaction with a set of keyboard controls. The arrow keys are used to move around the image, while the (u) key increases the zoom, the (d) key reduces the zoom, and the key (q) abort the program.
 
 This implementation in C++ of the method has been conceived with the intention of being a tool that facilitates the implementation in any other language, be it Java, Python, or some .Net technology. We hope you liked the method and we encourage you to download the source code and experiment with it.
 

@@ -40,7 +40,7 @@ Más información en:
 
 La interfaz de la aplicación es la consola y usa la ventana nativa de OpenCV. Para probar la aplicación puede descargar los fuentes y compilarlos o usar el fichero binario [EdgeLocator_1.0](EdgeLocator_1.0.zip) contenido en este repositorio. Al descomprimirlo verá que existe una estructura de carpetas. En la carpeta images deberá situar los ficheros de imagen que desee procesar. Las carpetas jsonData y accuracyResults sirven para guardar resultados de la ejecución. En la carpeta jsonData se guardarán  en formato json los parámetros de los bordes calculados en la ejecución, siempre y cuando se haya activado la opción -s en el comando. La carpeta accuracyResults se usará para guardar las estadísticas de la ejecución de test.
 
-El comando admite una serie de parámetros que alteran su funcionamiento. La formato del comando es:
+El comando admite una serie de parámetros que alteran su funcionamiento. El formato del comando es:
 
 *EdgeLocator.exe -f (fileName | \"test\" [-e (10-60) -i (8-58)]) [-o (1-2)] [-t (10-255)] [-m (0-3)] [-n] [-s]*
 
@@ -56,8 +56,8 @@ Donde la opción -f puede ser el nombre del fichero de entrada que debe existir 
 
 Los valores por defecto para los parámetros opcionales son:
 - m: 0
-- t: 20
 - o: 2
+- t: 20
 - i: 20
 - e: 25
 
