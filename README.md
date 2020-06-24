@@ -26,7 +26,7 @@ Test image             |  Angio capture
 :-------------------------:|:-------------------------:
 ![](./Captures/Test/FloatingSmoothed_8_11.JPG)  |  ![](./Captures/Real/angio2_2.JPG)
 
-The first step in the algorithm is to transform the image into grayscale. With the image already gray, the edges are detected at the pixel level, for which the Sobel filters are used. With the Sobel filters we obtain the partial derivatives, and with them we will generate a matrix that will store the modules of the gradient of each pixel of the image. Finally, in this first step, the gradient modulus of each pixel is used to detect all pixels that have a value greater than a certain threshold and that they are also maximum between the pixels of their neighborhood.
+The first step in the algorithm is to transform the image into grayscale. With the image already gray, the edges are detected at the pixel level, for which the Sobel filters are used. With the Sobel filters we obtain the partial derivatives, and with them we generate a matrix that will store the modules of the gradient of each pixel of the image. Finally, in this first step, the gradient modulus of each pixel is used to detect all pixels that have a value greater than a certain threshold and that they are also maximum between the pixels of their neighborhood.
 
 To detect the traces at sub-pixel level, a system of windows has been devised that covers the proximal areas of each edge pixel, so that, taking the color intensity values ​​of the window pixels at the ends furthest from the edge portion, we can perform the calculations that will finally allow us to draw the lines through each edge pixel.
 
