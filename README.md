@@ -72,5 +72,5 @@ Thank you for reading the guide notes and we are at your disposal through our em
 
 - [Visual Studio 2019 Community](https://visualstudio.microsoft.com/es/vs/community/).
 - [OpenCV 4.3.0](https://opencv.org/opencv-4-3-0/).
-- [JSON nlomann library](https://github.com/nlohmann/json)
-- [GetOpt for Windows](https://github.com/iotivity/iotivity/tree/master/resource/c_common/windows/src) 
+- [JSON nlomann library](https://github.com/nlohmann/json).
+- [GetOpt for Windows](https://github.com/iotivity/iotivity/tree/master/resource/c_common/windows/src).
