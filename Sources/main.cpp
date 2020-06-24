@@ -36,28 +36,52 @@ int main(int argc, char** argv)
     int radius_out = 25;
     bool view_norm = false;
 
-    string command = "\nCommand error:\n\n\tCorrect format:\n\n\t\t" + string(argv[0]) + " -f (fileName | \"test\" [-e (10-60) -i (8-58)]) [-o (1-2)] [-t (10-255)] [-m (0-3)] [-n] [-s]\n"
+    string command = "\n\tCorrect format:\n\n\t\t" + string(argv[0]) + " -f (fileName | \"test\" [-e (10-60) -i (8-58)]) [-o (1-2)] [-t (10-255)] [-m (0-3)] [-n] [-s]\n"
         "\n\tDefault values:\n\n\t\t-m (0)\n\t\t-o (2)\n\t\t-t (20)\n\t\t-i (20)\n\t\t-e (25)";
+
+    string error = "\nCommand error:\n";
+
+    // Option flags
+    bool opts[8];
+    
+    for (int i = 0; i < 8; i++) {
+        opts[i] = false;
+    }
 
     int c;
     while ((c = getopt(argc, argv, "o:t:f:m:i:e:ns")) != -1) {
         
         switch (c) {
             case '?':
-                cout << command << endl;
+                cout << "\nCommand error :\n" + command << endl;
                 return -1;
         
             case 'o':
+                
+                if (opts[0]) {
+                    cout << error + "\n\tOption -o repeated." << endl;
+                    cout << command << endl;
+                    return -4;
+                }
+                
                 order = atoi(optarg);
                 
                 if (order != 1 && order != 2) {
                     cout << command << endl;
                     return -1;
                 }
+                opts[0] = true;
                 
                 break;
 
             case 't':
+                
+                if (opts[1]) {
+                    cout << error + "\n\tOption -t repeated." << endl;
+                    cout << command << endl;
+                    return -4;
+                }
+                
                 threshold = atof(optarg);
 
                 if (threshold < 10 || threshold > 255) {
@@ -65,13 +89,31 @@ int main(int argc, char** argv)
                     return -1;
                 }
 
+                opts[1] = true;
+
                 break;
 
             case 'f':
-                fileName = string(_strdup(optarg));                
+                
+                if (opts[2]) {
+                    cout << error + "\n\tOption -f repeated." << endl;
+                    cout << command << endl;
+                    return -4;
+                }
+
+                fileName = string(_strdup(optarg));
+                opts[2] = true;
+
                 break;
             
             case 'm':
+                
+                if (opts[3]) {
+                    cout << error + "\n\tOption -m repeated." << endl;
+                    cout << command << endl;
+                    return -4;
+                }
+                
                 method = atoi(optarg);
                 
                 if (method < 0 || method > 3) {
@@ -79,22 +121,60 @@ int main(int argc, char** argv)
                     return -1;
                 }
 
+                opts[3] = true;
+
                 break;
 
             case 'n':
+
+                if (opts[4]) {
+                    cout << error + "\n\tOption -n repeated." << endl;
+                    cout << command << endl;
+                    return -4;
+                }
+
                 view_norm = true;
+                opts[4] = true;
+
                 break;
                 
             case 's':
+                
+                if (opts[5]) {
+                    cout << error + "\n\tOption -s repeated." << endl;
+                    cout << command << endl;
+                    return -4;
+                }
+                
                 save = true;
+                opts[5] = true;
+
                 break;
 
             case 'i':
+                
+                if (opts[6]) {
+                    cout << error + "\n\tOption -i repeated." << endl;
+                    cout << command << endl;
+                    return -4;
+                }
+
                 radius_in = atoi(optarg);
+                opts[6] = true;
+
                 break;
 
             case 'e':
+
+                if (opts[7]) {
+                    cout << error + "\n\tOption -e repeated." << endl;
+                    cout << command << endl;
+                    return -4;
+                }
+
                 radius_out = atoi(optarg);
+                opts[7] = true;
+
                 break;
 
         }
@@ -114,13 +194,28 @@ int main(int argc, char** argv)
 
     if (fileName.compare("test") == 0) {
 
-        if (radius_out < 10 || radius_out > 60) {
+        if(opts[6] && opts[7]){
+            
+            if (radius_out < 10 || radius_out > 60) {
+            
+                cout << command << endl;
+                return -3;
+            
+            }else if(radius_in < 8 || radius_in > radius_out - 2){
+                
+                cout << error + "\n\tMinimun distance betwen radiuses is two." << endl;
+                cout << command << endl;
+                return -3;
+
+            }
+        
+        }
+        else if(opts[6] || opts[7]){
+
+            cout << error + "\n\tOptions -i and -e unpaired." << endl;
             cout << command << endl;
             return -3;
-        }else if(radius_in < 8 || radius_in > radius_out - 2){
-            cout << "\nMinimun distance betwen radiuses is two." << endl;
-            cout << command << endl;
-            return -3;
+
         }
 
         float aux_tam = radius_out * 3;
