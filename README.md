@@ -42,13 +42,24 @@ The application interface is the console and uses the native OpenCV window. To t
 
 The command accepts several parameters that alter its operation. The command format is:
 
-*EdgeLocator.exe -f fileName [-t (0,255)] [-o (1,2)] [-m (0,3)] [-s]*
+*EdgeLocator.exe -f (fileName | \"test\" [-e (10-60) -i (8-58)]) [-o (1-2)] [-t (10-255)] [-m (0-3)] [-n] [-s]*
 
 An example could be:
 
 *EdgeLocator.exe -f angio2.png -t 20*
 
-Where the -f option corresponds to the input file that must exist in the images folder. The -t option corresponds to the gradient threshold. The -o option corresponds to the fit order: 1 to fit lines, and 2 to fit parabolas. The -m option allows you to select the version of the method to use: 0 floating windows with smoothing; 1 floating windows without smoothing; 2 static windows with smoothing; and 3 static windows without smoothing. Finally, the -s option allows you to dump all the calculated edge parameters in the method to a json file. The file will be stored in the jsonData folder and its name will be the same as that of the input image but its extension will now be .json.
+Another example for the test image would be:
+
+*EdgeLocator.exe -f test -e 11 -i 8 -t 10 -n*
+
+Where the -f option can be the name of the input file that must exist in the images folder, or the word "test" that activates the test image and that supports the -e options to set the outer radius of the ring, and - i to set the inner radius of the ring. The -e and -i options have no effect when processing an actual image. The -t option corresponds to the gradient threshold. The -o option corresponds to the fit order: 1 to fit lines, and 2 to fit parabolas. The -m option allows you to select the version of the method to use: 0 floating windows with smoothing; 1 floating windows without smoothing; 2 static windows with smoothing; and 3 static windows without smoothing. The -n option activates the display of normal vectors. Finally, the -s option allows you to dump all the calculated edge parameters in the method to a json file. The file will be stored in the jsonData folder and its name will be the same as that of the input image but its extension will now be .json.
+
+The default values ​​for optional parameters are:
+- m: 0
+- t: 20
+- o: 2
+- i: 20
+- e: 25
 
 The running program allows interaction with a set of keyboard controls. The arrow keys are used to move around the image, while the (u) key increases the zoom, the (d) key reduces the zoom, the (t) key generates and calculates the edges of the test image, and the key (q) abort the program.
 

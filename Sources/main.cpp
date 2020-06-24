@@ -32,10 +32,15 @@ int main(int argc, char** argv)
     float threshold = 20.f;
     bool save = false;
     int method = 0;
+    int radius_in = 20;
+    int radius_out = 25;
+    bool view_norm = false;
 
-    string command = "Command error:\n\tCorrect format: " + string(argv[0]) + " -f fileName [-o (1-2)] [-t (0-255)] [-m (0-3)] [-s]";
+    string command = "Command error:\nCorrect format:\n\t" + string(argv[0]) + " -f (fileName | \"test\" [-e (10-60) -i (8-58)]) [-o (1-2)] [-t (10-255)] [-m (0-3)] [-n] [-s]\n"
+        "Default values:\n\t-m (0)\n\t-o (2)\n\t-n (0)\n\t-i (20)\n\t-e (25)\n";
+
     int c;
-    while ((c = getopt(argc, argv, "o:t:f:m:s")) != -1) {
+    while ((c = getopt(argc, argv, "o:t:f:m:n:i:e:s")) != -1) {
         
         switch (c) {
             case '?':
@@ -55,7 +60,7 @@ int main(int argc, char** argv)
             case 't':
                 threshold = atof(optarg);
 
-                if (threshold < 0 || threshold > 255) {
+                if (threshold < 10 || threshold > 255) {
                     cout << command << endl;
                     return -1;
                 }
@@ -75,23 +80,37 @@ int main(int argc, char** argv)
                 }
 
                 break;
-            
+
+            case 'n':
+                view_norm = true;
+                break;
+                
             case 's':
                 save = true;
                 break;
+
+            case 'i':
+                radius_in = atoi(optarg);
+                break;
+
+            case 'e':
+                radius_out = atoi(optarg);
+                break;
+
         }
 
     }
 
+    cout << "\n" + fileName + "\n" << endl;
+
     if (fileName.compare("") == 0) {
-        cout << "Command error:\n\tCorrect format: " + string(argv[0]) + " -f fileName [-o (1-2)] [-t (0-255)] [-s]" << endl;
+        cout << command << endl;
         return -2;
     }
 
     /// General instructions
     cout << "Edge Locator:" << endl;
     cout << " ------------------" << endl;
-    cout << " * [t] -> View Image Test" << endl;
     cout << " * [u] -> Zoom in" << endl;
     cout << " * [d] -> Zoom out" << endl;
     cout << " * [UP] -> Move up" << endl;
@@ -103,26 +122,59 @@ int main(int argc, char** argv)
     cv::Mat src;
     const char* window_name = "Edge Locator";
 
-    src = cv::imread("images/" + fileName);
+    EdgeLocator::AbstractEdgeLocator* tmp;
+    EdgeLocator::EdgeLocatorFactory elf;
 
+    if (fileName.compare("test") == 0) {
+
+        if (radius_out < 10 || radius_out > 50) {
+            cout << command << endl;
+            return -3;
+        }else if(radius_in < 8 || radius_in > radius_out - 2){
+            cout << "Minimun distance betwen radiuses is two" << endl;
+            cout << command << endl;
+            return -3;
+        }
+
+        float aux_tam = radius_out * 3;
+        cv::Size tam(aux_tam, aux_tam);
+
+        cv::Point2f center(aux_tam / 2.f, aux_tam / 2.f);
+
+        EdgeLocator::ImageTest("images/imgTest.jpg", tam, (float)radius_in, (float)radius_out, center, cv::Vec3f(0, 50, 255), cv::Vec3f(255, 255, 255), 20);
+        src = cv::imread("images/imgTest.jpg");
+    
+        tmp = elf.getEdgeLocator(method, src, threshold, order);
+
+        std::stringstream ss;
+        ss << "accuracyResults/AccuracyResults-" << radius_in << "_" << radius_out << "-" << elf.method << ".txt";
+
+        string fileResults;
+        ss >> fileResults;
+
+        tmp->generateAccuracyResults(tam, radius_in, radius_out, center, fileResults);
+
+    }
+    else {
+        src = cv::imread("images/" + fileName);
+        tmp = elf.getEdgeLocator(method, src, threshold, order);
+    }
+    
     if (!src.data)
     {
         printf(" No data! -- Exiting the program n");
         return -1;
     }
 
-    EdgeLocator::AbstractEdgeLocator * tmp;
-    EdgeLocator::EdgeLocatorFactory elf;
-
-    tmp = elf.getEdgeLocator(method, src, threshold, order);
+    
     std::size_t found = fileName.find(".");
     
     if(save){
         tmp->saveEdges("jsonData/" + fileName.substr(0, found) + ".json");
-    }    
+    }
 
-    int IMAGE_WIDTH = src.cols;
-    int IMAGE_HEIGHT = src.rows;
+    const int IMAGE_WIDTH = src.cols;
+    const int IMAGE_HEIGHT = src.rows;
 
     const int MAX_WINDOW_WIDTH = 800;
     const int MAX_WINDOW_HEIGHT = 600;
@@ -134,7 +186,6 @@ int main(int argc, char** argv)
 
     cv::namedWindow(window_name, cv::WINDOW_AUTOSIZE);
 
-    bool view_norm = false;
     bool loop = true;
     while (loop)
     {
@@ -165,45 +216,6 @@ int main(int argc, char** argv)
             loop = false;
             delete(tmp);
 
-            break;
-
-        case 116: // t
-        {            
-            int radius_in = 20;
-            int radius_out = 25;
-
-            float aux_tam = radius_out * 3;
-            cv::Size tam(aux_tam, aux_tam);
-
-            cv::Point2f center(aux_tam/2.f, aux_tam/2.f);
-
-            EdgeLocator::ImageTest("images/imgTest.jpg", tam, (float)radius_in, (float)radius_out, center, cv::Vec3f(0, 50, 255), cv::Vec3f(255, 255, 255), 20);
-            src = cv::imread("images/imgTest.jpg");
-
-            IMAGE_WIDTH = src.cols;
-            IMAGE_HEIGHT = src.rows;
-
-            delete(tmp);
-
-            tmp = elf.getEdgeLocator(method, src, threshold, order);
-
-            std::stringstream ss;
-            ss << "accuracyResults/AccuracyResults-" << radius_in << "_" << radius_out << "-" << elf.method << ".txt";
-            
-            string fileResults;
-            ss >> fileResults;
-
-            tmp->generateAccuracyResults(tam, radius_in, radius_out, center, fileResults);
-
-            zoom = 2;
-            view_norm = true;
-
-            cout << " ** Zoom x " << zoom << endl;
-
-            x = 0;
-            y = 0;
-
-        }            
             break;
 
         case 117: // u

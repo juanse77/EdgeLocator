@@ -408,8 +408,6 @@ namespace EdgeLocator {
 				float i0 = std::min(A[i], B[i]);
 				float i1 = std::max(A[i], B[i]);
 
-				//std::cout << "Curvatura Vertical: " << curv << std::endl;
-
 				Edge auxEdge(pos, sub_x, sub_y, nx, ny, curv, i0, i1);
 				subpixelList.push_back(auxEdge);
 

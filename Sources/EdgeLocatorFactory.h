@@ -35,6 +35,10 @@ namespace EdgeLocator {
 				case 3:
 					method = "BasicEdgeLocator";
 					return new BasicEdgeLocator(src, threshold, order);
+				
+				default:
+					std::cout << "Se ha producido un error inesperado" << std::endl;
+					exit(-1);
 			}
 		}
 	};

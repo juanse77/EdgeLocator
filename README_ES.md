@@ -42,15 +42,26 @@ La interfaz de la aplicación es la consola y usa la ventana nativa de OpenCV. P
 
 El comando admite una serie de parámetros que alteran su funcionamiento. La formato del comando es:
 
-*EdgeLocator.exe -f fileName [-t (0,255)] [-o (1,2)] [-m (0,3)] [-s]*
+*EdgeLocator.exe -f (fileName | \"test\" [-e (10-60) -i (8-58)]) [-o (1-2)] [-t (10-255)] [-m (0-3)] [-n] [-s]*
 
 Un ejemplo podría ser:
 
 *EdgeLocator.exe -f angio2.png -t 20*
 
-Donde la opción -f corresponde al fichero de entrada que debe existir en la carpeta images. La opción -t corresponde al umbral del gradiente. La opción -o al orden de ajuste: 1 para ajustar a rectas, y 2 para ajustar a parábolas. La opción -m permite seleccionar la versión del método a usar: 0 ventanas flotantes con suavizado; 1 ventanas flotantes sin suavizado; 2 ventanas estáticas con suavizado; y 3 ventanas estáticas sin suavizado. Por último, la opción -s permite volcar todos los parámetros de bordes calculados en el método a un fichero json. El fichero se almacenará en la carpeta jsonData y su nombre será el mismo que el de la imagen de entrada pero su extensión será ahora .json.
+Otro ejemplo para la imagen de test sería:
 
-El programa en ejecución permite la interación con una serie de controles de teclado. Las teclas de dirección sirven para moverse por la imagen, mientras que la tecla (u) aumenta el zoom, la tecla (d) reduce el zoom, la tecla (t) genera y calcula los bordes de la imagen de test, y la tecla (q) aborta el programa.
+*EdgeLocator.exe -f test -e 11 -i 8 -t 10 -n*
+
+Donde la opción -f puede ser el nombre del fichero de entrada que debe existir en la carpeta images, o a la palabra "test" que activa la imagen de prueba y que admite las opciones -e para fijar el radio exterior del anillo, y -i para fijar el radio interior del anillo. Las opciones -e y -i no tienen ningún efecto cuando se procesa una imagen real. La opción -t corresponde al umbral del gradiente. La opción -o al orden de ajuste: 1 para ajustar a rectas, y 2 para ajustar a parábolas. La opción -m permite seleccionar la versión del método a usar: 0 ventanas flotantes con suavizado; 1 ventanas flotantes sin suavizado; 2 ventanas estáticas con suavizado; y 3 ventanas estáticas sin suavizado. La opción -n activa la visualización de los vectores normales. Por último, la opción -s permite volcar todos los parámetros de bordes calculados en el método a un fichero json. El fichero se almacenará en la carpeta jsonData y su nombre será el mismo que el de la imagen de entrada pero su extensión será ahora .json.
+
+Los valores por defecto para los parámetros opcionales son:
+- m: 0
+- t: 20
+- o: 2
+- i: 20
+- e: 25
+
+El programa en ejecución permite la interación con una serie de controles de teclado. Las teclas de dirección sirven para moverse por la imagen, mientras que la tecla (u) aumenta el zoom, la tecla (d) reduce el zoom, y la tecla (q) aborta el programa.
 
 Esta implantación en C++ del método se ha concebido con la intención de que sea una herramienta que facilite la implantación en cualquier otro lenguaje, ya sea Java, Python, o alguna tecnología .Net. Esperamos que les haya gustado el método y les animamos a que se descarguen el código fuente y experimenten con él.
 
