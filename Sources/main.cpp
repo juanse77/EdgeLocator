@@ -36,11 +36,11 @@ int main(int argc, char** argv)
     int radius_out = 25;
     bool view_norm = false;
 
-    string command = "Command error:\nCorrect format:\n\t" + string(argv[0]) + " -f (fileName | \"test\" [-e (10-60) -i (8-58)]) [-o (1-2)] [-t (10-255)] [-m (0-3)] [-n] [-s]\n"
-        "Default values:\n\t-m (0)\n\t-o (2)\n\t-n (0)\n\t-i (20)\n\t-e (25)\n";
+    string command = "\nCommand error:\n\n\tCorrect format:\n\n\t\t" + string(argv[0]) + " -f (fileName | \"test\" [-e (10-60) -i (8-58)]) [-o (1-2)] [-t (10-255)] [-m (0-3)] [-n] [-s]\n"
+        "\n\tDefault values:\n\n\t\t-m (0)\n\t\t-o (2)\n\t\t-t (20)\n\t\t-i (20)\n\t\t-e (25)";
 
     int c;
-    while ((c = getopt(argc, argv, "o:t:f:m:n:i:e:s")) != -1) {
+    while ((c = getopt(argc, argv, "o:t:f:m:i:e:ns")) != -1) {
         
         switch (c) {
             case '?':
@@ -101,23 +101,10 @@ int main(int argc, char** argv)
 
     }
 
-    cout << "\n" + fileName + "\n" << endl;
-
     if (fileName.compare("") == 0) {
         cout << command << endl;
         return -2;
     }
-
-    /// General instructions
-    cout << "Edge Locator:" << endl;
-    cout << " ------------------" << endl;
-    cout << " * [u] -> Zoom in" << endl;
-    cout << " * [d] -> Zoom out" << endl;
-    cout << " * [UP] -> Move up" << endl;
-    cout << " * [DOWN] -> Move down" << endl;
-    cout << " * [LEFT] -> Move left" << endl;
-    cout << " * [RIGHT] -> Move right" << endl;
-    cout << " * [q] -> Close program" << endl;
 
     cv::Mat src;
     const char* window_name = "Edge Locator";
@@ -127,11 +114,11 @@ int main(int argc, char** argv)
 
     if (fileName.compare("test") == 0) {
 
-        if (radius_out < 10 || radius_out > 50) {
+        if (radius_out < 10 || radius_out > 60) {
             cout << command << endl;
             return -3;
         }else if(radius_in < 8 || radius_in > radius_out - 2){
-            cout << "Minimun distance betwen radiuses is two" << endl;
+            cout << "\nMinimun distance betwen radiuses is two." << endl;
             cout << command << endl;
             return -3;
         }
@@ -166,6 +153,16 @@ int main(int argc, char** argv)
         return -1;
     }
 
+    // General instructions
+    cout << "Edge Locator:" << endl;
+    cout << " ------------------" << endl;
+    cout << " * [u] -> Zoom in" << endl;
+    cout << " * [d] -> Zoom out" << endl;
+    cout << " * [UP] -> Move up" << endl;
+    cout << " * [DOWN] -> Move down" << endl;
+    cout << " * [LEFT] -> Move left" << endl;
+    cout << " * [RIGHT] -> Move right" << endl;
+    cout << " * [q] -> Close program" << endl;
     
     std::size_t found = fileName.find(".");
     
