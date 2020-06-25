@@ -1,4 +1,4 @@
-<div dir="rtl">[es](./README_ES.md)|en</div>
+<div dir="rtl">(./README_ES.md)[es]|en</div>
 <hr />
 <h1>Accurate subpixel edge location:</h1>
 
