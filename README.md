@@ -1,3 +1,5 @@
+<span style="text-align: right">[es](./README_ES.md)|en</span>
+<hr />
 <h1>Accurate subpixel edge location:</h1>
 
 This project is a C++ implementation of the method developed in the article ["Accurate subpixel edge location based on partial area effect"](https://www.sciencedirect.com/science/article/abs/pii/S0262885612001850) written by Agustín Trujillo et al. His implementation in Matlab can be downloaded from [MathWroks](https://es.mathworks.com/matlabcentral/fileexchange/48908-accurate-subpixel-edge-location). The slides showing how this method works can be downloaded from MathWorks or from this repository.
