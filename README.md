@@ -1,4 +1,4 @@
-->[es](./README_ES.md)|en</span>->
+-> [es](./README_ES.md)|en</span> ->
 <hr />
 <h1>Accurate subpixel edge location:</h1>
 
