@@ -1,4 +1,5 @@
-<h2>Theoretical development of the method:</h2>
+[Version en español](./Method_ES.md)
+<hr /><h2>Theoretical development of the method:</h2>
 
 We can divide the explanation of the method into three levels of complexity: a first basic approach on which the technique is based, which will subsequently be perfected, in which fixed-size windows are used; a second approach where fixed-size windows are still used, but this time a Gaussian filter is applied to the image first; and a third approach that uses floating windows of variable size for detection of very close edges.
 
