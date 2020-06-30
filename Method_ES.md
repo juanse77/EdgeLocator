@@ -165,9 +165,9 @@ Al ser las ventanas distintas también se verá afectada la estimación de los t
 
 Para el caso de bordes verticales se puede deducir fácilmente de lo explicado hasta ahora, por lo que lo dejamos como ejercicio para el lector.
 
-<img src="https://render.githubusercontent.com/render/math?math=\displaystyle A = {1 \over 3} (F_{i-4,j} + F_{i-4,j+m} + F_{i-3,j+m})">
+<img src="https://render.githubusercontent.com/render/math?math=\displaystyle A = {1 \over 3} (F_{i-4,j} \+ F_{i-4,j+m} \+ F_{i-3,j+m})">
 
-<img src="https://render.githubusercontent.com/render/math?math=\displaystyle B = {1 \over 3} (F_{i+4,j} + F_{i+4,j-m} + F_{i+3,j-m})">
+<img src="https://render.githubusercontent.com/render/math?math=\displaystyle B = {1 \over 3} (F_{i+4,j} \+ F_{i+4,j-m} \+ F_{i+3,j-m})">
 
 <hr />
 <h3>Detección de bordes próximos mediante ventanas flotantes</h3>
