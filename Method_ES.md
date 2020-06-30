@@ -7,7 +7,7 @@
 <hr />
 <h3>Primera aproximación:</h3>
 
-En esta primera paroximación se utilizarán ventanas de tamaño 3x5. Antes de describir cómo funcionaría el método con este tipo de ventana podríamos establecer la fórmula principal de la que derivará por completo el método.
+En esta primera aproximación se utilizarán ventanas de tamaño 3x5. Antes de describir cómo funcionaría el método con este tipo de ventana podríamos establecer la fórmula principal de la que derivará por completo el método.
 
 Si suponemos que un píxel resulta atravesado por un borde, podemos estimar la tonalidad final de los lados a partir de la tonalidad del píxel. Si llamamos F al tono de cada píxel, y A y B a los tonos de los lados opuestos por el borde, podemos establecer matemáticamente la relación que existe entre ellos:
 
@@ -21,7 +21,7 @@ Gracias a esta sencilla fórmula podemos construir el método con ventanas está
 	<img src="./Method_Images/Ventana_3x5.JPG" alt="Ventana 3x5" />
 </div>
 
-Siguiendo el esquema de la primera fórmula, podemos establecer las fórmulas de las tonalidades acumuladas de cada franja vertical en realción a los dos tonos del borde y al área que abarca la tonalidad A:
+Siguiendo el esquema de la primera fórmula, podemos establecer las fórmulas de las tonalidades acumuladas de cada franja vertical en relación a los dos tonos del borde y al área que abarca la tonalidad A:
 
 ![\displaystyle S_L = \sum_{n = {j-2}}^{j+2} F_{i-1,n} = 5B + {{A-B} \over {h^2}} L   ](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20S_L%20%3D%20%5Csum_%7Bn%20%3D%20%7Bj-2%7D%7D%5E%7Bj%2B2%7D%20F_%7Bi-1%2Cn%7D%20%3D%205B%20%2B%20%7B%7BA-B%7D%20%5Cover%20%7Bh%5E2%7D%7D%20L%20%20%20)
 
@@ -60,7 +60,7 @@ Con los datos de A, B y de la recta podemos expresar la normal y establecer su s
 
 <img src="./Method_Images/Ventana_3x5_Cuadrática.JPG" alt="Ventana 3x5 Cuadrática" align="right" width="400" height="400" />
 
-Como en el caso de la aproximaxión mediante una recta, la aproximación mediante una parábola sigue la misma mecánica, solo que esta vez hay una variable más. Al ser una parábola la curva que atraviesa la ventana, las integrales de cada franja se calcularán ajustandose a la curva ![y = a + bx + cx^2](https://render.githubusercontent.com/render/math?math=y%20%3D%20a%20%2B%20bx%20%2B%20cx%5E2), y sumando su centro al término independiente, obtenemos:
+Como en el caso de la aproximación mediante una recta, la aproximación mediante una parábola sigue la misma mecánica, solo que esta vez hay una variable más. Al ser una parábola la curva que atraviesa la ventana, las integrales de cada franja se calcularán ajustándose a la curva ![y = a + bx + cx^2](https://render.githubusercontent.com/render/math?math=y%20%3D%20a%20%2B%20bx%20%2B%20cx%5E2), y sumando su centro al término independiente, obtenemos:
 
 ![\displaystyle L = \int_{-3h/2}^{-h/2} (a + bx + cx^2 + {5 \over 2} h)\, dx = ah - bh^2 + {13 \over 12} ch^3 + {5 \over 2} h^2](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20L%20%3D%20%5Cint_%7B-3h%2F2%7D%5E%7B-h%2F2%7D%20(a%20%2B%20bx%20%2B%20cx%5E2%20%2B%20%7B5%20%5Cover%202%7D%20h)%5C%2C%20dx%20%3D%20ah%20-%20bh%5E2%20%2B%20%7B13%20%5Cover%2012%7D%20ch%5E3%20%2B%20%7B5%20%5Cover%202%7D%20h%5E2)
 
@@ -83,7 +83,7 @@ De lo cual podemos estimar la curvatura en x = 0 como:
 <hr />
 <h3>Generalización a cualquier valor de pendiente:</h3>
 
-El método tal y como lo hemos explicado hasta ahora se basa en la suposición de que la pendiente de la curva se encuantre entre 0 y 1. Por lo que debemos generalizar el método para que funcione en todas las condiciones posibles. Para generalizar el método podemos distinguir dos situaciones límite. Primero podemos suponer los casos en los que las pendientes del borde estén entre -1 y 1, por lo que la curva resultante se puede detectar usando una ventana vertical de 3x5. El segundo caso, en el que las pendientes de los bordes sean superiores a 1 en valor absoluto, podemos utilizar el mismo método pero usando esta vez ventanas horizontales de 5x3.
+El método tal y como lo hemos explicado hasta ahora se basa en la suposición de que la pendiente de la curva se encuentre entre 0 y 1. Por lo que debemos generalizar el método para que funcione en todas las condiciones posibles. Para generalizar el método podemos distinguir dos situaciones límite. Primero podemos suponer los casos en los que las pendientes del borde estén entre -1 y 1, por lo que la curva resultante se puede detectar usando una ventana vertical de 3x5. El segundo caso, en el que las pendientes de los bordes sean superiores a 1 en valor absoluto, podemos utilizar el mismo método, pero usando esta vez ventanas horizontales de 5x3.
 
 Dentro de estos dos casos, podemos diferenciar, a su vez, dos casos en los que las pendientes se encuentren entre 0 y 1 o entre -1 y 0. La diferencia entre estos dos casos se presenta cuando se intenta calcular los tonos de las esquinas de las ventanas. Para solucionar esto, simplemente hacemos uso de una variable (m) que sume o reste la unidad de modo que se permute los extremos hacia la derecha o hacia la izquierda.
 
@@ -110,9 +110,9 @@ En el caso de que los bordes sean netamente verticales, es decir, en aquellos ca
 ![\displaystyle B = {1 \over 3} (F_{i-1,j+m} + F_{i-2,j+m} + F_{i-2,j})](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20B%20%3D%20%7B1%20%5Cover%203%7D%20(F_%7Bi-1%2Cj%2Bm%7D%20%2B%20F_%7Bi-2%2Cj%2Bm%7D%20%2B%20F_%7Bi-2%2Cj%7D))
 
 <hr />
-<h3>Determinación de los píxeles borde:</h3>
+<h3>Determinación de los píxeles bordes:</h3>
 
-Para que este método funcione es necesario determinar qué píxeles se marcarán como píxeles borde. Como explicamos en la introducción, tomamos como píxeles candidatos a todos los que el módulo de su gradiente supere un cierto umbral. Además, la anterior condición no es suficiente ya que para que el píxel sea considerado como borde debe ser también un píxel con un valor máximo entre los de su vecindad. Para determinar si un píxel tiene un valor máximo en su vencindad, debemos considerar si el píxel constituye un borde vertical u horizontal. Si el píxel es vertical su derivada parcial ![f_x](https://render.githubusercontent.com/render/math?math=f_x) será mayor a ![f_y](https://render.githubusercontent.com/render/math?math=f_y), en el caso horizontal será al contrario. Por lo tanto será condición suficiente que se cumplan las siguientes desigualdades:
+Para que este método funcione es necesario determinar qué píxeles se marcarán como píxeles bordes. Como explicamos en la introducción, tomamos como píxeles candidatos a todos los que el módulo de su gradiente supere un cierto umbral. Además, la anterior condición no es suficiente ya que para que el píxel sea considerado como borde debe ser también un píxel con un valor máximo entre los de su vecindad. Para determinar si un píxel tiene un valor máximo en su vecindad, debemos considerar si el píxel constituye un borde vertical u horizontal. Si el píxel es vertical su derivada parcial ![f_x](https://render.githubusercontent.com/render/math?math=f_x) será mayor a ![f_y](https://render.githubusercontent.com/render/math?math=f_y), en el caso horizontal será al contrario. Por lo tanto será condición suficiente que se cumplan las siguientes desigualdades:
 
 En el caso vertical:
 
@@ -125,7 +125,7 @@ Y en el caso horizontal:
 <hr />
 <h3>Segunda aproximación (Imágenes con ruido):</h3>
 
-En los casos en que la imagen que se quiera procesar presente ruido - generalmente toda imagen real lo presenta - tenemos la posibilidad de suavizar los bordes aplicándole primero un filtro gaussiano. El método en este caso no necesita ninguna modificación conceptual, no obstante sí que produce una alteración en la formulación del sistema de ecuaciones y por lo tanto también en el resultado del mismo.
+En los casos en que la imagen que se quiera procesar presente ruido - generalmente toda imagen real lo presenta - tenemos la posibilidad de suavizar los bordes aplicándole primero un filtro gaussiano. El método en este caso no necesita ninguna modificación conceptual, no obstante, sí que produce una alteración en la formulación del sistema de ecuaciones y por lo tanto también en el resultado del mismo.
 
 La matriz gaussiana que utilizaremos será de 3x3 y estará conformada del siguiente modo:
 
@@ -164,6 +164,10 @@ Al ser las ventanas distintas también se verá afectada la estimación de los t
 ![\displaystyle B = {1 \over 3} (F_{i+m,j-3} + F_{i+m,j-4} + F_{i,j-4})](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle%20B%20%3D%20%7B1%20%5Cover%203%7D%20(F_%7Bi%2Bm%2Cj-3%7D%20%2B%20F_%7Bi%2Bm%2Cj-4%7D%20%2B%20F_%7Bi%2Cj-4%7D))
 
 Para el caso de bordes verticales se puede deducir fácilmente de lo explicado hasta ahora, por lo que lo dejamos como ejercicio para el lector.
+
+<img src="https://render.githubusercontent.com/render/math?math=\displaystyle A = {1 \over 3} (F_{i-4,j} + F_{i-4,j+m} + F_{i-3,j+m})">
+
+<img src="https://render.githubusercontent.com/render/math?math=\displaystyle B = {1 \over 3} (F_{i+4,j} + F_{i+4,j-m} + F_{i+3,j-m})">
 
 <hr />
 <h3>Detección de bordes próximos mediante ventanas flotantes</h3>
