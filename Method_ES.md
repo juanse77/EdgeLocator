@@ -166,7 +166,7 @@ Al ser las ventanas distintas también se verá afectada la estimación de los t
 Para el caso de bordes verticales se puede deducir fácilmente de lo explicado hasta ahora, por lo que lo dejamos como ejercicio para el lector.
 
 <hr />
-<h3>Detección de bordes próximos mediante ventanas flotantes</h3>
+<h3>Detección de bordes próximos mediante ventanas flotantes:</h3>
 
 En los casos en los que la imagen contenga bordes muy cercanos entre sí, de modo que más de un borde atraviese alguna ventana, se hace necesario adaptar el método, para lo cual se ideó que las ventanas pudieran modificar su tamaño dinámicamente.
 
