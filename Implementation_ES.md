@@ -17,11 +17,11 @@ Una vez que se han realizado los cálculos de los bordes y si se a activado la o
 Los objetos Edge son la unidad mínima de información del resultado de la ejecución. La estructura del objeto *Edge* es la siguiente:
 
 - position: Almacena la posición del píxel borde dentro de la matriz de bytes de la imagen.
-- x: Representa la posición horizontal de izquierda a derecha en coordenadas cartesianas del píxel borde.
-- y: Representa la posición vertical de arriba a abajo en coordenadas cartesianas del píxel borde.
+- x: Representa la posición horizontal de izquierda a derecha en coordenadas cartesianas del borde.
+- y: Representa la posición vertical de arriba a abajo en coordenadas cartesianas del borde.
 - nx: Representa la componente x del vector normal al borde normalizado.
 - ny: Representa la componente y del vector normal al borde normalizado.
-- curv: Almacena la curvatura del píxel borde.
+- curv: Almacena la curvatura del borde.
 - i0: Almacena la intensidad de color menor del borde.
 - i1: Almacena la intensidad de color mayor del borde.
 
