@@ -12,7 +12,7 @@ El programa, mediante la opción -m, permite la selección del método a usar en
 
 El proceso de detección de los bordes sigue en todos los casos un mismo esquema, esto es: primero se pasa la imagen a escala de grises, el segundo paso sería el suavizado de la imagen, siempre que se haya elegido esa opción. Con la imagen ya monocroma se pasaría a calcular las derivadas parciales y con ellas el gradiente, posteriormente se llama al método de detección de bordes horizontales, seguidamente al método de detección de bordes verticales, y por último se llama al método para visualizar los bordes calculados en el proceso. En los pasos de detección de bordes se irá guardando los resultados en una estructura dinámica *Vector* que almacena objetos *Edge*.
 
-Una vez que se han realizado los cálculos de los bordes y si se a activado la opción de guardar los resultados generados, se creará un fichero JSON en la carpeta jsonData. El fichero tendrá el mismo nombre el que fichero de entrada pero con una extensión “.jon”. Los campos de cada registro del fichero JSON serán los mismos que los de los atributos de la clase *Edge*.
+Una vez que se han realizado los cálculos de los bordes y si se a activado la opción de guardar los resultados generados, se creará un fichero JSON en la carpeta jsonData. El fichero tendrá el mismo nombre el que fichero de entrada pero con una extensión “.json”. Los campos de cada registro del fichero JSON serán los mismos que los de los atributos de la clase *Edge*.
 
 Los objetos Edge son la unidad mínima de información del resultado de la ejecución. La estructura del objeto *Edge* es la siguiente:
 
