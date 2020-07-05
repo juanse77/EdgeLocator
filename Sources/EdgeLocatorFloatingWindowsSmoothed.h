@@ -80,7 +80,7 @@ namespace EdgeLocator {
 			float* c = new float[edges.size()];
 
 			// compute all horizontal edges
-			int m, l1, l2, r1, r2, minl1, maxl2, minr1, maxr2;
+			int l1, l2, r1, r2, minl1, maxl2, minr1, maxr2;
 			int k = 0;
 			for (int edge : edges) {
 
@@ -89,26 +89,24 @@ namespace EdgeLocator {
 				int m2 = 1;
 
 				if (FxData[edge] * FyData[edge] >= 0) {
-					m = 1;
 					l1 = 0;
 					r2 = 0;
-					minl1 = -3;
-					maxr2 = 3;
+					minl1 = -2;
+					maxr2 = 2;
 					l2 = 1;
 					r1 = -1;
 					maxl2 = 4;
 					minr1 = -4;
 				}
 				else {
-					m = -1;
 					l1 = -1;
 					r2 = 1;
 					minl1 = -4;
 					maxr2 = 4;
 					l2 = 0;
 					r1 = 0;
-					maxl2 = 3;
-					minr1 = -3;
+					maxl2 = 2;
+					minr1 = -2;
 				}
 
 				if (absFxData[edge] < 1) {
@@ -124,10 +122,10 @@ namespace EdgeLocator {
 				while (l2 < maxl2 && absFyData[edge - 1 + l2 * cols] >= absFyData[edge - 1 + (l2 + 1) * cols]) {
 					l2++;
 				}
-				while (m1 > -4 && absFyData[edge + m1 * cols] >= absFyData[edge + (m1 - 1) * cols]) {
+				while (m1 > -3 && absFyData[edge + m1 * cols] >= absFyData[edge + (m1 - 1) * cols]) {
 					m1--;
 				}
-				while (m2 < 4 && absFyData[edge + m2 * cols] >= absFyData[edge + (m2 + 1) * cols]) {
+				while (m2 < 3 && absFyData[edge + m2 * cols] >= absFyData[edge + (m2 + 1) * cols]) {
 					m2++;
 				}
 				while (r1 > minr1&& absFyData[edge + 1 + r1 * cols] >= absFyData[edge + 1 + (r1 - 1) * cols]) {
@@ -280,7 +278,7 @@ namespace EdgeLocator {
 			float* c = new float[edges.size()];
 
 			// compute all vertical edges
-			int m, l1, l2, r1, r2, minl1, maxl2, minr1, maxr2;
+			int l1, l2, r1, r2, minl1, maxl2, minr1, maxr2;
 			int k = 0;
 			for (int edge : edges) {
 
@@ -289,26 +287,24 @@ namespace EdgeLocator {
 				int m2 = 1;
 
 				if (FxData[edge] * FyData[edge] >= 0) {
-					m = 1;
 					l1 = 0;
 					r2 = 0;
-					minl1 = -3;
-					maxr2 = 3;
+					minl1 = -2;
+					maxr2 = 2;
 					l2 = 1;
 					r1 = -1;
 					maxl2 = 4;
 					minr1 = -4;
 				}
 				else {
-					m = -1;
 					l1 = -1;
 					r2 = 1;
 					minl1 = -4;
 					maxr2 = 4;
 					l2 = 0;
 					r1 = 0;
-					maxl2 = 3;
-					minr1 = -3;
+					maxl2 = 2;
+					minr1 = -2;
 				}
 
 				if (absFyData[edge] < 1) {
@@ -324,10 +320,10 @@ namespace EdgeLocator {
 				while (l2 < maxl2 && absFxData[edge - cols + l2] >= absFxData[edge - cols + l2 + 1]) {
 					l2++;
 				}
-				while (m1 > -4 && absFxData[edge + m1] >= absFxData[edge + m1 - 1]) {
+				while (m1 > -3 && absFxData[edge + m1] >= absFxData[edge + m1 - 1]) {
 					m1--;
 				}
-				while (m2 < 4 && absFxData[edge + m2] >= absFxData[edge + m2 + 1]) {
+				while (m2 < 3 && absFxData[edge + m2] >= absFxData[edge + m2 + 1]) {
 					m2++;
 				}
 				while (r1 > minr1&& absFxData[edge + cols + r1] >= absFxData[edge + cols + r1 - 1]) {

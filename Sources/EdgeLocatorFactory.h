@@ -37,7 +37,7 @@ namespace EdgeLocator {
 					return new BasicEdgeLocator(src, threshold, order);
 				
 				default:
-					std::cout << "Se ha producido un error inesperado" << std::endl;
+					std::cout << "Unexpected error" << std::endl;
 					exit(-1);
 			}
 		}
