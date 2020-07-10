@@ -269,7 +269,7 @@ int main(int argc, char** argv)
     const int IMAGE_HEIGHT = src.rows;
 
     const int MAX_WINDOW_WIDTH = 800;
-    const int MAX_WINDOW_HEIGHT = 600;
+    const int MAX_WINDOW_HEIGHT = 608;
 
     int zoom = 2;
 
@@ -283,17 +283,12 @@ int main(int argc, char** argv)
     {
         int width = IMAGE_WIDTH * zoom, height = IMAGE_HEIGHT * zoom;
 
-        bool widthOverSize = false;
-        bool heightOverSize = false;
-
         if (IMAGE_WIDTH * zoom > MAX_WINDOW_WIDTH) {
             width = MAX_WINDOW_WIDTH;
-            widthOverSize = true;
         }
 
         if (IMAGE_HEIGHT * zoom > MAX_WINDOW_HEIGHT) {
             height = MAX_WINDOW_HEIGHT;
-            heightOverSize = true;
         }
 
         cv::Mat im_result = tmp->getImageWithEdges(zoom, x, y, width, height, view_norm);
@@ -392,7 +387,7 @@ int moveImage(int x, int direction, int bound, int max_bound, int zoom) {
                 window_size = max_bound;
             }
 
-            if (x + increment + window_size > bound* zoom) {
+            if (x + increment + window_size > bound * zoom) {
                 return bound * zoom - window_size;
             }
             else {
