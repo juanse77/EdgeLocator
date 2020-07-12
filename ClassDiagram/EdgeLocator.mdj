@@ -551,7 +551,7 @@
 											"top": 287,
 											"width": 370.35400390625,
 											"height": 13,
-											"text": "+detectHorizontalEdges(image, threshold, order): Vector<Edge>",
+											"text": "-detectHorizontalEdges(image, threshold, order): Vector<Edge>",
 											"horizontalAlignment": 0
 										},
 										{
@@ -568,7 +568,7 @@
 											"top": 302,
 											"width": 370.35400390625,
 											"height": 13,
-											"text": "+detectVerticalEdges(image, threshold, order): Vector<Edge>",
+											"text": "-detectVerticalEdges(image, threshold, order): Vector<Edge>",
 											"horizontalAlignment": 0
 										}
 									],
@@ -780,7 +780,7 @@
 											"top": 687,
 											"width": 370.35400390625,
 											"height": 13,
-											"text": "+detectHorizontalEdges(image, threshold, order): Vector<Edge>",
+											"text": "-detectHorizontalEdges(image, threshold, order): Vector<Edge>",
 											"horizontalAlignment": 0
 										},
 										{
@@ -797,7 +797,7 @@
 											"top": 702,
 											"width": 370.35400390625,
 											"height": 13,
-											"text": "+detectVerticalEdges(image, threshold, order): Vector<Edge>",
+											"text": "-detectVerticalEdges(image, threshold, order): Vector<Edge>",
 											"horizontalAlignment": 0
 										}
 									],
@@ -1009,7 +1009,7 @@
 											"top": 391,
 											"width": 381.900390625,
 											"height": 13,
-											"text": "+detectHorizontalEdges(image, threshold, order): Vector<Edge>",
+											"text": "-detectHorizontalEdges(image, threshold, order): Vector<Edge>",
 											"horizontalAlignment": 0
 										},
 										{
@@ -1026,7 +1026,7 @@
 											"top": 406,
 											"width": 381.900390625,
 											"height": 13,
-											"text": "+detectVerticalEdges(image, threshold, order): Vector<Edge>",
+											"text": "-detectVerticalEdges(image, threshold, order): Vector<Edge>",
 											"horizontalAlignment": 0
 										}
 									],
@@ -2968,7 +2968,7 @@
 											"top": 799,
 											"width": 370.35400390625,
 											"height": 13,
-											"text": "+detectHorizontalEdges(image, threshold, order): Vector<Edge>",
+											"text": "-detectHorizontalEdges(image, threshold, order): Vector<Edge>",
 											"horizontalAlignment": 0
 										},
 										{
@@ -2985,7 +2985,7 @@
 											"top": 814,
 											"width": 370.35400390625,
 											"height": 13,
-											"text": "+detectVerticalEdges(image, threshold, order): Vector<Edge>",
+											"text": "-detectVerticalEdges(image, threshold, order): Vector<Edge>",
 											"horizontalAlignment": 0
 										}
 									],
@@ -4899,6 +4899,7 @@
 								"$ref": "AAAAAAFylSZ0zNNHh/Q="
 							},
 							"name": "detectHorizontalEdges",
+							"visibility": "private",
 							"parameters": [
 								{
 									"_type": "UMLParameter",
@@ -4945,6 +4946,7 @@
 								"$ref": "AAAAAAFylSZ0zNNHh/Q="
 							},
 							"name": "detectVerticalEdges",
+							"visibility": "private",
 							"parameters": [
 								{
 									"_type": "UMLParameter",
@@ -5066,6 +5068,7 @@
 								"$ref": "AAAAAAFylSZ43dNw5u4="
 							},
 							"name": "detectHorizontalEdges",
+							"visibility": "private",
 							"parameters": [
 								{
 									"_type": "UMLParameter",
@@ -5112,6 +5115,7 @@
 								"$ref": "AAAAAAFylSZ43dNw5u4="
 							},
 							"name": "detectVerticalEdges",
+							"visibility": "private",
 							"parameters": [
 								{
 									"_type": "UMLParameter",
@@ -5233,6 +5237,7 @@
 								"$ref": "AAAAAAFylSZ5pdOZzgI="
 							},
 							"name": "detectHorizontalEdges",
+							"visibility": "private",
 							"parameters": [
 								{
 									"_type": "UMLParameter",
@@ -5279,6 +5284,7 @@
 								"$ref": "AAAAAAFylSZ5pdOZzgI="
 							},
 							"name": "detectVerticalEdges",
+							"visibility": "private",
 							"parameters": [
 								{
 									"_type": "UMLParameter",
@@ -6308,6 +6314,7 @@
 								"$ref": "AAAAAAFyubq0Rb6QT90="
 							},
 							"name": "detectHorizontalEdges",
+							"visibility": "private",
 							"parameters": [
 								{
 									"_type": "UMLParameter",
@@ -6354,6 +6361,7 @@
 								"$ref": "AAAAAAFyubq0Rb6QT90="
 							},
 							"name": "detectVerticalEdges",
+							"visibility": "private",
 							"parameters": [
 								{
 									"_type": "UMLParameter",
