@@ -14,9 +14,10 @@
 namespace EdgeLocator {
 	static class EdgeLocatorFactory {
 	
-	public:
-
+	private:
 		std::string method;
+
+	public:
 
 		AbstractEdgeLocator* getEdgeLocator(int type, cv::Mat &src, float threshold = 20, int order = 2) {
 			switch (type) {
@@ -40,6 +41,10 @@ namespace EdgeLocator {
 					std::cout << "Unexpected error" << std::endl;
 					exit(-1);
 			}
+		}
+
+		std::string getMethodName() {
+			return method;
 		}
 	};
 }

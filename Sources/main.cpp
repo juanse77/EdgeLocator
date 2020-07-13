@@ -229,7 +229,7 @@ int main(int argc, char** argv)
         tmp = elf.getEdgeLocator(method, src, threshold, order);
 
         std::stringstream ss;
-        ss << "accuracyResults/AccuracyResults-" << radius_in << "_" << radius_out << "-" << elf.method << ".txt";
+        ss << "accuracyResults/AccuracyResults-" << radius_in << "_" << radius_out << "-" << elf.getMethodName() << ".txt";
 
         string fileResults;
         ss >> fileResults;
