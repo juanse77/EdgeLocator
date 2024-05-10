@@ -87,12 +87,12 @@ The method as we have explained so far is based on the assumption that the slope
 Within these two cases, we can differentiate, in turn, two cases in which the slopes are between 0 and 1 or between -1 and 0. The difference between these two cases apears when it attempts to calculating the hues of the corners of the windows. To solve this, we simply make use of a variable (m) that adds or subtracts the unit so that the ends are permuted to the right or to the left.
 
 $$
-m = \left\{
+m = \\left\\{
 \begin{array}{rcl}
     1 & \text{if} & f_x(i,j)f_y(i,j) > 0\\
     -1 & \text{if} & f_x(i,j)f_y(i,j) \leq 0
 \end{array}
-\right.
+\\right.
 $$
 
 So now the calculations of the limit hues will be:
@@ -131,25 +131,25 @@ For this method to work it is necessary to determine which pixels will be marked
 In the vertical case:
 
 $$
-\left\{
+\\left\\{
 \begin{array}{l}
     |f_x(i,j)| > |f_y(i,j)|\\
     \quad\\
     |f_x(i-1,j)| \leq |f_x(i,j)| \geq |f_x(i+1,j)|
 \end{array}
-\right.
+\\right.
 $$
 
 And in the horizontal case:
 
 $$
-\left\{
+\\left\\{
 \begin{array}{l}
     |f_y(i,j)| \gt |f_x(i,j)| \\
     \quad\\
     |f_y(i,j-1)| \leq |f_y(i,j)| \geq |f_y(i,j+1)| \\
 \end{array}
-\right.
+\\right.
 $$
 
 <hr />
