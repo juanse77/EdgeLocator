@@ -89,12 +89,11 @@ Within these two cases, we can differentiate, in turn, two cases in which the sl
 $$
 m = \left\{
 \begin{array}{rcl}
-    1 & \text{si} & f_x(i,j)f_y(i,j) > 0\\
-    -1 & \text{si} & f_x(i,j)f_y(i,j) \leq 0
+    1 & \text{if} & f_x(i,j)f_y(i,j) > 0\\
+    -1 & \text{if} & f_x(i,j)f_y(i,j) \leq 0
 \end{array}
 \right.
 $$
-
 
 So now the calculations of the limit hues will be:
 
@@ -109,13 +108,13 @@ $$K = {{2cn} \over {(1+b^2)^{3/2}}}$$
 Being n:
 
 $$
-  n = \left\{
+  n = \\left\\{
   \begin{array}{rcl}
-    1 & \text{si} & f_y(i,j) \gt 0\\
+    1 & \text{if} & f_y(i,j) \gt 0\\
    	&           &       \\
-    -1 & \text{si} & f_y(i,j) \leq 0\\
+    -1 & \text{if} & f_y(i,j) \leq 0\\
  	\end{array}
-  \right.
+  \\right.
 $$
 
 In the case that the edges are purely vertical, that is, in those cases in which the slope is greater in absolute value than 1, no change in the algorithm will be necessary, only it will now adjust to the expression $x = a + by + cy^2$, and the horizontal distance to the center will be this time at y = 0 equal to (a). The normal vector will not vary, and the expression for the corner calculations will be:
