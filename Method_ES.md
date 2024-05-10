@@ -88,12 +88,12 @@ El método tal y como lo hemos explicado hasta ahora se basa en la suposición d
 Dentro de estos dos casos, podemos diferenciar, a su vez, dos casos en los que las pendientes se encuentren entre 0 y 1 o entre -1 y 0. La diferencia entre estos dos casos se presenta cuando se intenta calcular los tonos de las esquinas de las ventanas. Para solucionar esto, simplemente hacemos uso de una variable (m) que sume o reste la unidad de modo que se permute los extremos hacia la derecha o hacia la izquierda.
 
 $$
-m = \left\{
+m = \\left\\{
 \begin{array}{rcl}
     1 & \text{si} & f_x(i,j)f_y(i,j) > 0\\
     -1 & \text{si} & f_x(i,j)f_y(i,j) \leq 0
 \end{array}
-\right.
+\\right.
 $$
 
 Por lo que ahora los cálculos de los tonos límite serán:
@@ -109,12 +109,12 @@ $$K = {{2cn} \over {(1+b^2)^{3/2}}}$$
 Siendo n:
 
 $$
-  n = \left\{
+  n = \\left\\{
   \begin{array}{rcl}
     1 & \text{si} & f_y(i,j) \gt 0\\
    	&           &       \\
     -1 & \text{si} & f_y(i,j) \leq 0\\
- 	\end{array}
+ 	\\end{array}
   \right.
 $$
 
@@ -132,25 +132,25 @@ Para que este método funcione es necesario determinar qué píxeles se marcará
 En el caso vertical:
 
 $$
-\left\{
+\\left\\{
 \begin{array}{l}
     |f_x(i,j)| > |f_y(i,j)|\\
     \quad\\
     |f_x(i-1,j)| \leq |f_x(i,j)| \geq |f_x(i+1,j)|
 \end{array}
-\right.
+\\right.
 $$
 
 Y en el caso horizontal:
 
 $$
-\left\{
+\\left\\{
 \begin{array}{l}
     |f_y(i,j)| \gt |f_x(i,j)| \\
     \quad\\
     |f_y(i,j-1)| \leq |f_y(i,j)| \geq |f_y(i,j+1)| \\
 \end{array}
-\right.
+\\right.
 $$
 
 <hr />
