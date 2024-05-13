@@ -31,11 +31,11 @@ $$S_R = \sum_{n = {j-2}}^{j+2} F_{i+1,n} = 5B + {{A-B} \over {h^2}} R$$
 
 Ahora podemos expresar el área de cada franja como la integral de la recta que atraviesa la franja. Como la recta presenta dos incógnitas (a) y (b) ya podemos plantear un sistema de ecuaciones con las tres anteriores ecuaciones y con las áreas de A expresadas como integrales:
 
-$$L = \int_{-3h/2}^{-h/2} (a + bx + {5 \over 2} h) dx = ah - bh^2 + {5 \over 2} h^2$$
+$$L = \int_{-3h/2}^{-h/2} (a + bx + {5 \over 2} h)\\, dx = ah - bh^2 + {5 \over 2} h^2$$
 
-$$M = \int_{-h/2}^{h/2} (a + bx + {5 \over 2} h) dx = ah + {5 \over 2} h^2$$
+$$M = \int_{-h/2}^{h/2} (a + bx + {5 \over 2} h)\\, dx = ah + {5 \over 2} h^2$$
 
-$$R = \int_{h/2}^{3h/2} (a + bx + {5 \over 2} h) dx = ah + bh^2 + {5 \over 2} h^2$$
+$$R = \int_{h/2}^{3h/2} (a + bx + {5 \over 2} h)\\, dx = ah + bh^2 + {5 \over 2} h^2$$
 
 Resolviendo el sistema de ecuaciones llegamos a las expresiones de (a) y (b) en función de los tonos A y B y de los valores conocidos de las sumas de los tonos de las tres franjas:
 
@@ -62,11 +62,11 @@ $$N = {{A-B} \over \sqrt{1+b^2}} [b, -1]$$
 
 Como en el caso de la aproximación mediante una recta, la aproximación mediante una parábola sigue la misma mecánica, solo que esta vez hay una variable más. Al ser una parábola la curva que atraviesa la ventana, las integrales de cada franja se calcularán ajustándose a la curva $y = a + bx + cx^2$, y sumando su centro al término independiente, obtenemos:
 
-$$L = \int_{-3h/2}^{-h/2} (a + bx + cx^2 + {5 \over 2} h)\, dx = ah - bh^2 + {13 \over 12} ch^3 + {5 \over 2} h^2$$
+$$L = \int_{-3h/2}^{-h/2} (a + bx + cx^2 + {5 \over 2} h)\\, dx = ah - bh^2 + {13 \over 12} ch^3 + {5 \over 2} h^2$$
 
-$$M = \int_{-h/2}^{h/2} (a + bx + cx^2 + {5 \over 2} h)\, dx = ah + {1 \over 12} ch^3 + {5 \over 2} h^2$$
+$$M = \int_{-h/2}^{h/2} (a + bx + cx^2 + {5 \over 2} h)\\, dx = ah + {1 \over 12} ch^3 + {5 \over 2} h^2$$
 
-$$R = \int_{h/2}^{3h/2} (a + bx + cx^2 + {5 \over 2} h)\, dx = ah + bh^2 + {13 \over 12} ch^3 + {5 \over 2} h^2$$
+$$R = \int_{h/2}^{3h/2} (a + bx + cx^2 + {5 \over 2} h)\\, dx = ah + bh^2 + {13 \over 12} ch^3 + {5 \over 2} h^2$$
 
 Resolviendo el sistema de ecuaciones llegamos al resultado:
 

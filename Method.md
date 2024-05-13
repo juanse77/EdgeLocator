@@ -30,11 +30,11 @@ $$S_R = \sum_{n = {j-2}}^{j+2} F_{i+1,n} = 5B + {{A-B} \over {h^2}} R$$
 
 Now we can express the area of ​​each strip as the integral of the line that crosses the strip. Since the line presents two unknown quantities (a) and (b) we can already propose a system of equations with the three previous equations and with the areas of A expressed as integrals:
 
-$$L = \int_{-3h/2}^{-h/2} (a + bx + {5 \over 2} h) dx = ah - bh^2 + {5 \over 2} h^2$$
+$$L = \int_{-3h/2}^{-h/2} (a + bx + {5 \over 2} h)\\, dx = ah - bh^2 + {5 \over 2} h^2$$
 
-$$M = \int_{-h/2}^{h/2} (a + bx + {5 \over 2} h) dx = ah + {5 \over 2} h^2$$
+$$M = \int_{-h/2}^{h/2} (a + bx + {5 \over 2} h)\\, dx = ah + {5 \over 2} h^2$$
 
-$$R = \int_{h/2}^{3h/2} (a + bx + {5 \over 2} h) dx = ah + bh^2 + {5 \over 2} h^2$$
+$$R = \int_{h/2}^{3h/2} (a + bx + {5 \over 2} h)\\, dx = ah + bh^2 + {5 \over 2} h^2$$
 
 Solving the system of equations we reach the expressions of (a) and (b) as a function of the hues A and B and the known values ​​of the sums of the hues of the three strips:
 
@@ -61,11 +61,11 @@ $$N = {{A-B} \over \sqrt{1+b^2}} [b, -1]$$
 
 As in the case of the approximation by means of a straight line, the approximation by means of a parabola follows the same mechanics, only this time there is one more variable. Since the curve through the window is a parabola, the integrals of each strip will be calculated adjusting to the curve $y = a + bx + cx^2$, and adding its center to the independent term, we obtain:
 
-$$L = \int_{-3h/2}^{-h/2} (a + bx + cx^2 + {5 \over 2} h)\, dx = ah - bh^2 + {13 \over 12} ch^3 + {5 \over 2} h^2$$
+$$L = \int_{-3h/2}^{-h/2} (a + bx + cx^2 + {5 \over 2} h)\\, dx = ah - bh^2 + {13 \over 12} ch^3 + {5 \over 2} h^2$$
 
-$$M = \int_{-h/2}^{h/2} (a + bx + cx^2 + {5 \over 2} h)\, dx = ah + {1 \over 12} ch^3 + {5 \over 2} h^2$$
+$$M = \int_{-h/2}^{h/2} (a + bx + cx^2 + {5 \over 2} h)\\, dx = ah + {1 \over 12} ch^3 + {5 \over 2} h^2$$
 
-$$R = \int_{h/2}^{3h/2} (a + bx + cx^2 + {5 \over 2} h)\, dx = ah + bh^2 + {13 \over 12} ch^3 + {5 \over 2} h^2$$
+$$R = \int_{h/2}^{3h/2} (a + bx + cx^2 + {5 \over 2} h)\\, dx = ah + bh^2 + {13 \over 12} ch^3 + {5 \over 2} h^2$$
 
 Solving the system of equations we get the result:
 
