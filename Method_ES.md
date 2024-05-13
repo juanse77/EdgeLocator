@@ -31,11 +31,11 @@ $$S_R = \sum_{n = {j-2}}^{j+2} F_{i+1,n} = 5B + {{A-B} \over {h^2}} R$$
 
 Ahora podemos expresar el área de cada franja como la integral de la recta que atraviesa la franja. Como la recta presenta dos incógnitas (a) y (b) ya podemos plantear un sistema de ecuaciones con las tres anteriores ecuaciones y con las áreas de A expresadas como integrales:
 
-$$L = \int_{-3h/2}^{-h/2} (a + bx + {5 \over 2} h)\, dx = ah - bh^2 + {5 \over 2} h^2$$
+$$L = \int_{-3h/2}^{-h/2} (a + bx + {5 \over 2} h) dx = ah - bh^2 + {5 \over 2} h^2$$
 
-$$M = \int_{-h/2}^{h/2} (a + bx + {5 \over 2} h)\, dx = ah + {5 \over 2} h^2$$
+$$M = \int_{-h/2}^{h/2} (a + bx + {5 \over 2} h) dx = ah + {5 \over 2} h^2$$
 
-$$R = \int_{h/2}^{3h/2} (a + bx + {5 \over 2} h)\, dx = ah + bh^2 + {5 \over 2} h^2$$
+$$R = \int_{h/2}^{3h/2} (a + bx + {5 \over 2} h) dx = ah + bh^2 + {5 \over 2} h^2$$
 
 Resolviendo el sistema de ecuaciones llegamos a las expresiones de (a) y (b) en función de los tonos A y B y de los valores conocidos de las sumas de los tonos de las tres franjas:
 
